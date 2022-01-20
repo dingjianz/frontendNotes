@@ -1,0 +1,37 @@
+@charset "utf-8";
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html li:nth-child(odd),
+body li:nth-child(odd) {
+  background-color: red!important;
+}
+html li:nth-child(even),
+body li:nth-child(even) {
+  background-color: black;
+  line-height: 30px;
+}
+html #box,
+body #box {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  background: url('../images/james.jpg');
+  background-size: cover;
+}
+@font-face {
+  font-family: lk;
+  src: url('../fonts/lk.eot') format('embedded-opentype'), url('../fonts/lk.svg') format('svg'), url('../fonts/lk.ttf') format('truetype'), url('../fonts/lk.woff') format('woff');
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  /*" icon-" 空格加上可以防止类名中包含icon的全被选上  */
+  font-family: lk;
+  font-style: normal;
+}
+.icon-phone::before {
+  content: '\e958';
+  font-size: 13px;
+}

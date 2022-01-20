@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>apply和call转换真伪数组</title>
+</head>
+
+<body>
+    <script>
+            window.onload = function (ev) {
+                // 系统自带的伪数组
+                var res = document.querySelectorAll("div");
+                // 自定义的伪数组
+                var obj = {0:'lnj',1:22,length:2};
+
+                // 如果想将伪数组转换为真数组那么可以使用如下方法
+                   // 如果slice方法什么参数都没有传递, 会将(伪)真数组中的元素放到一个新的数组中原样返回
+                var arr1 = [].slice.call(obj);
+                var arr2 = [].slice.call(res);
+                console.log(arr1,arr2);
+
+
+                // 如果想将真数组转换为伪数组那么可以使用如下方法
+                 var obj2 = {};
+                var arr = [1,2,3,5,4]; // 真数组
+                [].push.apply(obj2, arr);
+                console.log(obj2);//{0: 1, 1:2, 2: 3, 3:5, 4: 4, length: 5}
+
+                    }
+
+    </script>
+</body>
+<div>我是div1</div>
+<div>我是div2</div>
+<div>我是div3</div>
+
+</html>

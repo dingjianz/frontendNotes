@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>24.回调函数</title>
+</head>
+
+<body>
+    <script>
+        //回调函数就是通过函数调用的函数
+        //加减乘除运算
+
+        //小知识点：  jia代表函数  jia(); 代表执行这个函数
+        function jia(a, b) {
+            return a + b;
+        }
+
+        function cheng(a, b) {
+            return a * b;
+        }
+
+        function chu(a, b) {
+            return a / b;
+        }
+
+        function jian(a, b) {
+            return a - b;
+        }
+
+        //开始调用函数
+
+        function fna(num1, num2, suanfa) {
+            return suanfa(num1, num2);
+        }
+        console.log(fna(5, 10, chu));
+
+        //eg .. 求1,1,2,3,5,8,13,21.....中第n个数
+        function f1(n) {
+            if (n === 1 || n === 2) return 1;
+            if (n > 2) {
+                return f1(n - 2) + f1(n - 1);
+            }
+        }
+        console.log(f1(5));
+
+        //n个数的累加 1+2+3+4+...
+        function f5(n) {
+            if (n === 1) return 1;
+
+            if (n > 1) {
+                return n + f5(n - 1);
+            }
+        }
+        console.log(f5(3));
+        
+        console.log(typeof f5);//function
+        
+        
+    </script>
+</body>
+
+</html>

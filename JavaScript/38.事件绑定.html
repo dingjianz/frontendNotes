@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+    <script>
+        window.onload = function () {
+           var btu3 = window.document.getElementsByTagName('span')[0];
+            btu3.onclick = function () {
+                alert('onload属性');
+            };
+        };
+   
+
+    </script>
+</head>
+
+<body>
+    <button>点我</button>
+    <div id="btu">点点我</div>
+    <span>onload属性</span>
+    <script>
+        var btu = window.document.getElementsByTagName('button')[0];
+        //1.匿名函数绑定
+        btu.onclick = function () {
+            alert('点我干嘛？');
+        };
+
+        //2.函数名绑定
+        var btu = window.document.getElementById('btu');
+        btu.onclick = deal;
+        function deal() {
+            alert('函数名绑定');
+        };
+    </script>
+</body>
+
+</html>

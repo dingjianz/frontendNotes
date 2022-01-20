@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>05.ES6新增的数据类型-map</title>
+</head>
+
+<body>
+    <script>
+        let obj1 = { a: 1 }, obj2 = { b: 2 }, arr = [1, 2];
+        const map = new Map([
+            ['name', 'dj'],
+            ['age', 18],
+            ['sex', 'male'],
+            [obj1, '命运'],
+            [obj2, '咸鱼'],
+            [arr, '心情']
+        ]);
+        console.log(map);//Map(6)
+        //属性 size
+        console.log(map.size);//6
+        //set和get方法
+        map.set('friends',['大黄','小花']).set('home', 'anhui');
+        console.log(map);
+
+        console.log(map.get(obj1));
+
+        //delete方法
+        console.log(map.delete(obj1));//true
+        console.log(map);
+
+        //has方法
+        console.log(map.has(obj1));//false
+        console.log(map.has(obj2));//true
+
+        //clear方法
+        // map.clear()
+        console.log(map);//Map(0) {}
+        
+        //keys() values() entries()
+        console.log(map.keys());
+        console.log(map.values());
+        console.log(map.entries());
+
+        //map遍历
+        map.forEach((value,key) => {
+            console.log(key+':'+value);
+        });
+
+        //map注意事项 可以同时设置两个{}作为键，但是取值取不出来undefined
+        map.set({},'haha');
+        map.set({},'hehe');
+        console.log({}!=={});//true
+        console.log(map.get({}));//undefined
+        console.log(typeof map);//object
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>25.JS基础-变量作用域-上</title>
+</head>
+
+<body>
+    <script>
+        
+        //在其他语言中，任何一对括号中的语句都属于一个快，在这之中定义的所有变量在代码块外都是不可见的。javascript括号里可以在外面应用，除了函数里面的变量外。
+        var sex='男';
+        {
+            var age = 100;
+        }
+
+        console.log(age);//100
+
+        function nam() {
+            var res = 52;
+              num = 52;
+            console.log(sex);
+        }
+        nam();
+        console.log(num);//男 52
+        
+
+        // console.log(res);// Uncaught ReferenceError: res is not defined
+
+        //不用var 声明的变量是全局变量，在函数里定义也仍然是全局变量，但不推荐使用。
+              
+
+              var name="丁健";
+              function fn() {
+                  name='刘德华';
+              }
+           fn();
+           console.log(name);//刘德华 函数内部变量无var 声明，为全局变量，又因为代码在上个声明下面，所以不是丁健，是刘德华
+           
+    </script>
+</body>
+
+</html>

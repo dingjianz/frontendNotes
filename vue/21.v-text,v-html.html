@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>21.v-text,v-html</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <!--{{xxx}}这种方式不太友好，网速慢的时候是先显示{{xxx}},再替换内容-->
+    <!--建议使用v-text、v-html(谨慎使用，可能引起跨站脚本攻击)-->
+    <!-- 内部的文字、标签均无法显示 -->
+    <div id="app">
+        <!-- v-text='{{text}}  这会报错 v-text v-html v-bind 里面都直接写 不需要插值表达式' -->
+        <p v-text='text'>哈哈哈</p>
+        <p v-html='html'>哈哈哈</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                text: '今天天气很好！',
+                html: `<input type="date"><input type="color">`
+            }
+        });
+    </script>
+</body>
+
+</html>

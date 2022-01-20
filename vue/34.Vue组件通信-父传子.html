@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>34.Vue组件通信</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-div msg='今天天气不错' srcimg='img/lbj.jpg'></my-div>
+        <my-div msg='下雨了全身湿透' srcimg='img/james.jpg'></my-div>
+    </div>
+    <template id="my_div">
+        <div>
+            <h1>{{msg}}</h1>
+            <img v-bind:src="srcimg" alt="" width = '200'>
+        </div>
+    </template>
+    <script>
+        Vue.component('my-div',{
+            template:'#my_div',
+            props: ['msg','srcimg']
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

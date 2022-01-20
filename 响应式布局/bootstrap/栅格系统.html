@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="renderer" content="webkit">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+        .container{
+            height: 100px;
+            background-color: #ccc;;
+        }
+        .container .row{
+            height: 100%;
+        }
+        /* 
+            w>1200: 大屏幕 大桌面显示器 lg
+            w 992 - 1200：中等屏幕 桌面显示器 md 
+            w 768 - 992: 小屏幕 平板 sm
+            w < 768 :超小屏幕 手机 xs 
+
+        */
+        .container .row>div{
+            height: 100%;
+            box-sizing: border-box;
+            border: 1px solid #000;
+        }
+       
+    </style>
+</head>
+<body>
+     <div class="container">
+         <div class="row">
+            <div class="col-xs-1">1</div>
+            <div class="col-xs-1">2</div>
+            <div class="col-xs-1">3</div>
+            <div class="col-xs-1">4</div>
+            <div class="col-xs-1">5</div>
+            <div class="col-xs-1">6</div>
+            <div class="col-xs-1">7</div>
+            <div class="col-xs-1">8</div>
+            <div class="col-xs-1">9</div>
+            <div class="col-xs-1">10</div>
+            <div class="col-xs-1">11</div>
+            <div class="col-xs-1">12</div>
+         </div>
+
+         <div class="row">
+             <!-- 向上兼容 向下覆盖  xs屏幕尺寸在的样式满足任何屏幕下，若没有重新覆盖，样式唯一 -->
+            <div class="col-xs-1">1</div>
+            <!-- col-xs-offset-1: 通过margin-left 实现，会影响后面的元素 单位以栅格宽度-->
+            <div class="col-xs-1 col-xs-offset-2">2</div>
+            <div class="col-xs-1">3</div>
+            <div class="col-xs-1">4</div>
+            <!-- col-xs-pull-2:(左拉) 通过relative定位，left 实现，不会影响其他的元素，但是有可能重叠  单位以栅格宽度-->
+            <div class="col-xs-1 col-xs-pull-2">5</div>
+            <div class="col-xs-1">6</div>
+            <div class="col-xs-1">7</div>
+            <div class="col-xs-1">8</div>
+            <div class="col-xs-1">9</div>
+            <!-- col-xs-push-2:（右推） 通过relative定位，left 实现，不会影响其他的元素，但是有可能重叠  单位以栅格宽度-->
+            <div class="col-xs-1 col-xs-push-2">10</div>
+            <div class="col-xs-1">11</div>
+            <div class="col-xs-1">12</div>
+         </div>
+     </div>
+    <script src="bootstrap/js/jquery-1.12.4.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

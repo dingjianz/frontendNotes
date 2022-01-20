@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>18.v-else-if</title>
+    <script src='js/vue.js'></script>
+</head>
+<body>
+    <div id="app">
+    
+        <p>考生成绩等级为：</p>
+        <input type="text" v-model='score'>
+        <p v-if='score >= 90'>优秀</p>
+        <p v-else-if='score >= 80'>良好</p>
+        <p v-else-if ='score >= 60'>及格</p>
+        <p v-else>不及格</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                score: 90
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>86.定时器之匀速动画封装</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">开始动画</button>
+    <button id="btn1">停止动画</button>
+    <div id="box"></div>
+    <script>
+        window.onload = function () {
+            linearAnination('btn','btn1','box');
+        }
+        function linearAnination(btnId,btn1Id,boxId) {
+            var btn = document.getElementById(btnId);
+            var btn1 = document.getElementById(btn1Id);
+            var box = document.getElementById(boxId);
+            var timer = null, num = 0;
+            btn.onclick = function () {
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    num += 10;
+                    if (num > 600) {
+                        clearInterval(timer);
+                    }
+                    box.style.left = num + 'px';
+                }, 100);
+
+            }
+            btn1.onclick = function () {
+                clearInterval(timer);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>01.left</title>
+</head>
+
+<body>
+    <script>
+       for (var i = 0; i < 5; i++) {
+            var i = 10;
+            console.log('i=' + i);//输出一次10  i=10>=5 不符合条件 退出循环
+        }
+        
+        for (let i = 0; i < 5; i++) {
+            let i = 10;
+            console.log('let' + i);//输出5次10 
+
+        }
+
+        {
+            let a= 10;
+            // let a =30; 不能重复定义
+            console.log(a);// Identifier 'a' has already been declared
+            
+        }
+
+        {
+            console.log(b);// b is not defined 无变量提升
+            let b =10;// let 声明的变量不存在预解析
+            
+        }
+
+         for (var i = 0; i < 5; i++) {
+                let i = 10;
+                console.log(i);//输出5次10
+            }
+            console.log(i);//5
+
+
+        var tmp=20;
+        if(true){
+            console.log(tmp);//tmp is not defined
+            let tmp;//只要块级作用域内存在let命令，它所声明的变量就“绑定”这个区域，不再受外部的影响。总之，在代码块内，使用let命令声明变量之前，该变量都是不可用的，尽管代码块外也存在相同全局变量。
+        };
+        console.log(tmp);//20
+     
+      
+    </script>
+</body>
+
+</html>

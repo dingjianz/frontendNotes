@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>35.tab原生JS选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 440px;
+            height: 300px;
+            margin: 50px auto;
+            border: 1px solid #000;
+        }
+
+        .box .box-top {
+            width: 100%;
+            height: 52px;
+        }
+
+        .box .box-top li {
+            float: left;
+            line-height: 52px;
+            width: 110px;
+            text-align: center;
+            background-color: orange;
+            cursor: pointer;
+        }
+
+        .box .box-top li.current {
+            background-color: #ccc;
+        }
+
+        .box .box-bottom {
+            width: 100%;
+            height: 248px;
+        }
+
+        .box .box-bottom ul>li {
+            display: none;
+        }
+         .box .box-bottom ul>li.now{
+             display: block;
+         }
+    </style>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box-top">
+            <ul>
+                <li class="current">H5+C3</li>
+                <li>jQuery</li>
+                <li>C语言</li>
+                <li>Go语言</li>
+            </ul>
+        </div>
+
+        <div class="box-bottom">
+            <ul>
+                <li  class="now">
+                    <img src="images/11.jpg" alt="">
+                </li>
+                <li>
+                    <img src="images/12.jpg" alt="">
+                </li>
+                <li>
+                    <img src="images/13.jpg" alt="">
+                </li>
+                <li>
+                    <img src="images/14.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            var box = document.getElementsByClassName('box')[0];
+            var boxTop = document.getElementsByClassName('box-top')[0];
+            var boxBottom = document.getElementsByClassName('box-bottom')[0];
+            var allLisTop = boxTop.getElementsByTagName('li');
+            var allLisBottom = boxBottom.getElementsByTagName('li');
+            var lastOne = 0;
+            for (var i = 0; i < allLisTop.length; i++) {
+                (function (i) {
+                    allLisTop[i].onmouseover = function () {
+                        allLisTop[lastOne].className = '';
+                        allLisBottom[lastOne].style.display = 'none';
+                        this.className = 'current';
+                        allLisBottom[i].style.display = 'block';
+                        lastOne = i;
+                    }
+                })(i);
+            }
+        }
+    </script>
+</body>
+
+</html>

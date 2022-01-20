@@ -1,0 +1,21 @@
+{
+  "name": "dj",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "formidable": "^1.2.1",
+    "mongoose": "^5.1.7",
+    "njs": "0.0.2",
+    "uuid": "^3.3.2",
+    "vue": "^2.5.16"
+  }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+        
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div  dir="rtl" style="height: 500px;">我是丁健</div>
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        div.id="hh";
+        console.log(div.id);
+        div.style.height = '200px';
+        console.log(div.style.width);//空格   无法获取css里面的内容
+        console.log(window.getComputedStyle(div).width);//300px
+        
+        console.log(div.style.height);//200px  可以获取写在html标签里面的属性
+        console.log(div.getAttribute('height'));
+ 
+        
+    </script>
+</body>
+</html>

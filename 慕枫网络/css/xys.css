@@ -1,0 +1,80 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.container {}
+
+/* 左边 */
+
+.left {
+    background-color: #181818;
+    color: #fff;
+}
+
+.left h1 {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-family: "CenturyGothic";
+    font-size: 24px;
+    float: left;
+    color: #fff;
+}
+
+.left ul li {
+    position: relative;
+    color: #fff;
+    font-family: "Calibri light";
+    font-size: 18px;
+    line-height: 20px;
+    padding: 0px 5px 0px 5px;
+    margin-top: 10px;
+ } 
+@media screen and (max-width : 992px){
+    .left ul li {
+     display: inline-block;
+    }
+
+}
+
+/*  右边*/
+
+.right {
+    background-color: #121212;
+}
+
+.right .right-top {
+    width: 100%;
+    font-size: 90px;
+    color: #ccc;
+}
+
+.right .media-heading {
+    color: #2882d0;
+    font-size: 36px;
+    line-height: 45px;
+    white-space: nowrap;
+}
+
+.right .des-top {
+    width: 100%;
+    color: #cccccc;
+    font-family: "Calibri light";
+    font-size: 18px;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.right .des-bottom {
+    width: 100%;
+    color: #aaaaaa;
+    font-family: "Calibri light";
+    font-size: 16px;
+    line-height: 20px;
+    height: 160px;
+    overflow: hidden;
+    float: left;
+}

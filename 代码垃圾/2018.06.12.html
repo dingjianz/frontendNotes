@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+            '2': 'a',
+            '3': 'b',
+            'length': 0,
+            'push': Array.prototype.push
+        }
+        obj.push('c');
+        obj.push('d');
+        console.log(obj); //{'0':'c','1':'d','2':'a','3':'b',length:2,push:push{}}
+        //push的原理是：
+        function push(str) {
+            obj[obj.length] = str;
+            length++;
+            return length;
+        }
+    </script>
+</body>
+
+</html>

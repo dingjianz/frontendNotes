@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>70.动画模块</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    div{
+        width: 100px;
+        height: 30px;
+        background-color:red;
+        animation: dj 5s linear 0s infinite normal; 
+        animation-play-state:paused;
+    }
+    @keyframes dj{
+        from{
+            margin-left: 0;
+        }
+        to{
+            margin-left: 500px;
+        }
+    }
+
+    </style>
+</head>
+<body>
+    <button>点我</button>
+    <div></div>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByTagName('button')[0];
+            var div = document.getElementsByTagName('div')[0];
+            btn.onclick = function () {
+                div.style.animationPlayState = 'running';
+            }
+        }
+    </script>
+</body>
+</html>

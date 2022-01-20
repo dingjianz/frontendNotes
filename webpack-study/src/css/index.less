@@ -1,0 +1,39 @@
+@charset"utf-8";
+html,body{
+    margin: 0;
+    padding: 0;
+    li{
+        &:nth-child(odd){
+            background-color: red!important;
+        }
+        &:nth-child(even){
+            background-color: black;
+            line-height: 30px;
+        }
+    }
+    #box{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        // 默认情况下，webpack无法处理css文件中的url地址，不管是图片还是字体库，只要是URL地址，都处理不了
+        background:url('../images/james.jpg');
+        background-size: cover;
+    }
+}
+
+@font-face {
+    font-family: lk;
+    src: url('../fonts/lk.eot') format('embedded-opentype'), url('../fonts/lk.svg') format('svg'), url('../fonts/lk.ttf') format('truetype'), url('../fonts/lk.woff') format('woff');
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /*" icon-" 空格加上可以防止类名中包含icon的全被选上  */
+    font-family: lk;
+    font-style: normal;
+}
+
+.icon-phone::before {
+    content: '\e958';
+    font-size: 13px;
+}

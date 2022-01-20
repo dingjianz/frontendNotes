@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p>{{msg | msgFormat("疯狂",123) | test}}</p>
+    </div>
+    <script>
+        // 过滤器只在插值表达式 和v-bind中使用
+        // 定义一个Vue 全局的过滤器，名字叫做 msgFormat function 中第一个参数已经被规定死了，永远都是过滤器 管道符 | 前面传递过来的数据
+        Vue.filter("msgFormat",(msg,arg1,arg2)=>{
+            // return msg.replace(/[单纯]/g,"邪恶"); //这么写 单会被替换邪恶； 纯 也会被替换成邪恶
+            return msg.replace(/单纯/g,arg1 + arg2);
+        });
+        // 可多次调用过滤器 
+        Vue.filter("test",(msg)=>{
+            return msg + "=====";
+        })
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "曾经，我也是一个单纯的少年，单纯的我，傻傻的问，谁是世界上最单纯的男人"
+            }
+        })
+     
+    </script>
+</body>
+
+</html>

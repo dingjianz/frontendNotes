@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>只能显示一个，或都不显示,两个都为true时，显示v-if</h1>
+        <button @click="err = !err">Toggle Error</button>
+        <button v-on:click="suc = !suc">Toggle Success</button>
+        <p v-if='err'>网络连接错误：404</p>
+        <p v-else-if='suc'>网络连接成功：200</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                err:false,
+                suc:false
+            }
+        });
+    </script>
+</body>
+
+</html>

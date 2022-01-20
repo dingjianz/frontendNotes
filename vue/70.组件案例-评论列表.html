@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 子组件：复用性 -->
+        <cmt-box @func="loadComment"></cmt-box>
+
+        <ul class="list-group">
+            <li class="list-group-item" v-for="(item, index) in list" :key="item.id">
+                <span class="badge">评论人：{{item.name}}</span>
+                {{item.content}}
+            </li>
+
+        </ul>
+
+    </div>
+
+    <template id="tmp1">
+        <div>
+            <div class="form-group">
+                <label for="person">评论人：</label>
+                <input type="text" class="form-control" id="person" v-model="name">
+
+            </div>
+            <div class="form-group">
+                <label for="content">评论内容：</label>
+                <textarea class="form-control" id="content" v-model="content" style="resize: none;"></textarea>
+            </div>
+            <button class=" btn btn-primary" style="margin: 10px;" @click="propsData">发表评论</button>
+        </div>
+    </template>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+                list: [{
+                        id: Math.random(),
+                        name: "李白",
+                        content: "天生我材必有用"
+                    },
+                    {
+                        id: Math.random(),
+                        name: "苏轼",
+                        content: "日照香炉生紫烟"
+                    },
+                    {
+                        id: Math.random(),
+                        name: "李咏",
+                        content: "鹅鹅鹅，曲项向天歌"
+                    }
+                ]
+            },
+            methods: {
+                loadComment() {
+                    // localStorage只存字符串
+                        list = JSON.parse(localStorage.getItem("cmt") || "[]");
+                        this.list = list;
+                }
+            },
+            created() {
+                this.loadComment();
+            },
+            components: {
+                "cmt-box": {
+                    template: "#tmp1",
+                    data() {
+                        return {
+                            name: '',
+                            content: ''
+                        }
+                    },
+                    methods: {
+                        propsData() {
+                            if (this.name === '' && this.content === '') {
+                                return alert("请输入内容");
+                            };
+                            let comment = {
+                                id: Math.random(),
+                                name: this.name,
+                                content: this.content
+                            };
+                            let list = JSON.parse(localStorage.getItem("cmt") || "[]");
+                            list.unshift(comment);
+                            localStorage.setItem("cmt", JSON.stringify(list));
+                            this.name = this.content = '';
+                            this.$emit("func");
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

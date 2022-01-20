@@ -1,0 +1,445 @@
+@charset"utf-8";
+@baseColor:#e92322;
+// 头部
+.wjs_header{
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    .row {
+        height: 100%;
+        div{
+            border-right: 1px solid #ccc;
+            text-align: center;
+            &:last-child{
+                border-right:none;
+            }
+           .wjs_code{
+                 position: relative;
+                 display: inline-block;
+               > img{
+                   display: none;
+                   position: absolute;
+                   top: 49px;
+                   left: 0;
+                   border:1px solid #ccc;
+                   box-sizing: border-box;
+                   border-top:none;
+                   z-index: 10;
+               }
+               &:hover{
+                  > img{
+                       display: block;
+                   }
+               }
+           }
+            a{
+               color: #333;
+                &:hover{
+                   text-decoration: none;
+                }
+            }
+            > .btn-danger{
+                background-color: @baseColor;
+                border-color: @baseColor;
+            }
+            > .btn{
+                padding: 3px 15px;
+            }
+        }
+    }
+}
+// 导航条
+.wjs_nav{
+    // 导航条不可以设置高度，需要内容自行撑开。面包按钮的手风琴效果
+    // height: 80px;
+    .navbar{
+        margin-bottom: 0;
+      .navbar-brand{
+          height: 80px;
+        //   bootstrap.css 本身自带css默认样式，这里内部自带padding:15px 15px;所以line-height:50px;
+          line-height: 50px;
+          font-size: 40px;
+          span:first-child{
+            color: @baseColor;
+          }
+          span:last-child{
+              color: #333;
+          }
+      }
+      .navbar-nav{
+          >li{
+              >a{
+                  line-height: 50px;
+                  font-size: 16px;
+                  &:hover{
+                    border-bottom: 3px solid @baseColor;
+                    color: #777;
+                  }
+              }
+              &.active{
+                  a{
+                      background-color: transparent;
+                      border-bottom: 3px solid @baseColor;
+                  }
+              }
+          }
+      }
+    }
+    .navbar-toggle{
+        margin-top: 23px;
+    }
+    // 导航条中的下拉菜单 删除type="button" 消除边框
+    .navbar-right{
+        .dropdown{
+            border: none;
+            position: relative;
+            .btn{
+                border:none;
+                background-color: #f8f8f8;
+            }
+            a:focus{
+                background-color: transparent;
+            }
+            .dropdown-menu{
+                position: absolute;
+                left: 50%;
+                top: 80px;
+                transform: translateX(-50%);
+            }
+        }
+    }
+}
+// 轮播图
+.wjs_banner{
+    width: 100%;
+    .pcImg{
+        width: 100%;
+        height: 410px;
+        display: inline-block;
+        background-position: center center;
+        background-size: cover;
+    }
+    .mobileImg{
+        width: 100%;
+        display: inline-block;
+        >img{
+            width: 100%;
+            display: inline-block;
+        }
+    }
+}
+// 信息块
+.wjs_info{
+    width: 100%;
+    .wjs_icon{
+        font-size: 30px;
+    }
+    .row{
+        padding-top: 30px;
+        >div{
+            margin-top: 20px;
+            padding-left: 80px;
+            a{
+                color: #333;
+            }
+            a:hover{
+                text-decoration: none;
+                color: @baseColor;
+            }
+        }
+    }
+}
+// 预约块
+.wjs_reverse{
+    height: 60px;
+    line-height: 60px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    .wjs_icon{
+        font-size: 18px;
+    }
+    .instance{
+        color:@baseColor;
+        border-bottom: 1px dashed @baseColor;
+    }
+    .movie{
+        color: #000;
+    }
+    a:hover{
+        color: @baseColor;
+    }
+
+}
+
+// 产品块
+.wjs_product{
+    clear: both;
+    background-color: #eee;
+    padding: 20px;
+    //千万不能设置nav的高度，要让内容自行撑开
+    overflow: hidden;
+    .nav-tabs{
+        >li{
+            padding: 0 15px;
+            margin-bottom: 0px;
+            >a{
+                line-height: 50px;
+                border-radius: 0px;
+                color: #000;
+                border:none;
+                background-color: transparent;
+            }
+            > a:hover{
+                border-bottom: 3px solid @baseColor;
+            }
+            &.active{
+                >a,a:hover,a:focus{
+                    border:none;
+                    border-radius: none;
+                    background-color: transparent;
+                    border-bottom: 3px solid @baseColor;
+                }
+            }
+            
+         
+        }
+    }
+    // 产品详细信息块样式
+    .tab-content{
+        .wjs_box{
+            height: 150px;
+            margin-top: 20px;
+            background-color: #fff;
+            position: relative;
+            .wjs_left{
+                margin-right: 100px;
+                height: 150px;
+                padding-top: 10px;
+                font-size: 12px;
+                >p{
+                    width: 100%;
+                    text-align: center;
+                    font-size: 16px;
+                }
+                .row{
+                    margin-right: -8px;
+                    margin-left: -8px;
+                    >div:nth-of-type(even){
+                        text-align: right;
+                    }
+
+                }
+            }
+            .wjs_right{
+                width: 100px;
+                height: 150px;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                border-left: 2px dashed #eee;
+                text-align: center;
+                padding-top: 30px;
+                b{
+                    font-size: 40px;
+                    color: @baseColor;
+                }
+                sub{
+                    bottom: 0;
+                    color: @baseColor;
+                }
+                // 设置圆角
+                &::before,&::after{
+                    content: "";
+                    width:10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    position: absolute;
+                    left: -5px;
+                    background-color: #eee;
+                }
+                &::before{
+                 top: -5px;
+                 box-shadow: 0px 1px -1px #ddd inset;
+                }
+               &::after{
+                bottom:-5px;
+                box-shadow: 0px 1px 1px #ddd inset;
+               } 
+            //    防止宝 北 将原先的元素向下压 所以要进行定位
+               .wjs_tip{
+                // 保证toolTip弹出框的宽度够长
+                   width: 100%;
+                   position: absolute;
+                   top: 20px;
+                   left: 50%;
+                   transform: translateX(-50%);
+                   span{
+                       cursor: pointer;
+                   }
+                   span:nth-of-type(1){
+                       color: lightcoral;
+                      border: 1px solid lightcoral;
+                   }
+                   span:nth-of-type(2){
+                       color: lightgreen;
+                      border: 1px solid lightgreen;
+                   }
+               }
+            }
+            &.active{
+                background-color: @baseColor;
+                color: #fff;
+                position: relative;
+                >.wjs_left{
+                    &::before{
+                        content:'\e915';
+                        font-family: wjs;
+                        font-size: 25px;
+                        position: absolute;
+                        left: 0;
+                        top: -5px;
+                    }
+                }
+                >.wjs_right{
+                    >b,sub{
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 新闻块
+.wjs_news{
+    padding-top: 20px;
+    .row{
+        div:nth-of-type(1){
+            h3{
+                position: relative;
+                text-align: center;
+                line-height: 50px;
+                border-bottom: 1px solid #ccc;
+                &::after{
+                    content:'';
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    position: absolute;
+                    right: -10px;
+                    bottom: -5px;
+                    border: 1px solid #ccc;
+                    box-shadow: 0 0 1px #ccc inset;
+                }
+            }
+        }
+        div:nth-of-type(3){
+            .tab-content{
+                // 新闻列表样式
+                .wjs_newsList{
+                    height: 450px;
+                    overflow: auto;
+                    >li{
+                        list-style: none;
+                        line-height: 50px;
+                        >a{
+                            color: #000;
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+        // 添加虚线边框
+        .wjs_newsLine{
+            width: 1px;
+            height: 100%;
+            border-left: 1px dashed @baseColor;
+            position: absolute;
+            left: 45px;
+            top: 0;
+        }
+        .nav-tabs{
+            border-bottom: none;
+            position: relative;
+            // 利用伪元素制作虚线 伪元素必须要求父元素右具体宽高 所谓具体的宽高指的是在样式中设置了width/height,所以此处伪元素制作虚线走不通
+            /*
+            &::before{
+                content: "";
+                width: 1px;
+                height: 100%;
+                height: 420px;
+                border-left: 1px dashed @baseColor;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            */
+         
+            li{
+                margin-bottom: 50px;
+                &:last-child{
+                    margin-bottom: 0;
+                    left: 0;
+                    top: 0;
+                }
+              a{
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background-color: #ccc;
+                border: none;
+                &:hover{
+                    background-color: @baseColor;
+                    border: none;
+                }
+                .wjs_icon{
+                    font-size: 30px;
+                    color: #fff;
+
+                }
+              }
+                &.active{
+                   >a,a:hover,a:focus{
+                        border:none;
+                        background-color: @baseColor;
+                    }
+                }
+            }
+            @media screen and(min-width:768px) and (max-width:992px) {
+                >li{
+                    margin:20px 30px;
+                }
+            }
+            @media screen and (max-width:768px) {
+                >li{
+                    margin:20px 0px;
+                    width: 25%;
+                }
+            }
+        }
+    }
+}
+// 合作伙伴
+.wjs_partner{
+    width: 100%;
+    background-color: #eee;
+    // 块级元素居中用margin:0 auto; 行内元素：text-align:center;
+    text-align: center;
+    h3{
+        width: 100%;
+        text-align: center;
+    }
+    ul{
+        list-style: none;
+        display: inline-block;
+        >li{
+            float: left;
+            >a{
+                font-size: 80px;
+                color: #000;
+            }
+        }
+    }
+}

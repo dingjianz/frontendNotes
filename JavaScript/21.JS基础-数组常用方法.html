@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>21.JS基础-数组常用方法</title>
+</head>
+
+<body>
+    <script>
+
+        //join(seperator)
+        var num = ['丁健', '男', 18];
+        console.log(num.join('!!!'));//将数组以字符串的形式输出，且以括号内符号隔开，默认逗号 ， 
+
+        //push()和pop(),在栈顶部增减元素
+        var arr = new Array(3);
+        arr[0] = "George";
+        arr[1] = "John";
+        arr[2] = "Thomas";
+
+        console.log(arr.push('johy', 'happy'));// 5 在数组最后面加元素，并返回为数组长度
+        console.log(arr);
+
+        console.log(arr.pop());//happy  在数组最后面删除一个元素，并返回这个元素
+        console.log(arr);
+
+
+
+
+        //shift()和unshift()， 在栈底部增减元素
+
+        var res = ["George", "John", "Thomas"];
+
+        console.log(res.unshift('haay', 'tom'));//输出 5 在数组最前面加元素，并返回为数组长度
+        console.log(res);
+
+        console.log(res.shift());// 输出haay，将第一个元素删除，并返回这个元素
+        console.log(res);
+
+
+        // reverse 反转数组的顺序
+        var Name = ['张三', '李四', '王五'];
+        console.log(Name.reverse());//["王五", "李四", "张三"]
+        console.log(Name);//["王五", "李四", "张三"],会影响原本的数组
+
+        //contact 属性
+
+        var str = ['张三', '李四', '王五'];
+        var concat = str.concat(1, 5, '莉莉娅', [12, 15]);
+        console.log(str);// ["张三", "李四", "王五"],不改变原数组
+        console.log(concat);// ["张三", "李四", "王五", 1, 5, "莉莉娅", 12, 15]，在原数组后面添加元素，组成新的元素，且若添加的是数组，则会将数组拆开后，将元素添加上去
+
+        var str = ['张三', '李四', '王五'];
+        console.log(str.push([12, 15]));//4 ,添加的数组被认为是一个元素
+        console.log(str);//(4) ["张三", "李四", "王五", Array(2)]
+
+        // indexOf()和 lastIndexOf()
+        var num = [2, 4, 6, 8, 8, 6, 4, 2];
+        console.log(num.indexOf(4));//1   从头开始找4，找到即返回，不在继续查找，下面几种方法一样
+        console.log(num.indexOf(4, 2));//6   indexOf(4,2) 表示从第二位元素以后开始找4
+
+        console.log(num.lastIndexOf(6));//5 从末尾开始找6 但是位数仍从头开始
+        console.log(num.lastIndexOf(6, 4));//2 从末尾开始找6 但是位数仍从第四位开始
+
+      
+     
+    </script>
+</body>
+
+</html>

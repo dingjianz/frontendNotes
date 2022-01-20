@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang: "en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>30.学习对象</title>
+</head>
+
+<body>
+    <script type="text/html">
+        //字面量对象
+        var dog = {
+            //属性
+            name:"丁健",
+            age:18,
+            sex:"公",
+            dogFriends: ["小花", "小黑", "小黄"],
+            //方法
+            eat:function () {
+                console.log("吃东西");
+            },
+            drink:function () {
+                console.log("喝东西");
+            }
+        };
+        console.log(dog.name);
+        console.log(typeof dog);//object
+        for(var k in dog){
+            console.log(k);//键 
+            console.log(dog[k]);//值
+        }
+
+    </script>
+    <script>
+        //构造函数---创建一个类
+        function Person(option) {
+            this.name = option.name;
+            this.age = option.age;
+            this.sex = option.sex;
+            this.friends = option.friends;
+            this.eat = function (someThing) {
+                console.log(this.name + "在吃" + someThing);
+            }
+
+            this.run = function (someWhere) {
+                console.log(this.name + "在跑" + someWhere);
+            }
+
+        };
+        var p = new Person({ name: '丁健', age: 18, sex: '男', friends: ['ds', 'dsd', 'dds'] });
+        console.log(p.name);
+        console.log(p);
+    </script>
+</body>
+
+</html>

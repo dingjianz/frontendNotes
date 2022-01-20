@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        {
+            // 这里是块级作用域
+            let dj = 123;
+            console.log(dj);
+            
+        }
+        // 不同作用域下面可以重复定义，互不影响
+        let dj = 125;
+         console.log(dj)
+    </script>
+</body>
+</html>

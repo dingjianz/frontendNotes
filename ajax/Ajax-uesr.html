@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <button id="btn1">单个用户</button>
+    <button id="btn2">多个用户</button>
+    <div id="box1">单个用户</div>
+    <div id="box2">多个用户</div>
+    <script src="myAjax2.js"></script>
+    <script>
+        window.addEventListener('load', function () {
+            let box1 = document.querySelector('#box1');
+            let box2 = document.querySelector('#box2');
+            document.querySelector('#btn1').addEventListener('click', loadUser);
+            document.querySelector('#btn2').addEventListener('click', loadUsers);
+            function loadUser() {
+                ajax({
+                    type: 'get',
+                    url: 'user.json',
+                    success: function (xhr) {
+                        let user = JSON.parse(xhr.responseText);
+                        let outPut = '';
+                        outPut += `
+                        <ul>
+                            <li>${user["id"]}</li>
+                            <li>${user['name']}</li>
+                            <li>${user.email}</li>
+                        </ul>`;
+                        box1.innerHTML = outPut;
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.status);
+
+
+                    }
+                });
+            };
+            function loadUsers() {
+                ajax({
+                    type: 'get',
+                    url: 'users.json',
+                    success: function (xhr) {
+                        let users = JSON.parse(xhr.responseText);
+                        let outPut = '';
+                        users.forEach((value, index) => {
+                            outPut += `
+                                <ul>
+                                    <li>${users[index]["id"]}</li>
+                                    <li>${users[index]['name']}</li>
+                                    <li>${users[index].email}</li>
+                                </ul>`;
+                        });
+                        box2.innerHTML = outPut;
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.status);
+                    }
+                });
+            }
+        })
+
+    </script>
+</body>
+
+</html>

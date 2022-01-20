@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>22.v-bind</title>
+    <script src="js/vue.js"></script>
+</head>
+<!-- 
+    它是一个vue 指令，用于动态绑定 html 属性,动态地绑定一个或多个特性，或一个组件 prop 到表达式。
+    v-bind指令可以在其名称后面带一个参数，中间用一个冒号隔开。这个参数通常是HTML元素的特性（attribute） 
+-->
+<body>
+    <div id="app">
+        <img v-bind:src="imgSrc" :title="title">
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+               imgSrc:'img/james.jpg',
+               title:'dj'
+            }
+        });
+    </script>
+</body>
+
+</html>

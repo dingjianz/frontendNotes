@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 268px;
+            position: absolute;
+            left: 50%;
+            margin-left: -134px;
+            top: 100px;
+        }
+
+         #box>img:nth-child(2) {
+            width: 40px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <img src="images/sjl.jpg" alt="">
+        <img src="images/cha.jpg" alt="" id="close">
+
+    </div>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById('box');
+            var btu2 = document.getElementById("close");
+            btu2.onclick = function () {
+                box1.style.display = 'none';
+            };
+        };
+
+    </script>
+</body>
+
+</html>

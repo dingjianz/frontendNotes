@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>130.无限轮播 js</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #slider {
+            width: 750px;
+            height: 320px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+            padding: 10px;
+        }
+
+        #slider #top {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        #slider ul {
+            width: 4500px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #slider ul li {
+            width: 750px;
+            height: 320px;
+            float: left;
+        }
+
+        #slider ul li img {
+            width: 750px;
+            height: 320px;
+            vertical-align: top;
+
+        }
+
+        #slider ol {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        #slider ol li {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            float: left;
+            margin-right: 3px;
+            background-color: #ccc;
+        }
+
+        #slider ol li.current {
+            background-color: orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="slider">
+        <div id="top">
+            <ul id="ul">
+                <li>
+                    <img src="image/pic01.jpg" alt="">
+                </li>
+                <li>
+                    <img src="image/pic02.jpg" alt="">
+                </li>
+                <li>
+                    <img src="image/pic03.jpg" alt="">
+                </li>
+                <li>
+                    <img src="image/pic04.jpg" alt="">
+                </li>
+                <li>
+                    <img src="image/pic05.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+        <ol id="ol">
+        </ol>
+    </div>
+    <script src="./myFunction.js"></script>
+    <script> 
+        window.onload = function () {
+            // 1. 获取需要的标签
+            // var li = document.createElement('li');
+            // $('ul').appendChild(li);
+            // var img = document.createElement(img);
+            // img.src = "image/pic01.jpg";
+            // li.appendChild(img);
+            var lis = $('ul').children;
+            // 2. 克隆li标签
+            $("ul").appendChild(lis[0].cloneNode(true));//true 里面的html标签都克隆
+            var bigImgIndex = 0, instantIndex = 0;
+
+            // 3. 动态创建页码
+            for (var i = 0; i < lis.length - 1; i++) {
+                var olLi = document.createElement('li');
+                $('ol').appendChild(olLi);
+            }
+
+            // 4. 第一个选中
+            var olLis = $('ol').children;
+            olLis[0].className = 'current';
+            // 5.鼠标进入圆点
+            for (var j = 0; j < olLis.length; j++) {
+
+                (function (j) {
+                    olLis[j].onmouseover = function () {
+                        for (var m = 0; m < olLis.length; m++) {
+                            olLis[m].className = '';
+                        };
+                        this.className = 'current';
+
+                        constant($('ul'), -(750 * j), 100);
+                        bigImgIndex = instantIndex = j;
+                    }
+                })(j);
+            };
+            // 6.自动轮播
+            var timer = setInterval(autoPlay,1000);
+            // 7. 清除和设置定时器   
+            $('slider').onmouseover = function () {
+                clearInterval(timer);
+            };
+            $('slider').onmouseout = function () {
+             timer =  setInterval(autoPlay,1000);//timer 一定得写，否则无法清除，越来越快
+            };
+          
+
+
+        function autoPlay () {
+                bigImgIndex++;
+                if (bigImgIndex > lis.length - 1) {
+                    $('ul').style.left = 0;
+                    bigImgIndex = 1;//最后一张图片是第一张图片，所以从1开始
+                }
+                constant($('ul'), -(bigImgIndex * 750), 100);
+                instantIndex++;
+                if (instantIndex > olLis.length - 1) {
+                    instantIndex = 0;
+                }
+                for (var m = 0; m < olLis.length; m++) {
+                    olLis[m].className = '';
+                };
+                olLis[instantIndex].className = 'current';
+            }
+        }
+    </script>
+</body>
+
+</html>

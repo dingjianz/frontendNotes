@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>72.动画模块-其他属性下</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .box1{
+        width: 100px;
+        height: 40px;
+        background-color: red;
+        animation-name:dj;
+        animation-duration:5s;
+        animation-timing-function:linear;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        /* 既然写了  position: absolute; 必须
+写   left: 0px; top: 0px;  没写这个之后，出现错误，动画结束之后最后位置发生错位了 */
+    }
+    @keyframes dj{
+      0%{
+                left: 0;
+                top: 0;
+            }
+            25%{
+                left: 300px;
+                top: 0;
+            }
+            50%{
+                left: 300px;
+                top: 300px;
+            }
+            75%{
+                left: 0;
+                top: 300px;
+            }
+            100%{
+                left: 0;
+                top: 0;
+            }
+    }
+    .box2{
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        margin: 0px auto;
+        margin-top: 100px;
+        animation-name:dzh;
+        animation-duration:5s;
+        animation-timing-function:linear;
+        animation-delay: 2s;
+         /* animation-fill-mode:forwards;   默认 none */
+         /* animation-fill-mode: backwards; */
+         animation-fill-mode: both;
+    }
+      @keyframes dzh{
+        0%{
+           transform:rotate(10deg);
+        }
+       
+       50%{
+            transform:rotate(50deg);
+        }
+      
+        100%{
+             transform:rotate(80deg);
+        }
+    }
+    </style>
+
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>
+ <!-- 通过我们的观察, 动画是有一定的状态的 
+ 1.等待状态 
+ 2.执行状态
+3.结束状态 
+
+animation-fill-mode作用: 
+指定动画等待状态和结束状态的样式 
+取值: 
+none: 不做任何改变 
+forwards: 让元素结束状态保持动画最后一帧的样式
+backwards: 让元素等待状态的时候显示动画第一帧的样式
+ both: 让元素等待状态显示动画第一帧的样式, 让元素结束状态保持动画最后一帧的样式  -->

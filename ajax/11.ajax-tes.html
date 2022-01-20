@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>11.ajac-test</title>
+    <script src="myAjax2.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            margin: 50px auto;
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            background-color: #ccc;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            background-color: pink;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin: 10px auto 10px;
+            border: 1px solid #000;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 200px;
+        }
+
+        ul>li {
+            float: left;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p class="p1">商品标题名称</p>
+        <img class="content" alt="">
+        <p class="p2">商品描述信息</p>
+
+        <button name='nz'>女装</button>
+        <button name='bb'>包包</button>
+        <button name='tx'>拖鞋</button>
+
+    </div>
+    <script>
+        window.onload = function () {
+            var btn = document.querySelectorAll('button');
+            var oImg = document.querySelector("img");
+            var p1 = document.getElementsByTagName('p')[0];
+            var p2 = document.getElementsByTagName('p')[1];
+            for (var i = 0; i < btn.length; i++) {
+                btn[i].onclick = function () {
+                    var self = this;
+                    ajax({
+                        type: 'get',
+                        timeout: 3000,
+                        url: '11.ajax-tes.xml',
+                        data: { 'name': self.getAttribute('name') },
+                        success: function (xmlhttp) {
+                            var res = xmlhttp.responseXML;
+                            var name = self.getAttribute('name');
+                            var title = res.querySelector(name + ' title').innerHTML;
+                            var des = res.querySelector(name + ' des').innerHTML;
+                            var image = res.querySelector(name + ' image').innerHTML;
+                            p1.innerHTML = title;
+                            p2.innerHTML = des;
+                            oImg.setAttribute("src", image);
+
+                        },
+                        error: function (xmlhttp) {
+                            alert(xmlhttp.status);
+                        }
+                    });
+                }
+            }
+
+            // btn2.onclick = function () {
+            //     ajax({
+            //         type: 'get',
+            //         timeout: 3000,
+            //         url: '11.ajax-tes.php',
+            //         data: { 'name': this.getAttribute('name') },
+            //         success: function (xmlhttp) {
+            //             // alert(xmlhttp.responseText);
+            //             var res = xmlhttp.responseText;
+            //             var arr = res.split('|');
+            //             p1.innerHTML = arr[0];
+            //             p2.innerHTML = arr[1];
+            //             oImg.setAttribute("src", arr[2]);
+
+
+            //         },
+            //         error: function (xmlhttp) {
+            //             alert('fail');
+            //         }
+            //     });
+            // }
+            // btn3.onclick = function () {
+            //     ajax({
+            //         type: 'get',
+            //         timeout: 3000,
+            //         url: '11.ajax-tes.php',
+            //         data: { 'name': this.getAttribute('name') },
+            //         success: function (xmlhttp) {
+            //             // alert(xmlhttp.responseText);
+            //             var res = xmlhttp.responseText;
+            //             var arr = res.split('|');
+            //             p1.innerHTML = arr[0];
+            //             p2.innerHTML = arr[1];
+            //             oImg.setAttribute("src", arr[2]);
+
+
+            //         },
+            //         error: function (xmlhttp) {
+            //             alert('fail');
+            //         }
+            //     });
+            // }
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.javascript中的常量和变量</title>
+</head>
+<body>
+    <script type="text/html">
+        //数值常量
+    console.log(3 + 5);
+    console.log(3.3 + 5.5);
+    
+    //字符串常量 '' ""
+    console.log('A');
+    console.log('8');
+
+    //布尔常量 代表 真假
+    console.log(true);
+    console.log(false);
+    //特殊常量 换行
+    console.log('\n');
+    console.log('\t');
+    console.log('\r');
+    </script>
+    <script>
+    // 定义变量的目的: 在内存中分配一块存储空间给变量，方便以后存储数据。
+    var name;
+     var name, age, sex;
+
+     // 部分初始化
+    var num1, num2, num3 = 100;
+     // 完全初始化
+     var num1 = num2 = num3 = 100;
+
+    name = "丁健";
+    console.log(name);
+
+    var name, sex, age;
+    name ="丁健";
+    sex = "男";
+    age = 23;
+    console.log(name,age,sex);
+
+    var name = "丁健", sex = "男", age = 23;
+     console.log(name);
+     console.log(sex);
+     console.log(age);
+
+     var a=b=c=100;
+     c = 200;
+       console.log(a,b,c);
+
+        var num;
+        console.log(num);//undefined
+
+    //可以将一个变量的值赋值给另一个变量
+        var num1 = 100;
+            var num2 = num1;
+            console.log(num2);
+
+            var name;
+            name = "张三";
+            console.log(name);
+            name = "李四";
+             console.log(name);
+
+            //  关键字不能用作变量名、函数名； 关键字严格区分大小写, 比如：void和Void前者是关键字, 后者不是
+           // 什么是保留字？ JavaScript预留的关键字，他们虽然现在没有作为关键字，但在以后的升级版本中有可能作为关键字
+
+          /* 在JS中所有的可以由我们自主命名的都可以称为是标识符
+            比如变量名、函数名、属性名都属于标识符
+            例如: var name;, 这里的name就是标识符
+
+            命名一个标识符时需要遵守如下的规则：
+            标识符中可以含有字母 、数字 、下划线_ 、$符号
+
+            标识符不能以数字开头,之间不能有空格
+
+            标识符不能是JS中的关键字或保留字
+            严格区分大小写，比如name和Name是2个不同的标识符
+            标识符一般都采用驼峰命名法
+            首字母小写，每个单词的开头字母大写，其余字母小写
+            helloWorld  xxxYyyZzz
+            JS底层保存标识符时实际上是采用的Unicode编码, 所以理论上讲，所有的utf - 8中含有的内容都可以作为标识符。
+            */
+    </script>
+</body>
+</html>

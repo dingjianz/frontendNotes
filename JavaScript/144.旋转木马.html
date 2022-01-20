@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>144.旋转木马</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background-color: black;
+        }
+        img {
+            width: 100%;
+            vertical-align: top;
+        }
+
+        #slider {
+            width: 1200px;
+            height: 460px;
+            margin: 100px auto;
+            position: relative;
+
+        }
+
+        #slider ul li {
+            width: 800px;
+            height: 100%;
+            position: absolute;
+            left: 200px;
+        }
+
+        .slider_ctl_prev {
+            width: 76px;
+            height: 112px;
+            background: url('images/prev.png') no-repeat;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -38px;
+            z-index: 100;
+        }
+
+        .slider_ctl_next {
+            width: 76px;
+            height: 112px;
+            background: url('images/next.png') no-repeat;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top: -38px;
+            z-index: 100;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div id="slider">
+        <ul id="ul">
+            <li>
+                <img src="images/slidepic1.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/slidepic2.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/slidepic3.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/slidepic4.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/slidepic5.jpg" alt="">
+            </li>
+        </ul>
+        <div id="slider_ctl">
+            <span class="slider_ctl_prev"></span>
+            <span class="slider_ctl_next"></span>
+        </div>
+    </div>
+    <script src="./myFunction.js"></script>
+    <script>
+        window.onload = function () {
+            //1.0 获得标签
+            var slider = $('slider');
+            var ul = slider.children[0];
+            var slider_ctl = slider.children[1];
+            var allLis = ul.children;
+            console.log(slider_ctl.children);
+            
+
+            // 2.0 显示或隐藏箭头
+            slider.onmouseover = function () {
+                buffer(slider_ctl, { "opacity": 1 });
+            }
+            slider.onmouseout = function () {
+                buffer(slider_ctl, { "opacity": 0 });
+            };
+            // 3. 定位
+            var json = [
+                {   //  1
+                    width: 400,
+                    top: 20,
+                    left: 50,
+                    opacity: 0.2,
+                    zIndex: 2
+                },
+                {  // 2
+                    width: 600,
+                    top: 70,
+                    left: 0,
+                    opacity: 0.8,
+                    zIndex: 3
+                },
+                {   // 3
+                    width: 800,
+                    top: 100,
+                    left: 200,
+                    opacity: 1,
+                    zIndex: 4
+                },
+                {  // 4
+                    width: 600,
+                    top: 70,
+                    left: 600,
+                    opacity: 0.8,
+                    zIndex: 3
+                },
+                {   //5
+                    width: 400,
+                    top: 20,
+                    left: 750,
+                    opacity: 0.2,
+                    zIndex: 2
+                }
+            ];
+            for (var i = 0; i < allLis.length; i++){
+                buffer(allLis[i],json[i]);
+            };
+            //4. 监听点击
+           for(var j = 0; j< slider_ctl.children.length;j++){
+               var item = slider_ctl.children[j];
+              item.onmousedown = function () {
+                   if(this.className === "slider_ctl_prev"){
+            
+                       json.unshift(json.pop());
+                    }else{
+                        json.push(json.shift());
+                   };
+                     //重新布局
+                      for (var i = 0; i < allLis.length; i++) {
+                       buffer(allLis[i], json[i]);
+                   };
+                   
+               }
+           } 
+            
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>underscore</title>
+</head>
+<body>
+    <script src="underscore/Underscore-min.js"></script>
+    <script>
+        var dateArry = ['丁健',18,'帅','男',1994];
+        _.each(dateArry,function (item,index,arr) {
+            console.log(item,index,arr);
+        });
+
+        var without = _.without(dateArry,'帅');
+        console.log(without);//["丁健", 18, "男", 1994]
+
+        var random = _.random(-100,100);
+        console.log(random);
+        
+        
+    </script>
+</body>
+</html>

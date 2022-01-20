@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>102.竖进度条</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #progress {
+            width: 35px;
+            height: 600px;
+            margin: 20px auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        #progress_bar {
+            width: 35px;
+            height: 550px;
+            position: relative;
+            border: 1px solid #ccc;
+            background-color: #e8e8e8;
+            top: 50px;
+            border-radius: 12px
+        }
+
+        #progress_fg {
+            width: 35px;
+            height: 0px;
+            background-color: orangered;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        #mask {
+            width: 55px;
+            height: 20px;
+            background-color: orangered;
+            position: absolute;
+            top: 0px;
+            left: -9px;
+            border-radius: 12px;
+        }
+
+        #progress_value {
+            position: absolute;
+            top: 30px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="progress">
+        <div id="progress_bar">
+            <div id="progress_fg"></div>
+            <span id="mask"></span>
+        </div>
+        <span id="progress_value">0%</span>
+    </div>
+    <script>
+        window.onload = function () {
+            var progress = document.getElementById('progress');
+            var progress_bar = progress.children[0];
+            var progress_fg = progress_bar.children[0];
+            var mask = progress_bar.children[1];
+            var progress_value = progress.children[1];
+
+            mask.onmousedown = function (event) {
+                var e = event || window.event;
+                var beginY = e.clientY - mask.offsetTop;
+                console.log(beginY);
+
+                document.onmousemove = function (event) {
+                    var e = event || window.event;
+                    var target = e.clientY - beginY;
+                    if (target < 0) {
+                        target = 0
+                    } else if (target >= progress_bar.offsetHeight - mask.offsetHeight) {
+                        target = progress_bar.offsetHeight - mask.offsetHeight;
+                    }
+                    mask.style.top = target + 'px';
+                    progress_fg.style.height = target + 'px';
+                    progress_value.innerHTML = parseInt(progress_fg.offsetHeight / (progress_bar.offsetHeight - mask.offsetHeight) * 100) + '%';
+                    return false;
+                }
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                };
+
+            };
+
+        }
+    </script>
+</body>
+
+</html>

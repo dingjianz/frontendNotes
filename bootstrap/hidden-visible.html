@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 10px auto;
+        }
+        @media screen and (max-width:768px){
+            .hidden-xs{
+                display:none
+            }
+        }
+        @media screen and (min-width:768px) and (max-width:992px){
+            .hidden-sm{
+                display:none
+            }
+        }
+        @media screen and (min-width:992px) and (max-width:1200px){
+            .hidden-md{
+                display:none
+            }
+        }
+        @media screen and (min-width:768px){
+            .hidden-lg{
+                display:none
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container hidden-sm hidden-lg"></div>
+</body>
+</html>

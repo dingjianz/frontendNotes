@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>36.JS特效-基础知识</title>
+</head>
+
+<body>
+    <script>
+        //所有全局的变量都是window的属性
+        var str = '张三';
+        console.log(window.str);//张三 str是全局变量，所以是window的属性
+
+        //函数内部存在作用域，作用域外无法调用
+        function f1() {
+            var age = 18;
+            console.log(age);//18
+        };
+        f1();
+        console.log(window.age);//undefined
+
+
+        //所有全局的函数都是window的方法
+        function func() {
+            console.log('我是函数');
+        };
+        func();// 我是函数
+        window.func();// 我是函数
+
+
+
+    
+
+    </script>
+</body>
+
+</html>

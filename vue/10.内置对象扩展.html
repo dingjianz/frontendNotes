@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>10.内置对象扩展</title>
+</head>
+
+<body>
+    <ul>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+    </ul>
+    <script>
+        //1.0 模板字符串(返回的也是字符串模式) 在文本格式下也能拥有自己的格式 通过  ${str}  填充格式   ;
+        //let html  = '<html><head></head><body><p>我是p标签</p><div>我是div</div></body></html>';
+        let str = '我是div';
+        let html =
+            `
+        <html>
+            <head></head>
+            <body>
+                <p>我是p标签<s/p>
+                <div class="test">${str}</div>
+            </body>
+        </html>`;
+        console.log(html);
+
+
+        //2.0 数组的扩展
+        //Array.from  将伪数组转换成真数组
+        let allLis = document.querySelectorAll('li');
+        console.log(allLis); //伪数组 length为实显示,不是半透明的，且__proto__为NodeList
+        console.log(Array.isArray(allLis)); //false 
+
+        console.log(Array.from(allLis)); //真数组 length为半透明显示,，且__proto__为Array
+        console.log(Array.isArray(Array.from(allLis))); //true
+
+
+        //Array.of   将一些数据转换成数组
+        console.log(Array.of(1, 2, 4, '丁健')); //[1, 2, 4, "丁健"]
+
+        //Array.includes() ES6提供了Array.includes()函数判断是否包含某一元素，除了不能定位外，解决了indexOf的上述的两个问题。它直接返回true或者false表示是否包含元素，对NaN一样能有有效。includes()函数的第二个参数表示判断的起始位置。
+
+
+        const arr1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', NaN]
+        console.log(arr1.includes('c'));// true
+        console.log(arr1.includes('z'));//false
+        console.log(arr1.includes(NaN));//true
+
+        
+        //3.0 对象的扩展
+        //当key和value一样的时候，写一个就行
+        let name = '张三';
+        let age = 18;
+        let obj = {
+            // 'name': name,
+            // 'age':age
+            name,
+            age
+        }
+        console.log(obj);
+
+        // 对象的拼接 Object.assign(target,obj1,obj2,...),将obj1,obj2,obj3....拼接到target中
+        let target = {
+            'name': 'dj'
+        };
+        let obj1 = {
+            'sex': 'male'
+        };
+        let obj2 = {
+            'age': 18
+        };
+        let obj3 = {
+            'job': 'software Engineer'
+        };
+        Object.assign(target, obj1, obj2, obj3);
+        console.log(target); //{name: "dj", sex: "male", age: 18, job: "software Engineer"}
+
+        //4.0 字符串相关扩展
+        /*
+            includes(string,[opotion]) // option: number 从哪个位置开始查找
+            startsWith() // 判断字符串是否以特定的字符开始
+            endsWith() // 判断字符串是否以特定的字符结束
+        */
+       console.log("hello world".includes("rld",2));//true
+
+       let url = "admin/index.php";
+       console.log(url.startsWith("admin"));
+       console.log(url.endsWith(".php"));
+
+
+
+        //5.0延展操作符  将数据拆解成数组
+        let res3 = '我是中国人';
+        console.log(...res3); // "我", "是", "中", "国", "人"
+
+        let arr7 = [1,2,3,5];
+        console.log(...arr7);//1,2,3,5
+
+        // 延展操作符合并数组
+        let arr8 = [1,2,3];
+        let arr9 = [6,7,8];
+        let arr10 = [...arr8,...arr9]
+        console.log("arr10:"+arr10);
+         
+        
+        //面试题 去重并且返回数组
+        let myArr = [1, 2, 3, 'dj', '男', 3, 2, 1];
+        console.log(new Set(myArr)); //Set(5) {1, 2, 3, "dj", "男"}
+        console.log([...new Set(myArr)]);  //[1, 2, 3, "dj", "男"]
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>19.jQuery操作样式方法</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+    <script src="js/jquery-1.12.4.js"></script>
+</head>
+
+<body>
+    <button>设置HTML</button>
+    <button>获取HTML</button>
+    <button>设置Text</button>
+    <button>获取Text</button>
+    <button>设置value</button>
+    <button>获取value</button>
+    <div></div>
+    <input type="text">
+    <li>我是li</li>
+    <script>
+        $(function () {
+            /*
+            1.html([val|fn])
+            和原生JS中的innerHTML一模一样
+            2.text([val|fn])
+            和原生JS中的innerText一模一样
+            3.val([val|fn|arr])
+            */
+            $('button')[0].onclick = function () {
+                $('div').html('<p>我是p标签<span>我是span</span></p>');
+            };
+
+            $('button')[1].onclick = function () {
+                console.log($('div').html());
+                ;
+            };
+            $('button')[2].onclick = function () {
+                $('div').text('<p>我是p标签<span>我是span</span></p>');
+            };
+            $('button')[3].onclick = function () {
+                console.log($("div").text());
+                ;
+            };
+            $('button')[4].onclick = function () {
+                $("input").val('我也不知道写什么');
+            };
+            $('button')[5].onclick = function () {
+              console.log($("input").val());
+                ;
+            };
+        });
+
+    </script>
+</body>
+
+</html>

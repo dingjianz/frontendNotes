@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>49.节点的复制</title>
+</head>
+<body>
+    <div class="box">
+        <button class="btu">按钮</button>
+        <span class="sspan">我是span</span>
+    </div>
+    <script>
+        //首先把所有的id换成class  一个body 里id只能有一个
+
+        var box = document.getElementsByClassName('box')[0];
+        var newTag = box.cloneNode(false);//false浅复制 只复制box本身 内部不复制
+        document.body.appendChild(newTag);//在body的底部添加项目
+    </script>
+</body>
+</html>

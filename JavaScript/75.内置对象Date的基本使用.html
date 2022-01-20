@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>75.内置对象Date的基本使用</title>
+</head>
+
+<body>
+    <script>
+        window.onload = function () {
+            var date = new Date();
+            var y = date.getFullYear();//2018
+            var month = date.getMonth()+1;//4 获取月0-11 
+            var d = date.getDate();//11 获取日 1-31
+            var day = date.getDay();//5  获取星期 0-6  国外周日为0
+            var hours = date.getHours();//19 获得小时
+            var minute = date.getMinutes();//25获得分钟
+            var seconds = date.getSeconds();//17获得秒
+            var millionSeconds = date.getMilliseconds();//获得毫秒
+            var time = date.getTime();//1970年0时0分到现在的毫秒累计：时间戳
+            console.log(y, month, d,day, hours, minute, seconds, time);
+          console.log(new Date(2018,10,1));
+          
+            
+            
+        }   
+
+    </script>
+</body>
+
+</html>

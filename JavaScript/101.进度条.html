@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>101.进度条</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #progress {
+            width: 1000px;
+            height: 35px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        #progress_bar {
+            width: 900px;
+            height: 35px;
+            background-color: #ccc;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        #progress_fg {
+            width: 0px;
+            height: 35px;
+            background-color: orangered;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        span {
+            width: 25px;
+            height: 49px;
+            line-height: 49px;
+            position: absolute;
+            left: 0px;
+            top: -7px;
+            border-radius: 8px;
+            background-color: orangered;
+        }
+
+        #progress_value {
+            line-height: 35px;
+            position: absolute;
+            right: 30px;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="progress">
+        <div id="progress_bar">
+            <div id="progress_fg"></div>
+            <span id="mask"></span>
+        </div>
+        <div id="progress_value">0%</div>
+    </div>
+    <script>
+        window.onload = function () {
+            //  1. 获取需要的标签
+            var progress = document.getElementById('progress');
+            var progress_bar = progress.children[0];
+            var progress_fg = progress_bar.children[0];
+            var progress_value = progress.children[1];
+            var mask = progress_bar.children[1];
+            // 2. 监听鼠标按下
+            mask.onmousedown = function (event) {
+                var event = event || window.event;
+                //2.1获取初始位置
+                var begin = event.clientX - mask.offsetLeft;
+                console.log(begin);//定值， mask.offsetLeft不能去掉，因为每次点击移动后event.clientX 、 mask.offsetLeft都会变化，但是它俩差值不变
+
+               document.onmousemove = function (event) {
+                    var event = event || window.event;
+                    var target = event.clientX - begin;//全是鼠标的位置
+
+                    if (target < 0) {
+                        target = 0;
+                    } else if (target >= progress_bar.offsetWidth - mask.offsetWidth) {
+                        target = progress_bar.offsetWidth - mask.offsetWidth;
+                    };
+
+                    mask.style.left = target + 'px';
+                    progress_fg.style.width = target + 'px';
+                    progress_value.innerHTML = parseInt(progress_fg.offsetWidth / (progress_bar.offsetWidth - mask.offsetWidth) * 100) + '%';
+                    return false; //因为document.onmousemove  document.onmouseup 事件有重合，不知道执行哪个时就会发生异常，return false 作用在于保证只有鼠标按住移动时才会拖动mask
+
+                };
+
+
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                };
+            };
+
+
+        }
+    </script>
+</body>
+
+</html>

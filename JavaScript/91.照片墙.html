@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>91.照片墙</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        html, body, ul{
+            width: 100%;
+            height: 100%;
+            /* html高度一定要固定 */
+               overflow: hidden;
+            
+        }
+       ul{
+            background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526298214554&di=856556ef8f40bb6ff051ee00f3e52cb8&imgtype=0&src=http%3A%2F%2Fpic116.nipic.com%2Ffile%2F20161130%2F23492996_180003506000_2.jpg') no-repeat;
+            background-size: cover;
+         
+           
+        }
+
+        #ps {
+            width: inherit;
+            height: inherit;
+            position: relative;
+        }
+
+        #ps li {
+            width: 250px;
+            height: 360px;
+            position: absolute;
+            transition: all 0.5s;
+        }
+        #ps li.current{
+            left: 50% !important;  /* js设定的全是行内，优先级大于选择器，所以要加！important */
+            top: 50% !important;
+            transform: rotate(0deg) translate(-50%, -50%)/* 相对于自己本身的尺寸平移，从而保证图片中心位于屏幕中心*/ scale(1.5, 1.5) !important;
+            z-index: 99;
+        }
+        audio{
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            transform: none!important;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ps">
+    </ul>
+    <audio src="../css基础/images/jacky/江哥最爱的歌.mp3" loop controls></audio>
+    <script src="underscore/Underscore-min.js"></script>
+    
+    <script>
+        window.onload = function () {
+            // 1. 获取需要的标签
+            var ps = document.getElementById("ps");
+
+            // 2. 动态创建li标签
+            for (var i = 0; i < 10; i++) {
+                // 2.1 创建li标签
+                var li = document.createElement("li");
+                ps.appendChild(li);
+
+                // 2.2 创建img标签
+                var img = document.createElement("img");
+                img.src = "images/pic" + (i + 1) + ".jpg";
+                li.appendChild(img);
+            }
+
+            // 3. 获取所有的li
+            var allLis = ps.children;
+
+            // 4. 求出屏幕的宽度和高度
+            var screenW = window.screen.width - 250;
+            var screenH = document.documentElement.clientHeight - 360;
+
+            // 5. 遍历
+            for (var j = 0; j < allLis.length; j++) {
+                // 5.1 取出单个li标签
+                var li = allLis[j];
+
+                // 5.2 随机分布
+                li.style.left = _.random(0, screenW) + 'px';
+                li.style.top = _.random(0, screenH) + 'px';
+
+                // 5.3 随机角度
+                li.style.transform = 'rotate(' + _.random(0, 360) + 'deg)';
+
+                // 5.4 监听点击事件
+                li.onclick = function () {
+                    for (var i = 0; i < allLis.length; i++) {
+                        allLis[i].className = '';
+                    }
+                    this.className = 'current';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

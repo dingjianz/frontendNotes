@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="myAjax2.js"></script>
+</head>
+
+<body>
+    <h1>正常表单提交数据到PHP</h1>
+    <form action="ajax-input.php" method="GET">
+        <input type="text" name="name">
+        <input type="submit" value="提交">
+        <!-- 会刷新整个页面 在新页面中打开 -->
+    </form>
+
+
+    <h1>Ajax提交数据到PHP</h1>
+    <form id="form">
+        <input type="text" name="input1" id="inp">
+        <input type="submit" value="提交">
+        <!-- ajax不需要刷新整个页面，即可获得数据 -->
+    </form>
+    <script>
+        document.getElementById('form').addEventListener('submit', function () {
+            ajax({
+                type: 'get',
+                url: 'ajax-input.php',
+                data: { 'name': document.getElementById('inp').value},
+                success: function (xhr) {
+                    console.log(xhr.responseText);
+                },
+                error: function (xhr) {
+                    console.log(xhr.status);
+                    
+                }
+                
+            });
+            event.preventDefault();//阻止默认事件
+        })
+
+
+    </script>
+</body>
+
+</html>

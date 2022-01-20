@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>93.offsetLeft和offsetTop</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #father{
+            /* position: relative; */
+            width: 300px;
+            height: 300px;
+            margin: 40px;
+            background-color: red;
+            border: 5px solid #555555;
+        }
+        #son{
+            width: 200px;
+            height: 200px;
+            border: 5px solid #edf0ea;
+            background-color: green;
+            margin-left:56px;
+            margin-top: 29px;
+        }
+    </style>
+</head>
+<body>
+    <div id="father">
+        <div id="son"></div>
+    </div>
+    <script>
+        var son = document.getElementById('son');
+        console.log(son.offsetLeft,son.offsetTop);//56 29  （101 74）
+        //子盒子相对于  有定位的  父级盒子的间距，不包括边框，若父级元素无定位，则一直向上，直到body。
+        
+    </script>
+</body>
+</html>

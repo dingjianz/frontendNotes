@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>05.ES6新增的数据类型-map</title>
+</head>
+
+<body>
+    <script>
+        //map相当于对象  es5中，键只能被当做字符，map可以区分，键可以是对象，可以是数组等等
+        var obj = new Object({ name: 'dj', age: 18 });
+        console.log(obj.toLocaleString());//[object Object]
+        console.log(String(obj));//[object Object]
+        console.log(obj.valueOf());//[object Object]
+        var arr = new Array([1, 2, 'haha']);
+        console.log(arr.toLocaleString());//1,2,haha
+
+
+        let obj1 = { a: 1 }, obj2 = { b: 2 }, obj3 = {};
+        obj3[obj1] = '天空';
+        console.log(obj3);//{[object Object]: "天空"}
+        // 首先：obj1.toString()为[object Object] 为键 赋值为"天空"  
+        console.log(obj1.toString()===obj2.toString());//true
+        
+
+
+
+
+
+    </script>
+</body>
+
+</html>

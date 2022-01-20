@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>响应式</title>
+    <style>
+        /* 书写建议：
+        1.0 如果判断条件是最小值(min-width)，那么就应该是从小到大写--只记住这个，bootstrap就是判断最小值，从小往大写
+        2.0 如果判断条件是最大值（max-width)，那么就应该从大往小写
+        */
+
+        .box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+        }
+
+        /*注意：and前后必须有空格
+        min-width： 宽度大于等于
+        max-width ： 宽度小于
+
+        min-width： 在pc端和移动端都能正常的响应，效果一致，只是指当前可视区域的宽度
+        min-device-width：在移动端可以响应，pc端无法响应。因为pc端拖动只是改变浏览器的可视区域额，电脑的屏幕（设备宽度）没有发生变化
+
+        */
+
+        @media screen and (min-width: 1200px) {
+            .box {
+                background-color: red;
+            }
+        }
+
+        @media screen and (max-width: 1200px) and (min-width :992px) {
+            .box {
+                background-color: yellow;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .box {
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        超小屏幕：（移动设备） w<768px
+        小屏设备： 768<= w < 992 px
+        中等屏幕： 992 =< w < 1200px
+        宽屏设备   w >= 1200px
+     -->
+    <div class="box">
+
+    </div>
+</body>
+
+</html>

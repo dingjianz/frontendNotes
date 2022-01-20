@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="lib/animate.css">
+    <style>
+        .dj-enter-active {
+            animation: dj-in .5s;
+        }
+
+        .dj-leave-active {
+            animation: dj-in .5s reverse;
+        }
+
+        @keyframes dj-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click='flag = !flag'>Toggle</button>
+        <transition name="dj">
+            <h3 v-if="flag">hello world</h3>
+        </transition>
+
+        <hr>
+
+        <button @click='flag2 = !flag2'>Toggle</button>
+        <transition
+        enter-active-class="headShake"
+        leave-active-class="rubberBand"
+        :duration="{ enter: 200, leave: 400 }">
+            <h3 v-if="flag2" class="animated">这是一个H3</h3>
+        </transition>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                flag: false,
+                flag2: false
+            },
+            methods: {}
+
+        })
+    </script>
+</body>
+
+</html>

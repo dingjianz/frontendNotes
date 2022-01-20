@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax-github</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .box{
+        width: 100%;
+        height: 70px;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f4f4f4f4;
+    }
+    img{
+        float: left;
+    }
+    ul{
+        float: left;
+    }
+    </style>
+</head>
+<body>
+    <button id="btn">请求github数据</button>
+    <div class="container"></div>
+    <script src="myAjax2.js"></script>
+    <script>
+        window.addEventListener('load',function () {
+            let container = document.querySelector('.container');
+            console.log(container);
+            
+            document.querySelector('#btn').addEventListener('click',loadGithubUsers);
+            function loadGithubUsers() {
+                ajax({
+                    type:'get',
+                    url:'https://api.github.com/users',
+                    success:function (xhr){
+                            let users = JSON.parse(xhr.responseText);
+                            let output = '';
+                            users.forEach((value,index) => {
+                                output +=`
+                                <div class="box">
+                                <img src="${users[index].adavatar_url}" width = "70px" height = '70px'>
+                                    <ul>
+                                        <li>Login:${users[index].login}</li>
+                                        <li>ID:${users[index].id}</li>
+                                    </ul>
+                                </div>
+                                `;
+                            });
+                            container.innerHTML = output;
+                            
+                    },
+                    error:function (xhr){
+                        alert(xhr.status);
+                    }
+                });
+            }
+
+
+        })
+    
+    
+    </script>
+</body>
+</html>

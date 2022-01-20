@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">添加品牌</h3>
+            </div>
+            <div class="panel-body form-inline">
+                <label>
+                    Name:
+                    <input type="text" class="form-control" v-model="name">
+                </label>
+                <input type="button" value="添加" class="btn btn-primary" @click="add">
+            </div>
+        </div>
+
+
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>添加时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in list" :key="item.id">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.ctime}}</td>
+                    <td>
+                        <a href="javascript:;">删除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                name: '',
+                list: [ //存放所有的品牌列表
+                    {
+                        id: 1,
+                        name: "五菱宏光",
+                        ctime: new Date()
+                    },
+                    {
+                        id: 2,
+                        name: "宏泰",
+                        ctime: new Date()
+                    }
+                ]
+            },
+            methods: {
+                add() {},
+                getAllList() {
+                    //获取所有的品牌列表
+                    //1 由于已经导入了vue-resource，就可以通过 this.$http 发起数据请求      
+                    this.$http.get("http://vue.studyit.io/api/getprodlist").then((res) => {
+                        // 注意： 通过 $http 获取到的数据，都在result.body 中放着
+                      if(res.status === 0){
+                          this.list = res.message
+                      }else{
+                          alert("获取数据失败")
+                      }
+
+                    });
+                }
+
+            },
+            created() {
+                this.getAllList()
+            },
+
+
+        })
+    </script>
+</body>
+
+</html>

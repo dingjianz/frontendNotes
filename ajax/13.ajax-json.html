@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>12.ajax-xml</title>
+    <script src="myAjax2.js"></script>
+</head>
+
+<body>
+    <button class="btn">发送请求</button>
+    <script>
+        window.onload = function () {
+            var btn = document.querySelector('.btn');
+            btn.onclick = function () {
+                ajax({
+                    type: "get",
+                    url: "13.ajax-json.php",
+                    success: function (xmlhttp) {
+                        var res = xmlhttp.responseText;
+                        var obj = JSON.parse(res);//将json转换成字面量对象
+                        console.log(obj.name);
+                        console.log(obj.age);
+                    },
+                    error: function (xmlhttp) {
+                        console.log(xmlhttp.status);
+                    }
+                })
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>

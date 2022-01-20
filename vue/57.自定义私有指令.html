@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text"  value="请输入内容" v-focus="700" v-fontsize="30">
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {},
+            directives: {
+                'focus': {
+                    bind(el,binding) {
+                        // 和样式相关的操作，一般都可以在 bind 执行
+                        el.style.fontWeight = binding.value;
+                    },
+                    inserted(el) {
+                        el.focus();
+                    }
+                },
+                // 自定义指令的简写方法    自己：：；vue自定义指令名必须小写
+                "fontsize":function (el,binding){// 在很多时候，你可能想在 bind 和 update 时触发相同行为，而不关心其它的钩子。    注意：这个 function 等同于 把 代码写到了 bind 和 update 中去
+                    el.style.fontSize = parseInt(binding.value)+'px';
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

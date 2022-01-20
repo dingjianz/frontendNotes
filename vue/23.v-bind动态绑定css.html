@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>23.v-bind补充</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .active {
+            background-color: green;
+            font-size: 20px;
+            color: orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 动态绑定的类名必须用引号，变成字符形式，否则会被当成变量去data里面寻找 -->
+        <span :class="'active'">我是active</span>
+        <span :class="['clasName1','className2']"></span>
+        <!-- 三元表达式   flag?'active':''-->
+        <span :class="['class1,class2', flag?'active':'']">我是span</span>
+        <!-- 传入一个对象 {'active':flag} -->
+        <!-- 传入对象时，类名的引号可带可不带，不是对象时，类名一定要加引号   -->
+        <span :class="['class1,class2', {active:flag}]">我是span</span>
+        <span :class="{active:true}">woshispan</span>
+
+        <!-- 一般这么写 -->
+        <span style="color: blue;">456</span>
+        <!-- 传入一个对象则需要动态绑定  如果属性名有 - ：font-weight 则必须加引号-->
+        <span :style="{color:'red','font-weight':200}" >123</span>
+        
+        <p v-for="(college,index) in colleges" :class="index === activeIndex?'active':''">{{college}}</p>
+        <p :style='{color:fontColor}' style="font-size: 50px;">今天天气很好</p>
+        <input type="button" value="点击" :title="myTitle" @click="add">
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                colleges: ['ios', 'Andrio', 'HTML5', 'UI', 'VR'],
+                flag:true,
+                activeIndex:3,
+                fontColor:'red',
+                myTitle:"今天天气很好"
+            },
+            methods:{
+                add(){
+                    this.myTitle = "今天天气很好123"
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

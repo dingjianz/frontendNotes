@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>25.vue综合小练习</title>
+    <script src="js/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #app {
+            width: 600px;
+            margin: 50px auto;
+        }
+
+        fieldset {
+            border: 2px solid orangered;
+            margin-bottom: 20px;
+        }
+
+        fieldset div {
+            margin: 10px 10px;
+        }
+
+        fieldset input {
+            width: 200px;
+            height: 30px;
+            margin: 0px 10px;
+        }
+
+        fieldset button {
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            background-color: orangered;
+            margin: 5px 100px;
+        }
+
+        table {
+            width: 600px;
+            border: 2px solid orangered;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        thead {
+            background-color: orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 第一部分 -->
+        <fieldset>
+            <legend>拇指哥学生录入系统</legend>
+            <div>
+                <label>姓名：
+                    <input type="text" placeholder="请输入姓名" v-model='newPerson.name'>
+                </label>
+            </div>
+            <div>
+                <label>年龄：
+                    <input type="text" placeholder="请输入年龄" v-model='newPerson.age'>
+                </label>
+            </div>
+            <div>
+                <span>性别：</span>
+                <select v-model='newPerson.sex'>
+                    <option value="男">男</option>
+                    <option value="女" selected="selected">女</option>
+                </select>
+            </div>
+            <div>
+                <label>号码：
+                    <input type="text" placeholder="请输入号码" v-model='newPerson.iphone'>
+                </label>
+            </div>
+            <button @click='creatNewPerson()'>创建新用户</button>
+        </fieldset>
+        <!-- 第二部分 -->
+        <table>
+            <thead>
+                <tr>
+                    <td>姓名</td>
+                    <td>性别</td>
+                    <td>年龄</td>
+                    <td>手机</td>
+                    <td>删除</td>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 自动创建4个tr td -->
+                <tr v-for="(per,index) in persons">
+                    <td>{{per.name}}</td>
+                    <td>{{per.sex}}</td>
+                    <td>{{per.age}}</td>
+                    <td>{{per.iphone}}</td>
+                    <td>
+                        <button @click='delData(per.index)'>删除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var tbody = document.getElementsByTagName('tbody')[0];
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                persons: [
+                    { name: '张三', sex: '男', age: 30, iphone: '18341329438' },
+                    { name: '李四', sex: '女', age: 18, iphone: '13920784091' },
+                    { name: '王五', sex: '男', age: 20, iphone: '13654699874' },
+                    { name: '赵六', sex: '女', age: 46, iphone: '15689745645' }
+                ],
+                newPerson: { name: '', sex: '男', age: 0, iphone: '' }
+            },
+            methods: {
+                creatNewPerson() {
+                    if (this.newPerson.name === '') {
+                        alert('请输入姓名');
+                        return;
+                    };
+
+                    if (this.newPerson.age <= 0) {
+                        alert('请输入正确的年龄');
+                        this.newPerson.age = '';
+                        return;
+                    };
+                    if (this.newPerson.iphone === '') {
+                        alert('请输入号码');
+                        this.newPerson.iphone ='';
+                        return;
+                    };
+
+                    this.persons.unshift(this.newPerson);
+                    this.newPerson = { name: '', sex: '男', age: 0, iphone: '' }
+                },
+                delData(index){
+                    this.persons.splice(index,1);
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

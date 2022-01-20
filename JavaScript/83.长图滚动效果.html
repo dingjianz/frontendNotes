@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>83.长图滚动效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: #000;
+        }
+
+        #box {
+            width: 750px;
+            height: 400px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+            
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: dj 10s linear 0s infinite normal;
+        }
+        img:hover{
+            animation-play-state: paused;
+        }
+        @keyframes dj{
+            from{
+                top: 0;
+            }
+            to{
+                top: -2488px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <img src="images/timg.jpg" alt="">
+        <div id="b1"></div>
+        <div id="b2"></div>
+    </div>
+</body>
+
+</html>

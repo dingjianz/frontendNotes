@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>39.浮动元素的高度问题</title>
+</head>
+<style>
+        /* 在标准流中内容的高度可以撑起盒子的高度 */
+    /* 在浮动流中浮动元素内容的高不可以撑起盒子的高 */
+*{
+    margin: 0;
+    padding: 0;
+}
+/* .box1{
+    background-color: green;
+}
+.box2{
+    background-color: yellow;
+} */
+.box1{
+    background-color: green;
+}
+.box2{
+    background-color: yellow;
+}
+.box1 p{
+    width: 100px;
+    background-color: purple;
+   float: left;
+}
+.box2 p{
+   
+    width: 100px;
+    background-color: tomato;
+       float: left;
+}
+</style>
+<body>
+    <!-- <div class="box1">
+        <p>我是文字</p>
+        <p>我是文字</p>
+        <p>我是文字</p>
+    </div>
+    <div class="box2">
+        <p>我是文字</p>
+        <p>我是文字</p>
+        <p>我是文字</p>
+    </div> -->
+    <body>
+        <div class="box1">
+            <p>我是文字</p>
+            <p>我是文字</p>
+            <p>我是文字</p>
+        </div>
+        <div class="box2">
+            <p>我是文字</p>
+            <p>我是文字</p>
+            <p>我是文字</p>
+        </div>
+</body>
+</html>

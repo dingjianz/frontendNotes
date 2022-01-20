@@ -1,0 +1,107 @@
+@charset "utf-8";
+/*我会被转译*/
+.box1 {
+  width: 200px;
+  height: 200px;
+  background-color: #639108;
+}
+.border {
+  border: 3px solid #426105;
+}
+.box2 {
+  width: 200px;
+  height: 200px;
+  background-color: #639108;
+  margin-left: 300px;
+  margin-top: 100px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+.box3 {
+  width: 0;
+  height: 0;
+  overflow: 0;
+  border-width: 10px;
+  border-color: transparent transparent  red transparent;
+  border-style: dashed dashed solid dashed;
+}
+.box4 {
+  border-width: 10px;
+  border-color: transparent transparent transparent green;
+  border-style: dashed dashed  dashed solid;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+}
+.box2 {
+  width: 200px;
+  height: 100px;
+  background-color: #f50000;
+}
+/*
+.list{}
+.list li{}
+.list li a{}
+.list li span{}
+*/
+.list {
+  width: 600px;
+  margin: 30px auto;
+  padding: 0;
+  list-style: none;
+}
+.list li {
+  height: 30px;
+  line-height: 30px;
+  background-color: pink;
+  margin-bottom: 5px;
+}
+.list a {
+  text-decoration: none;
+  float: left;
+}
+.list a:hover {
+  background-color: red;
+}
+.list span {
+  float: right;
+}
+.box5 {
+  border-width: 10px;
+  border-color: transparent transparent transparent green;
+  border-style: dashed dashed  dashed solid;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  border: 10px solid yellow;
+}
+.test {
+  width: calc(300px - 10);
+}
+/*
+1.0  在less当中当中给元素设置背景图url()内部双引号/单引号是必须加的，而且变量必须是@{ 变量名 }这样的格式去书写;
+
+2.0  在@{ 变量名 }后面不允许出现@符号 否则会出现报错，因为他在编译过程中会认为你@{ 变量名 }后面的@符号是一个变量，并且检测到你的变量未规范书写URL里面的要求。所以使用less在给元素添加背景图设置URL时安装下面这个写法就可以完美实现无报错
+
+eg:
+
+        background-image: url('../img/@{bg_url}2x.png');
+
+注意：在使用less设置背景图使用变量时，尽量避免图片名称带有@符号，以减少不必要的麻烦
+
+
+*/
+.dj {
+  list-style: none;
+}
+.dj li:last-child {
+  background-color: red;
+}
+p {
+  border-radius: 5px;
+  -webkit-border-raduis: 5px;
+  -moz-border-radius: 5px;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>31.父子组件</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+    <script>
+        //1.0创建子组件构造器
+        let child1 = Vue.extend({
+            template: `
+            <img src='img/lbj.jpg' width='200'>
+            `
+        });
+        let child2 = Vue.extend({
+            template: `
+           <p>我很帅</p>
+            `
+        });
+        Vue.component('parent', {
+            //先注册子组件
+            components: {
+                'childFirst': child1,
+                'childLast':child2
+            },
+            //div不能省略
+            template: `
+                   <div>
+                        <childFirst></childFirst>
+                        <childLast></childLast>
+                    </div>
+                      `
+        });
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

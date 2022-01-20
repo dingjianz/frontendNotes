@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>62.表单验证</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #spa {
+            font-size: 13px;
+            color: darkgray;
+        }
+
+        #inp {
+            border: 1px solid darkgray;
+        }
+
+        .error {
+            color: red !important;
+            /* 前面有id选择器徐泽字体颜色为darkgray ，优先级比类选择器高，所以要加上！important */
+            background: url('images/error.png') no-repeat 5px center;
+            background-size: 15px 15px;
+            padding-left: 20px;
+        }
+
+        .right {
+            color: lightgreen !important;
+            background: url('images/right.png') no-repeat 5px center;
+            background-size: 15px 15px;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="inp">您的成绩:</label>
+    <input type="text" id="inp" placeholder="请输入分数">
+    <span id="spa">请输入您的成绩！</span>
+    <script>
+        window.onload = function () {
+            //   var value = parseFloat($('input').value); 此处得到的value 始终是 "请输入分数”
+            $('inp').onblur = function () {
+                var value = parseFloat($('inp').value);
+                if (isNaN(value)) {
+                    // $('spa').innerText = '请输入数字';
+                    // $('spa').className = 'error';
+                    // $('inp').style.borderColor = 'red';
+                     dealStyle('请输入数字!', 'error', 'red');
+                } else if (value >= 0 && value <= 100) {
+                    // $('spa').innerText = '输入成绩正确';
+                    // $('spa').className = 'right';
+                    // $('inp').style.borderColor = 'lightgreen';
+                     dealStyle('输入成绩正确！', 'right', 'lightgreen');
+                    
+                } else {
+                    // $('spa').innerText = '请输入0-100的数字';
+                    // $('spa').className = 'error';
+                    // $('inp').style.borderColor = 'red';
+                     dealStyle('请输入0-100的数字！', 'error', 'red');
+                    
+                }
+                $('inp').onfocus = function () {//还原初始状态
+                    // $('spa').innerText = '请输入您的成绩！';
+                    // $('spa').className = '';
+                    // $('inp').style.borderColor = 'darkgray';
+                    dealStyle('请输入您的成绩！', '', 'darkgray');
+                    $('inp').style.outline = 'none';
+                    $('inp').value = '';
+                }
+
+            };
+
+            function dealStyle(miaoshu, className, color) {
+                $('spa').innerText = miaoshu;
+                $('spa').className = className;
+                $('inp').style.borderColor = color;
+            };
+            function $(id) {
+                return typeof id === 'string' ? document.getElementById(id) : null;
+            };
+        };
+    </script>
+</body>
+
+</html>

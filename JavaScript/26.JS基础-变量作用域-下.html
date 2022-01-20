@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>26.JS基础-变量作用域-下</title>
+</head>
+
+<body>
+    <script>
+        x = 1;
+        console.log(x);
+        var y = function () {
+            console.log(x);
+            var x = 2;//声明提前
+            console.log(x);
+            return 10;
+        }
+
+        console.log(y());
+        //输出为 1 undefined 2 10
+        console.log(x);//1
+
+        console.log('\n');//分行用
+
+        f1();
+        console.log(b);//9
+        console.log(c);//9
+        console.log(a);// Uncaught ReferenceError: a is not defined
+        function f1() {
+            var a = b = c = 9;// 等价于 var a=9; b=9; c=9;  
+            console.log(a);//9
+            console.log(b);//9
+            console.log(c);//9
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

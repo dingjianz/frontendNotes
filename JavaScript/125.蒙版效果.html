@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>125.蒙版效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 3000px;
+            /* 必须撑开 */
+        }
+
+        #panel {
+            width: 100%;
+            height: 100%;
+            /* background-color:rgba(0, 0, 0, 0.4); */
+            background-color: black;
+            opacity: 0.4;
+            filter: alpha(opacity=40);
+            /*这个是为IE6设的，可取值在0-100 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        #login {
+            width: 300px;
+            height: 300px;
+            background-color: skyblue;
+            /* opacity: 1; */
+            border-radius: 5px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点我登录</button>
+    <div id="panel"></div>
+    <div id="login"></div>
+
+
+    <script src="./myFunction.js"></script>
+    <script>
+           // 监听按钮的点击
+        window.onload = function () {
+            $('btn').onclick = function (event) {
+                //阻止冒泡
+                if (event && event.stopPropagation) {
+                    event.stopPropagation();
+                } else {
+                    window.event.cancelBubble = true;
+                };
+                  //  显示面板和蒙版
+                $('panel').style.display = 'block';
+                $('login').style.display = 'block';
+                 // 隐藏滚动条
+                document.body.style.overflow = 'hidden';
+            }
+
+            document.onclick = function (event) {
+                var e = event || window.event;
+                // 获取点击的标签的id
+                var targetId = e.target ? e.target.id : e.srcElement.id;
+                
+            // 2.2 判断
+                if (targetId !== 'login') {
+                       //  隐藏面板和蒙版
+                    $('panel').style.display = 'none';
+                    $('login').style.display = 'none';
+                        // 显示滚动条
+                    document.body.style.overflow = '';
+                } else {
+                    window.location.href = 'http://www.baidu.com';
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>

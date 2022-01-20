@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+<!-- computed里面的addToA/B 方法在{{}}里面时，不能加括号，只是一个属性
+
+计算属性的结果会被缓存，除非依赖的响应式属性变化才会重新计算。注意，如果某个依赖 (比如非响应式属性) 在该实例范畴之外，则计算属性是不会被更新的。
+
+-->
+    <div id="app">
+        <button v-on:click="a++">Add to A</button>
+        <button @click='b++'>Add to B</button>
+        <p>A - {{a}}</p>
+        <p>B - {{b}}</p>
+        <p>Age + A = {{addToA}}</p>
+        <p>Age + B = {{addToB}}</p>
+        <p>{{someFunction}}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                a: 0,
+                b: 0,
+                age: 20
+            },
+            methods: {
+            },
+            computed: {
+                 addToA() {
+                    console.log('f1');
+                    return this.age + this.a;
+                },
+                addToB() {
+                    console.log('f2');
+                    return this.age + this.b;
+                },
+                someFunction() {
+                    console.log('不调用我，我就不打印，虽然我已经被调用一次 ');
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

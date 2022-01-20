@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>12.ajax-xml</title>
+    <script src="myAjax2.js"></script>
+</head>
+
+<body>
+    <button class="btn">发送请求</button>
+    <script>
+        window.onload = function () {
+            var btn = document.querySelector('.btn');
+            btn.onclick = function () {
+                ajax({
+                    type: "get",
+                    url: "12.ajax-xml.php",
+                    success: function (xmlhttp) {
+                        var res = xmlhttp.responseXML;
+                        console.log(res.querySelector("name").innerHTML);
+                        console.log(res.querySelector("age").innerHTML);
+                        console.log(res.querySelector('sex').innerHTML);
+
+                    },
+                    error: function (xmlhttp) {
+                        console.log(xmlhttp.status);
+                    }
+                })
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>

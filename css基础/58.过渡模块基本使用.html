@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>58.过渡模块基本使用</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    div{
+        background-color: red;
+        width: 100px;
+        height: 100px;
+         transition-property: width,background-color;
+        transition-duration: 5s;
+    }
+    div:hover{
+        width: 500px;  
+        background-color: rgb(20, 245, 231);
+    }
+    </style>
+<!-- 1,过渡三要素
+1.1必须要有属性发生变化
+1.2必须告诉系统哪个属性需要执行过渡效果
+1.3必须告诉系统过渡效果持续时长
+
+2.注意点
+当多个属性需要同时执行过渡效果时用逗号隔开即可
+transition-property: width, background-color;
+transition-duration: 5s, 5s; -->
+</head>
+<body>
+    <div></div>
+</body>
+</html>

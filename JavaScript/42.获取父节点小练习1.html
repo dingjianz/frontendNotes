@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>42.获取父节点小练习1</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            margin-top: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <button class="btn">按钮</button>
+        <span class="span">
+            <a href="#">我是超链接</a>
+        </span>
+    </div>
+    <script>
+        //通过子盒子设置父盒子背景颜色（点击按钮后设置颜色）
+        window.onload = function () {
+            var btn = document.getElementsByClassName("btn")[0];
+            btn.onclick = function () {
+                var span = document.getElementsByClassName('span')[0];
+                var box = span.parentNode;
+                box.style.backgroundColor='red';
+                console.log(span,box);
+                
+            }
+        }
+
+    </script>
+</body>
+
+</html>

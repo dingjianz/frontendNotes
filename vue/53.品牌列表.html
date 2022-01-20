@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <!-- vue中建议不要使用 jQuery -->
+</head>
+
+<body>
+    <div id="app">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">添加品牌</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label>Id:
+                            <input type="text" class="form-control" v-model="id">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Name:
+                            <input type="taxt" class="form-control" v-model="name" @keyup.f2="add">
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" @click.prevent="add">添加</button>
+                    <div class="form-group">
+                        <label>搜索名称关键字:
+                            <input type="text" class="form-control" v-model="keywords" autofocus>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>添加时间</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in search(keywords)" :key="item.id">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.ctime | dateFormat}}</td>
+                    <td>
+                        <a href="javascript:;" @click="del(index)">删除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // 过滤器的定义语法
+        //  function 中第一个参数已经被规定死了，永远都是过滤器 管道符 | 前面传递过来的数据
+        // Vue.filter("过滤器的名称",function(data,[option]){})
+
+        // 通过全局 config.keyCodes 对象自定义按键修饰符别名：
+        /*
+            Vue.config.keyCodes = {
+                        v: 86,
+                        f1: 112,
+                        // camelCase 不可用
+                        mediaPlayPause: 179,
+                        // 取而代之的是 kebab-case 且用双引号括起来
+                        "media-play-pause": 179,
+                        up: [38, 87]
+              }
+        
+        */
+        Vue.config.keyCodes.f2 = 113;
+
+
+
+        Vue.filter("dateFormat", (dateStr) => {
+            let dt = new Date(dateStr);
+            var y = dt.getFullYear(); //2018
+            var month = (dt.getMonth() + 1).toString().padStart(2, 0); //4 获取月0-11 
+            var d = dt.getDate().toString().padStart(2, 0); //11 获取日 1-31
+            var hours = dt.getHours().toString().padStart(2, 0); //19 获得小时
+            var minute = dt.getMinutes().toString().padStart(2, 0); //25获得分钟
+            var seconds = dt.getSeconds().toString().padStart(2, 0); //17获得秒
+            return `${y}-${month}-${d} ${hours}:${minute}:${seconds}`;
+
+        });
+        new Vue({
+            el: "#app",
+            data: {
+                id: '',
+                name: '',
+                keywords: '',
+                list: [{
+                        id: 1,
+                        name: "奔弛",
+                        ctime: new Date()
+                    },
+                    {
+                        id: 2,
+                        name: "宝马",
+                        ctime: new Date()
+                    }
+                ]
+            },
+            methods: {
+                add() {
+                    if (this.id != '' && this.name != '') {
+                        this.list.push({
+                            id: this.id,
+                            name: this.name,
+                            ctime: new Date()
+                        });
+                    }
+                    this.name = this.id = '';
+                },
+                del(index) {
+                    this.list.splice(index, 1);
+                    this.list.forEach((item, i) => {
+                        item.id = i + 1;
+                    })
+
+                },
+                search(keywords) {
+                    // 方案1 
+                    // let newList = [];
+                    // this.list.forEach((item,index)=>{
+                    //     if(item.name.indexOf(keywords) != -1){
+                    //         newList.push(item);
+                    //     }
+                    // })
+                    // return newList;
+
+                    //方案2 
+                    return this.list.filter(item => {
+                        if (item.name.includes(keywords)) {
+                            return item;
+                        }
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

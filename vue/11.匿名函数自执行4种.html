@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>11.匿名函数自执行4种</title>
+</head>
+
+<body>
+    <input type="button" value="点击" id="btn">
+    <script> 
+        //1，匿名函数的第一种实现方式
+        (function (data) {
+            alert(data);
+        })("eee");
+
+        //2.匿名自执行函数的第二种实现方式 
+        (function () {
+            alert("fff");
+        })();
+        //3.匿名自执行函数的第三种实现方式 
+        !function (data) {
+            alert(data);
+        }("hhh");
+
+        //4.匿名自执行函数的第四种实现方式 
+        var fun = function (data) {
+            alert(data);
+        }("iii");
+
+
+
+
+        //匿名函数的第一种情形  
+        var btn = document.querySelector("#btn");
+        btn.onclick = function () {
+            alert("aaaaa");  
+        }
+        //匿名函数的第二种情形  
+        setInterval(function () {
+            alert("bbbbb");  
+        }, 1000);
+        //匿名函数的第三种情形
+        var fun = function () {
+            alert("ccccc");
+        }
+        fun();
+        //匿名函数的第四种情形
+        var obj = {
+            name: "dddd",
+            say: function () {
+                alert(this.name);
+            }
+        }
+        obj.say();  
+    </script>
+</body>
+
+</html>

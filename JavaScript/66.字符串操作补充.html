@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>66.字符串操作补充</title>
+</head>
+<body>
+    <script>
+        //1.转换成字符串的三种方式
+          console.log(typeof (18 + ''));//string
+
+            var age = 18;
+            console.log(typeof age.toString());//string
+            console.log(typeof String(18));//string
+
+            //2.根据位置返回字符串
+            var str = 'A hello wrold!';
+            console.log(str.charAt(3));//e
+            console.log(str.charAt(1));//空格
+
+            // 3.根据位置返回unicode码
+
+            console.log(str.charCodeAt(0));//65
+            
+            
+            
+        
+        </script>
+</body>
+</html>

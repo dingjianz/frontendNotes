@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>58.选中和取消选中</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 400px;
+            border: 1px solid #cccccc;
+            padding: 20px;
+            margin: 100px auto;
+            box-shadow: 0 0 10px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <section class="header">
+            <h2>歌曲排行版</h2>
+            <hr>
+        </section>
+        <section class="content">
+            <input type="checkbox">1.时间都去哪了
+            <br>
+            <input type="checkbox">2.海阔天空
+            <br>
+            <input type="checkbox">3真的爱你
+            <br>
+            <input type="checkbox">4.不再犹豫
+            <br>
+            <input type="checkbox">5.光辉岁月
+            <br>
+            <input type="checkbox">6.喜欢妳
+            <br>
+            <input type="checkbox">7.偏偏喜欢你
+            <br>
+            <input type="checkbox">8.爱拼才会赢
+            <br>
+            <input type="checkbox">9.老街
+            <br>
+        </section>
+        <section class="footer">
+            <hr>
+            <button class="qx">全选</button>
+            <button class="qxxz">取消选择</button>
+            <button class="fx">反选</button>
+        </section>
+    </div>
+    <script>
+        window.onload = function () {
+           
+            function $(id) {
+                return typeof id === "string" ? document.getElementsByClassName(id)[0] : null;
+            }
+        
+        var inputs = document.getElementsByTagName('input');
+       
+        $('qx').onclick = function () {
+            for (var i = 0; i < inputs.length; i++) {
+                 inputs[i].checked = true;//选择就是true，是js里DOM的checked属性
+            }
+        }
+
+            $('qxxz').onclick = function () {
+                for ( var i = 0; i < inputs.length; i++) {
+                    inputs[i].checked = false;//没选择就是false 
+                }
+            }
+
+                $('fx').onclick = function () {
+                    for (var i = 0; i < inputs.length; i++) {
+                        inputs[i].checked = !inputs[i].checked;
+                    };
+
+                }
+
+            }
+
+    </script>
+</body>
+
+</html>

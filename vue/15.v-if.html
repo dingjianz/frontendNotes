@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>15.v-if</title>
+    <script src='js/vue.js'></script>
+</head>
+<!-- 条件渲染指令，根据表达式的真假来添加或删除元素。其语法结构是：v-if="expression"，其中expression是一个返回bool值的表达式，其结果可以是true或false，也可以是返回true或false的表达式。 -->
+<body>
+    <div id="app">
+        <!-- v-if的取值是布尔值，true就显示，false就销毁 
+         v-if 是真实的条件渲染，因为它会确保条件块在切换当中适当地销毁与重建条件块内的事件监听器和子组件；-->
+        <p v-if='show'>显示出来</p>
+        <p v-if='false'>不显示出来</p>
+        <p v-if="height > 1.8">健身高：{{height}}m</p>
+        <p v-if="height1 > 1.8">昭华身高：{{height}}</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data:{
+                show:true,
+                hide:false,
+                height:1.9,
+                height1:1.7
+            }
+        });
+    </script>
+</body>
+</html>

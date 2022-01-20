@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08.ajax-post</title>
+    <script src="myAjax2.js"></script>
+</head>
+<body>
+    <button class="btn">发送请求</button>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByClassName('btn')[0];
+            btn.onclick = function () {
+                ajax('GET','08.ajax-post.php',{'name':'lnj','age':'33'},3000,function (xmlhttp) {
+                    alert(xmlhttp.responseText);
+                },function (xmlhttp) {
+                    alert('faile');
+                })
+            
+            }
+        }
+    
+    
+    </script>
+</body>
+</html>

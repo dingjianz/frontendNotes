@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>38.vue实名插槽</title>
+    <script src="js/vue.js"></script>
+</head>
+
+
+<body>
+    <div id="app">
+        <my-computer>
+            <p slot='hard-drive'>hello word!</p>
+            <input type="color" slot='gpu'>
+        </my-computer>
+    </div>
+    
+    <template id="my_computer">
+        <div>
+            <slot name='cpu'>这里插cpu</slot>
+            <slot name='gpu'>这里插gpu</slot>
+            <slot name='memory'>这里插内存</slot>
+            <slot name='hard-drive'>这里插硬盘</slot>
+        </div>
+    </template>
+    <script>
+        Vue.component('my-computer', {
+            template: '#my_computer'
+        });
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

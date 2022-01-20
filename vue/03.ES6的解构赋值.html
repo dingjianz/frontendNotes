@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>03.ES6的解构赋值</title>
+</head>
+
+<body>
+    <script>
+        // let [name,sex,age] = ['dj','male',18];
+        // console.log(name,sex,age);//dj male 18
+
+        //对象的解构赋值
+        // 顺序可以变化
+        const obj =  {name: 'lnj', sex: 'male', age: 18 };
+        let { sex, age ,name } = obj;
+        console.log(name, sex, age);//lnj male 18
+
+        //数组的解构赋值
+        let ress = [a,b,c] = [1,2,3];
+        console.log(a,b,c);//1 2 3
+        
+        //基本类型：字符串的解构赋值
+        let [q,w,e,r,t]  = '我是中国人';
+        console.log(q,w,e,r,t);//我 是 中 国 人
+        
+    
+    
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>48.JS特效-节点的增删</title>
+</head>
+
+<body>
+    <div class="box">
+        <button id="btu">按钮</button>
+        <span class="sspan">我是span</span>
+    </div>
+    <script>
+        window.onload = function () {
+            //CRUD 增删改查
+
+            var box = document.getElementsByClassName('box')[0];
+            //1.创建节点
+            var img = document.createElement('img');
+            img.src='images/zjl.jpg';
+
+            // 2.增加节点
+            box.appendChild(img);//默认在box的底部创建一个子节点
+
+            //指定位置插入
+            var sspan = document.getElementsByClassName('sspan')[0];
+            box.insertBefore(img,sspan);//在span之前插入img
+
+
+            //3.删除节点
+            sspan.remove();//建议使用
+
+            var btn = document.getElementById('btu');
+            btn.parentNode.removeChild(btu);//利用父节点删除自己 相当于自杀 不推荐使用
+
+            
+        }
+    </script>
+</body>
+
+</html>

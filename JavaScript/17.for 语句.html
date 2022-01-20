@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>17.for 语句</title>
+    <style>
+    span{
+        border: 1px solid #000;
+        margin-right: 10px;
+        display: inline-block;
+        width: 70px;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <script>
+        /* for (var i = 0; i < 10; i++) {
+               console.log(i);
+         }*/
+
+        /*    打印好友列表
+        for (var i = 1; i < 3;i++) {
+             console.log("好友列表"+ i);
+             
+             for (var m = 1;m < 4; m++) {
+                 console.log("  好友" +m);     
+               }    
+           }
+           
+            for循环嵌套实现：矩形绘制
+            for (var i = 0; i < 3; i++) {
+                    
+                for(var m = 0;m < 4;m++ ){
+                    window.document.write("*");
+                    console.log("("+i+","+m+")");
+                    
+                }     
+                window.document.write("<br>")
+            }
+        
+            绘制正三角形
+            for(var i = 0;i < 5; i++ ){
+                    for(var m = 0; m <=i;m++){
+                            window.document.write("*\t");
+                    }
+                        window.document.write('<br/>');
+            }
+        
+            绘制倒三角形
+                for(var i=5; i>0; i--){
+                    for(var m = 0; m<i; m++){
+                         window.document.write("*\t");
+                    }
+                     window.document.write('<br/>');
+                }
+        
+                绘制特殊三角形
+                for(var i =1; i<10;i++){
+                    for(var j =1; j<=i;j++){
+                            window.document.write(j+"\t");
+                    }
+        
+                     window.document.write('<br/>');
+        
+                }  
+        
+                绘制正三角形
+                ****自我经验总结： for循环里面的代码若需要根据前面变量变化而变化，最好统一选择第一个for循环的变量i
+               
+        for (var i = 0; i < 7; i++) {
+
+            for (var j = 1; j < 7 - i; j++) {
+                window.document.write("-");
+            }
+            for (var m = 0; m < 2 * i + 1; m++) {
+                window.document.write("*");
+            }
+
+            window.document.write('<br/>');
+        }
+
+        打印99乘方表*/
+        for (var i = 1; i < 10; i++) {
+            for (var m = 1; m <= i; m++) {
+                window.document.write("<span>"+m + '×' + i + '=' + m * i + '</span>');
+            }
+            window.document.write('<br/>');
+        }
+
+
+    </script>
+</body>
+
+</html>

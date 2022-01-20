@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <!-- 说明1 -->
+    <link rel="stylesheet" href="a.css">
+    <link rel="stylesheet" href="b.css" media="screen and (min-width:768px) and (max-width:992px)">
+
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            background-color: skyblue;
+        }
+        /* 说明2 ： not | only */
+        @media not screen and (min-width:768px) and (max-width:992px){
+          .box{
+            display: none;
+          }
+        } 
+    
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

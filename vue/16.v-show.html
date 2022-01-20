@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>16.v-if</title>
+    <script src='js/vue.js'></script>
+</head>
+<!-- 也是条件渲染指令，不同的是有 v-show 的元素会始终渲染并保持在 DOM 中。和v-if指令不同点在于：v-show是根据表达式之真假值，切换元素的 display CSS 属性，当条件变化时该指令触发过渡效果。 -->
+<body>
+    <div id="app">
+        <!-- v-show的取值是布尔值，true就display显示，false就display：none 
+         v-show 则只是简单地基于 CSS 切换
+        
+         v-if 有更高的切换消耗而 v-show 有更高的初始渲染消耗。因此，如果需要频繁切换使用 v-show 较好，如果在运行时条件不大可能改变（如元素可能永远也不会被显示出来被用户看到）则使用 v-if 较好。-->
+        <p v-show='show'>显示出来</p>
+        <p v-show='false'>不显示出来</p>
+        <p v-show="height > 1.8">健身高：{{height}}m</p>
+        <p v-show="height1 > 1.8">昭华身高：{{height}}mapActions</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                show: true,
+                hide: false,
+                height: 1.9,
+                height1: 1.7
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10.js逻辑小练习</title>
+</head>
+<body>
+    <script>
+    var a, b, c;
+    a = parseInt(prompt('请输入第一个整数'));
+    b = parseInt(prompt('请输入第二个整数'));
+    c = parseInt(prompt('请输入第三个整数'));
+
+    // parseInt()提取字符串中的整数, 从第一位有效数字开始, 直到遇到无效数字
+    // parseFloat提取字符串中的小数,会解析第一个.遇到第二个.或者非数字结束
+    
+    // var str10 = "20.5.5.5px";
+    //     var res12 = parseFloat(str10);
+    //     console.log(res12); // 20.5
+    var max;
+    max = a > b? a : b;
+    max = max > c? max : c;
+    alert(max);
+   // alert('max'); 输出的是英文字母max 错误书写
+    
+    </script>
+</body>
+</html>

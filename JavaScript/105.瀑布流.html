@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>105.瀑布流布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+        }
+
+        /* html,
+        body {
+            width: 100%;
+            height: 100%;
+           background-color: red; 
+        } */
+
+        img {
+            vertical-align: top;
+            width: 165px;
+        }
+
+        #main {
+            position: relative;
+        }
+
+        .box {
+            float: left;
+            padding: 15px 0 0 15px;
+        }
+
+        .pic {
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img01.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img02.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img03.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img04.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img05.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img06.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img07.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img08.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img09.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img10.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img11.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img12.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img13.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img14.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img15.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img16.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img17.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img18.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img19.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img20.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img21.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img22.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img23.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img24.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img25.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img26.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img27.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img28.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img29.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img30.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img31.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img32.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img33.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img34.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img35.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img36.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img37.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img38.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img39.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img40.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+             // 1. 实现瀑布流布局
+             waterFull('main');
+            window.onscroll = function () {
+                if (checkWillLoadImage()) {
+                      var dataArr = [
+                          { "src": "img/images/img01.jpg" },
+                          { "src": "img/images/img02.jpg" },
+                          { "src": "img/images/img03.jpg" },
+                          { "src": "img/images/img04.jpg" },
+                          { "src": "img/images/img05.jpg" },
+                          { "src": "img/images/img36.jpg" },
+                          { "src": "img/images/img07.jpg" },
+                          { "src": "img/images/img08.jpg" },
+                          { "src": "img/images/img09.jpg" },
+                          { "src": "img/images/img10.jpg" },
+                          { "src": "img/images/img11.jpg" },
+                          { "src": "img/images/img12.jpg" },
+                          { "src": "img/images/img13.jpg" },
+                          { "src": "img/images/img14.jpg" },
+                          { "src": "img/images/img15.jpg" },
+                          { "src": "img/images/img16.jpg" },
+                          { "src": "img/images/img17.jpg" },
+                          { "src": "img/images/img18.jpg" },
+                          { "src": "img/images/img19.jpg" },
+                          { "src": "img/images/img20.jpg" },
+                          { "src": "img/images/img21.jpg" },
+                          { "src": "img/images/img22.jpg" },
+                          { "src": "img/images/img23.jpg" },
+                          { "src": "img/images/img24.jpg" }
+                      ];
+                      //  创建元素
+                      
+                      for (var j=0;j<dataArr.length;j++) {
+                         var newBox = document.createElement("div");
+                          newBox.className = "box";
+                          $("main").appendChild(newBox);
+  
+                          var newPic = document.createElement("div");
+                          newPic.className = "pic";
+                          newBox.appendChild(newPic);
+  
+                          var newImg = document.createElement("img");
+                          newImg.src = dataArr[j].src;
+                          newPic.appendChild(newImg);
+                      }
+                      waterFull('main');
+                  }
+  
+              };
+        }
+        function waterFull(parent) {
+            //1. 让内容居中
+            var allBox = $(parent).children;
+            //得到盒子的宽度
+            var cols = 0, boxWidth = 0, colsWidth = 0;
+            boxWidth = allBox[0].offsetWidth;
+            var screenW = document.documentElement.clientWidth;
+            cols = parseInt(screenW / boxWidth);
+            colsWidth = cols * boxWidth + 'px';
+            $(parent).style.width = colsWidth;//只有定义了宽度才能居中 
+            //让内容居中
+            $(parent).style.margin = '0 auto';
+
+            //2 找到高度最短一列
+            var allBoxH = [];
+            for (var i = 0; i < allBox.length; i++) {
+                // var allBoxH = []; 放在这里allBoxH每次循环时都从空数组开始
+                var boxH = allBox[i].offsetHeight;
+                if (i < cols) {
+                    allBoxH.push(boxH);
+
+                } else {
+                    var minHeight = _.min(allBoxH);
+                    var minHeightIndex = getMinHeihtIndex(allBoxH, minHeight);
+                    //2.1 给当前盒子定位到最短的那一列
+                    allBox[i].style.position = "absolute";
+                    allBox[i].style.left = minHeightIndex * boxWidth + 'px';
+                    allBox[i].style.top = minHeight + 'px';
+                    allBoxH[minHeightIndex] += boxH;//给最短的那一列加上当前盒子的高度
+                }
+            }
+        }
+
+
+        function getMinHeihtIndex(arr, minHeight) {
+            for (var i in arr) {
+                if (arr[i] === minHeight) {
+                    return i;
+                }
+            }
+        }
+      
+
+
+       function checkWillLoadImage() {
+            // 1. 获取最后一个盒子
+            var allBox = document.getElementsByClassName("box");
+            var lastBox = allBox[allBox.length - 1];
+
+            // 2. 求出最后一个盒子自身高度的一半 + offsetTop
+            var lastBoxDis = lastBox.offsetHeight * 0.5 + lastBox.offsetTop;
+
+            // 3. 求出屏幕的高度
+            var screenH = document.body.clientHeight || document.documentElement.clientHeight;
+
+            // 4. 求出页面偏离浏览器的高度
+            var scrollTop = scroll().top;
+
+            return lastBoxDis <= screenH + scrollTop;
+        }
+
+
+        function $(id) {
+            return typeof id === 'string' ? document.getElementById(id) : null;
+        }
+    </script>
+    <script src="underscore/Underscore-min.js"></script>
+    <script src="./myFunction.js"></script>
+</body>
+
+</html>

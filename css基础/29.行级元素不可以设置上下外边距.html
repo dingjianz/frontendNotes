@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>29.行级元素不可以设置上下外边距</title>
+    <style>
+    span{
+        width: 100px;
+        height: 100px;
+        border: 1px solid #000;
+    }
+    .span1{
+        margin-right: 50px;
+    }
+    .span2{
+        margin-left: 100px;
+    }
+    </style>
+</head>
+<body>
+    <span class="span1">我是span</span>
+    <span class="span2">我是span</span>
+</body>
+</html>

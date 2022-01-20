@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>11.ajac-test</title>
+    <script src="myAjax2.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            margin: 50px auto;
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            background-color: #ccc;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            background-color: pink;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin: 10px auto 10px;
+            border: 1px solid #000;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 200px;
+        }
+
+        ul>li {
+            float: left;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p class="p1">商品标题名称</p>
+        <img class="content" alt="">
+        <p class="p2">商品描述信息</p>
+
+        <button name='nz'>女装</button>
+        <button name='bb'>包包</button>
+        <button name='tx'>拖鞋</button>
+
+    </div>
+    <script>
+        window.onload = function () {
+            var btn = document.querySelectorAll('button');
+            var oImg = document.querySelector("img");
+            var p1 = document.getElementsByTagName('p')[0];
+            var p2 = document.getElementsByTagName('p')[1];
+            for (var i = 0; i < btn.length; i++) {
+                btn[i].onclick = function () {
+                    var self = this;
+                    ajax({
+                        type: 'get',
+                        timeout: 3000,
+                        url: '14.ajax-json-test.json',
+                        data: { 'name': self.getAttribute('name') },
+                        success: function (xmlhttp) {
+                            var res = xmlhttp.responseText;
+                            var obj = JSON.parse(res);
+                            var arr =  obj[self.getAttribute('name')];// 框语法可以动态的传递参数作为属性
+                            p1.innerHTML = arr['title']; 
+                            p2.innerHTML = arr.des;
+                            oImg.setAttribute("src", arr.image);
+
+                        },
+                        error: function (xmlhttp) {
+                            alert(xmlhttp.status);
+                        }
+                    });
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>45.获取子节点</title>
+</head>
+
+<body>
+    <div class="box">
+        <button id="btu">按钮</button>
+        <span class="sspan">
+            <a href="#">我是超链接</a>
+        </span>
+        <p class="dj">我是DJ</p>
+    </div>
+    <script>
+        window.onload = function () {
+            var box = document.getElementsByClassName('box')[0];
+            // 获取第一个子节点
+            var boxfirstchild = box.firstElementChild || box.firstChild;
+            //获取最后一个子节点
+            var boxlastchild = box.lastElementChild || box.lastChild;
+            //获取所有的子节点
+            var boxallNodeList = box.childNodes;//包括文本
+            //去掉文本
+            var newList = [];
+            for (i = 0; i < boxallNodeList.length; i++) {
+                if (boxallNodeList[i].nodeType === 1) {
+                    newList.push(boxallNodeList[i]);
+                };
+            };
+
+            console.log(boxfirstchild);
+            console.log(boxlastchild);
+            console.log(boxallNodeList);
+            console.log(newList);//去掉文本
+        };
+    </script>
+</body>
+
+</html>

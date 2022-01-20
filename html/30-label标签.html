@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>30-label标签</title>
+	<!--文字和输入框聚焦，需要绑定在一起。-->
+</head>
+
+<body>
+	<form>
+		<label for="account">账户：</label>
+		<input type="text" id="account" />
+		<br />
+		<label for="pwd">密码：</label>
+		<input type="password" id="pwd" />
+		<br /> 或者更简单的方法！但是有局限
+
+		<br />
+		<label>账户：
+			<input type="text" />
+		</label>
+		<br />
+		<label>密码：
+			<input type="password" />
+		</label>
+
+		<br />加入点击账户绑定密码框，点击密码绑定账户框。只能用第一种方法
+		<br />
+		<label for="pwdd">账户：</label>
+		<input type="text" id="accountt" />
+		<br />
+		<label for="accountt">密码：</label>
+		<input type="password" id="pwdd" />
+	</form>
+</body>
+
+</html>

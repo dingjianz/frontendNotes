@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>前端笔试题目</title>
+</head>
+
+<body>
+    <script>
+
+        console.log(false == '0');//true
+        console.log(undefined == null);//true
+        console.log(false === '0');//false
+        console.log(undefined === null);//false
+
+        var a = 0;
+        function one() {
+            for (var i = 0; i < 10; i++) {
+              (function (i) {
+                  setTimeout(function () {
+                 a+=i }, 0);//45
+              })(i);
+            }
+        }
+        function one() {
+            for (var i = 0; i < 10; i++) {
+                  setTimeout(function () {
+                a+=i  }, 0);//100 setTimeout是异步执行的，1000毫秒后向任务队列里添加一个任务，只有主线上的全部执行完才会执行任务队列里的任务，所以当主线程for循环执行完之后 i 的值为10，这个时候再去任务队列中执行任务，i全部为10；var 换成let就是45了，因为let  i  的是区块变量，每个i只能存活到大括号结束，并不会把后面的for循环的  i  值赋给前面的setTimeout中的i；而var i  则是局部变量，这个 i 的生命周期不受for循环的大括号限制；
+            }
+        }
+    function two() {
+        alert(a);
+    }
+    one();
+    setTimeout(two, 0);
+
+var c;
+console.log(typeof c);//undefined
+ //alert(b);// b is not defined
+
+
+
+var stringArray = ['This', 'is', 'Baidu','Campus'];
+// alert(stringArray[0]+' '+stringArray[1] + ' ' + stringArray[2] + ' ' + stringArray[3]);
+    alert(stringArray.join(" "))
+
+
+
+    var m = new Object();
+        m.value = 1;
+        n = m;
+        n.value = 2;
+        alert(m.value);//2
+    </script>
+</body>
+
+</html>

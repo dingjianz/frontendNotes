@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>72.简化微博</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 800px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            padding: 20px;
+        }
+
+        #box #box_top {
+            margin-bottom: 20px;
+        }
+
+        #box #my_textarea {
+            width: 80%;
+            height: 120px;
+        }
+
+        #box #box_bottom {
+            margin: 0 80px;
+        }
+
+        #box #box_bottom li {
+            color: red;
+            border-bottom: 1px dashed #ccc;
+            line-height: 44px;
+        }
+
+        #box #box_bottom li a {
+            float: right;
+        }
+        textarea{
+            resize: none;
+            outline-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="box_top">
+            <label>发表评论：
+                <textarea id="my_textarea" cols="60" rows="10" autofocus></textarea>
+            </label>
+            <button id="btn">发表</button>
+        </div>
+        <ul id="box_bottom">
+            <!-- <li>
+                今天天气不错！
+                <a href="#">删除</a>
+            </li> -->
+        </ul>
+        <script>
+            window.onload = function () {
+                $('btn').onclick = function () {
+                    var content = $('my_textarea').value;
+
+                    if (content.length === 0) {
+                        alert('请您输入内容~');
+                        // return;//作用:若内容为空返回，以下所有程序不再执行
+                    };
+                    var li = document.createElement('li');
+                    $('box_bottom').appendChild(li);//这么写新增的li会在底部显示
+                    // $('box_bottom').insertBefore(li, $('box_bottom').children[0]);//新增的li会在顶部显示
+                    li.innerHTML = content + "<a href='#'>删除</a>";//用innerHTML，因为里面还有a标签
+                    $('my_textarea').value = '';
+                    // content = ''; 并不能改变 $('my_textarea').value的值； 基本类型的复制变量值 
+
+                    var as = $('box_bottom').getElementsByTagName('a');
+                    for (var i = 0; i < as.length; i++) {
+                        var aList = as[i];
+                        aList.onclick = function () {
+                            this.parentNode.remove();
+                        }
+                    }
+
+                }
+            }
+            function $(id) {
+                return typeof id === 'string' ? document.getElementById(id) : null;
+            }
+        </script>
+
+    </div>
+</body>
+
+</html>

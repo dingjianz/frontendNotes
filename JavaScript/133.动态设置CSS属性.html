@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>133.动态设置CSS属性</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 150px;
+            height: 150px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">改变颜色</button>
+    <button id="btn2">改变长度</button>
+    <div id="box" ></div>
+    <script>
+        window.onload = function () {
+            var btn1 = document.getElementById('btn1');
+            var btn2 = document.getElementById('btn2');
+            var box = document.getElementById('box');
+           
+            btn1.onclick = function () {
+                //box.style.backgroundColor = 'green';
+                changeAttr(box,'backgroundColor','green');
+            }
+            btn2.onclick = function () {
+               // box.style.width = '500px';
+                changeAttr(box, 'width', '500px');
+               
+            }
+           function changeAttr(obj,attr,value) {
+               obj.style[attr] = value;
+               
+           }
+           console.log(window.getComputedStyle(box).height);//150px
+            // obj.style：这个方法只能JS只能获取写在html标签中的写在style属性中的值（style =”…”），而无法获取定义在 < style type = "text/css" > 里面的属性。 
+
+       /*  在开发中，访问得到css 属性，比较常用的有两种：
+
+            点语法
+
+            box.style.width，box.style.height，box.style.top，box.style.left 得到带有单位的属性值，比如：200px； 但是，点语法存在一个很致命的问题，跟在style后面的属性不能由外面传入
+
+            var h = 'height';
+            box.style.h = 300 + 'px';
+            下标语法
+            利用[] 访问属性 元素.style[“属性”];
+
+            这种语法的好处就是可以动态的传递参数作为属性
+            var h = 'height';
+            box.style[h] = 300 + 'px';
+            */
+
+        }
+    </script>
+</body>
+</html>

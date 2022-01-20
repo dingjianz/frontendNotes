@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>73.动画小练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: skyblue;
+            animation: dj 5s linear 1 normal, dzh 2.5s linear 2 normal;
+            margin-top: 300px;
+
+        }
+
+        @keyframes dj {
+            from {
+                margin-left: 0;
+            }
+            to {
+                margin-left: 500px;
+            }
+        }
+
+        @keyframes dzh {
+            0% {
+                transform: rotate(180deg);
+                background-color: #800080;
+            }
+            50% {
+                background-color: red;
+            }
+            100% {
+                transform: rotate(360deg);
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
+<!--
+1.动画模块连写格式
+animation:动画名称 动画时长 动画运动速度 延迟时间 执行次数 往返动画;
+
+2.动画模块连写格式的简写
+animation:动画名称 动画时长;
+-->

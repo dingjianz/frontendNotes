@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>08.ES6新增的语法糖-class</title>
+</head>
+
+<body>
+    <script>
+        /*
+        function Person(option) {
+            this.name = option.name;
+            this.age = option.age;
+        };
+        Person.prototype = {
+            constructor: Person,
+            print: function () {
+                console.log('我叫' + this.name + '，今年' + this.age + '岁');
+            }
+        };*/
+
+        //通过class面向对象  
+        class Person {
+            constructor(option) {
+                this.name = option.name;
+                this.age = option.age;
+            };
+            //constructor是构造函数。注意print()函数没有function关键字。
+            print() {
+                console.log('我叫' + this.name + '，今年' + this.age + '岁');
+            }
+        }
+
+        let person = new Person({ 'name': '丁健', 'age': 18 });
+        console.log(person);
+        person.print();
+
+
+
+
+    </script>
+</body>
+
+</html>

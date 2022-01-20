@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>41.JS特效-获取父节点</title>
+</head>
+<body>
+    <div class="box">
+        <button id="btu">按钮</button>
+        <span class="sspan">
+            <a href="#">我是超链接</a>
+        </span>
+        <script>
+            var a = document.getElementsByTagName('a')[0];
+            //获取a标签父节点
+            var aParent= a.parentNode;
+            console.log(aParent);
+            
+            //获取a标签父节点的父节点
+            var agrandfather = a.parentNode.parentNode;
+            console.log(agrandfather);
+            
+            
+        </script>
+    </div>
+</body>
+</html>

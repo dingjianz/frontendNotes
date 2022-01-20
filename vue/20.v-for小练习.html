@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>20.v-for小练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        table{
+            width:600px;
+            margin: 100px auto;
+            border: 2px solid orangered;
+        }
+        td{
+            text-align: center;
+        }
+        thead{
+            background-color:orangered ;
+        }
+    </style>
+    <script src='js/vue.js'></script>
+</head>
+<!-- 基于数据渲染一个列表，类似于JS中的遍历。其数据类型可以是 Array | Object | number | string。 该指令之值，必须使用特定的语法(item, index) in items, 为当前遍历元素提供别名。 v-for的优先级别高于v-if之类的其他指令 -->
+
+<body>
+    <div id="app">
+     <table>
+         <thead>
+             <tr>
+                 <td>姓名</td>
+                 <td>年龄</td>
+                 <td>性别</td>
+             </tr>
+         </thead>
+         <tbody>
+             <!-- 自动创建4个tr td -->
+            <tr v-for="per in person">
+                <td>{{per.name}}</td>
+                <td>{{per.age}}</td>
+                <td>{{per.sex}}</td>
+            </tr>
+         </tbody>
+     </table>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                person:[
+                    {name:'张三',age:20,sex:'女'},
+                    {name:'李四',age:15,sex:'男'},
+                    {name:'王五',age:36,sex:'女'},
+                    {name:'赵六',age:42,sex:'男'}
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

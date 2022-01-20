@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>container</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            height: 40px;
+            background-color: purple;
+            margin: 0 auto;
+        }
+        /* 媒体查询 */
+        @media screen and (max-width :768px){
+            div{
+                width: 100%;
+            }
+        }
+        @media screen and (min-width:768px) and (max-width :992px){
+            div{
+                width: 750px;
+            }
+        }
+        @media screen and (min-width:992px) and (max-width :1200px){
+            div{
+                width:970px;
+            }
+        }
+        @media screen and (min-width :1200px){
+            div{
+                width: 1170px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        /*
+        resize();
+        window.addEventListener('resize', resize)
+        function resize() {
+            let div = document.querySelector('div');
+            let clientW = 0;
+            clientW = window.innerWidth;
+            if (clientW > 1200) {
+                //超大屏幕
+                div.style.width = '1170px';
+            } else if (clientW > 992) {
+                //大屏幕
+                div.style.width = '970px';
+
+            } else if (clientW >768) {
+                //小屏幕
+                div.style.width = '750px';
+            }else{
+                //超小屏幕
+                div.style.width = '100%';
+            }
+        }
+        */
+    </script>
+</body>
+
+</html>

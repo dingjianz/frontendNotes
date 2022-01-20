@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>128.综合动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+            top: 100px;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">往右走</button>
+    <div id="box"></div>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById('btn');
+            var box = document.getElementById('box');
+            var target = 600,timer = null;
+            btn.onclick = function () {
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    box.style.left = box.offsetLeft + 10 + 'px';
+                    if (Math.round(box.offsetLeft) >= target) {
+                        clearInterval(timer);
+                    }
+                }, 40);
+            }
+        }
+    </script>
+</body>
+
+</html>

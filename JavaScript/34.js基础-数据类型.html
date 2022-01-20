@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>34.js基础-数据类型</title>
+</head>
+
+<body>
+    <script>
+        // 1.简单数据类型，number string null undefined boolean,  存储在栈里面， 相当于电脑中的内存
+        var name = '张三';
+        var newName = name;
+
+        name = '李四';
+        console.log(name);//李四
+        console.log(newName);//张三
+
+        // 2.复杂数据类型，object Array Date,   存储在堆里，相当于电脑中的硬盘, 不能直接被访问，要通过栈给的地址才能访问。
+
+        var obj = { name: '张三', age: 18 };
+        var newObj = obj;
+
+        obj.name = "李四";
+        console.log(obj);//{name: "李四", age: 18}
+        console.log(newObj);//{name: "李四", age: 18}
+
+    </script>
+</body>
+
+</html>

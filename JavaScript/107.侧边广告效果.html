@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>107.侧边广告效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 150px;
+        }
+
+        span {
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        p {
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <span>×</span>
+        <img src="images/float.jpg" alt="">
+    </div>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <script src="./myFunction.js"></script>
+    <script>
+        window.onload = function () {
+            var box = document.getElementById('box');
+            //1.获取广告头部的高度
+            var boxOffsetTop = box.offsetTop;
+            var begin = 0, end = 0, timer = null;
+            //2. 监听窗口的滚动
+            window.onscroll = function () {
+                //2.0 清除定时器
+                clearInterval(timer);
+                var scrollTop = scroll().top;
+                end = scrollTop + boxOffsetTop;
+                timer = setInterval(function () {
+                    begin = begin + (end - begin) * 0.2;
+                    box.style.top = begin + 'px';
+                    if(Math.round(begin)===end){
+                        clearInterval(timer);//缓动动画*0.2增加很小很烦就是不到
+                    }
+                    
+                }, 20)
+            }
+
+
+
+
+
+
+
+            var span = document.getElementsByTagName('span')[0];
+            span.onclick = function () {
+                box.style.display = 'none';
+            }
+
+        }
+    </script>
+</body>
+
+</html>

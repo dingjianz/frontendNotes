@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>75.动画模块-无限滚动上</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            width: 600px;
+            height: 188px;
+            margin: 0 auto;
+            margin-top: 100px;
+            overflow: hidden;
+            position: relative
+        }
+
+        ul li {
+            list-style: none;
+            border: 1px solid #000;
+            width: 300px;
+            height: 188px;
+            float: left;
+            box-sizing: border-box;
+            position: absolute;
+
+        }
+
+        ul li:hover {
+            animation-play-state: paused;
+        }
+
+        ul li:nth-child(1) {
+            background-image: url(images/banner1.png);
+            animation: dj1 10s linear 0s infinite normal;
+            left: 0;
+            top: 0;
+
+        }
+
+        ul li:nth-child(2) {
+            background-image: url(images/banner2.jpg);
+            animation: dj2 10s linear 0s infinite normal;
+            left: 300px;
+            top: 0;
+        }
+
+        ul li:nth-child(3) {
+            background-image: url(images/banner3.jpg);
+            animation: dj3 10s linear 0s infinite normal;
+            left: 600px;
+            top: 0;
+        }
+
+        ul li:nth-child(4) {
+            background-image: url(images/banner4.jpg);
+            animation: dj4 10s linear 0s infinite normal;
+            left: 900px;
+            top: 0;
+
+        }
+
+        ul li:nth-child(5) {
+            background-image: url(images/banner1.png);
+            animation: dj5 10s linear 0s infinite normal;
+            left: 1200px;
+            top: 0;
+
+        }
+
+        ul li:nth-child(6) {
+            background-image: url(images/banner2.jpg);
+            animation: dj6 10s linear 0s infinite normal;
+            left: 1500px;
+            top: 0;
+
+        }
+
+        @keyframes dj1 {
+            0% {
+                margin-left: 0px;
+            }
+            25% {
+                margin-left: -300px;
+            }
+            50% {
+                margin-left: -600px;
+            }
+            75% {
+                margin-left: -900px;
+            }
+            100% {
+                margin-left: -1200px;
+            }
+        }
+
+        @keyframes dj2 {
+            0% {
+                margin-left: 0px;
+            }
+            25% {
+                margin-left: -300px;
+            }
+            50% {
+                margin-left: -600px;
+            }
+            75% {
+                margin-left: -900px;
+            }
+            100% {
+                margin-left: -1200px;
+            }
+
+        }
+
+        @keyframes dj3 {
+            0% {
+                margin-left: 0px;
+            }
+            25% {
+                margin-left: -300px;
+            }
+            50% {
+                margin-left: -600px;
+            }
+            75% {
+                margin-left: -900px;
+            }
+            100% {
+                margin-left: -1200px;
+            }
+
+        }
+
+        @keyframes dj4 {
+            0% {
+                margin-left: 0px;
+            }
+            25% {
+                margin-left: -300px;
+            }
+            50% {
+                margin-left: -600px;
+            }
+            75% {
+                margin-left: -900px;
+            }
+            100% {
+                margin-left: -1200px;
+            }
+
+        }
+
+        @keyframes dj5 {
+            0% {
+                margin-left: 0px;
+            }
+            25% {
+                margin-left: -300px;
+            }
+            50% {
+                margin-left: -600px;
+            }
+            75% {
+                margin-left: -900px;
+            }
+            100% {
+                margin-left: -1200px;
+            }
+
+        }
+
+        @keyframes dj6 {
+            0% {
+                margin-left: 0px;
+            }
+            25% {
+                margin-left: -300px;
+            }
+            50% {
+                margin-left: -600px;
+            }
+            75% {
+                margin-left: -900px;
+            }
+            100% {
+                margin-left: -1200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>

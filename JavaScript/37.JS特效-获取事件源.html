@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>37.JS特效-获取事件源</title>
+</head>
+
+<body>
+    <button id="btu" class="my-btu" name="btu1">点我</button>
+    <div id="ddd" class="ddd2">点他还是点我</div>
+    <script>
+        //1.获取事件源
+        var btu1 = window.document.getElementById("ddd");
+        var btu2 = window.document.getElementsByClassName("my-btu")[0];
+        var btu3 = window.document.getElementsByName('btu1')[0];
+        var btu4 = window.document.getElementsByTagName("div")[0];
+        var btu5 = window.document.querySelector('.ddd2');
+        var btu6 = window.document.querySelectorAll('#ddd')[0];
+
+        console.log(btu1);
+        console.log(btu2);
+        console.log(btu3);
+        console.log(btu4);
+        console.log(btu5);
+        console.log(btu6);
+        
+        
+        
+
+    </script>
+</body>
+
+</html>

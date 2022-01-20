@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <Script>
+    // var res = undefined;
+    // res1 =  res;
+    // console.log(res1);
+    // console.log(typeof res1);
+    //    1.定义变量保存三个整数
+        var a, b, c;
+        //    2.利用window.prompt接收用户输入的数据
+        a = +(window.prompt("请输入内容"));
+        b = +(window.prompt("请输入内容"));
+        c = +(window.prompt("请输入内容"));
+        //     方式1 写出所有方式
+        if (a >= b && b >= c) {
+            console.log(a, b, c);
+        } else if (a >= c && c >= b) {
+            console.log(a, c, b);
+        } else if (b >= a && a >= c) {
+            console.log(b, a, c);
+        } else if (b >= c && c >= a) {
+            console.log(b, c, a);
+        } else if (c >= a && a >= b) {
+            console.log(c, a, b);
+        } else {
+            console.log(c, b, a);
+        }
+
+       
+    </Script>
+</body>
+</html>

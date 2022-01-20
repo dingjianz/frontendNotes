@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>02.ES6-const</title>
+</head>
+
+<body>
+    <script>
+        const name = 'dj';
+        //    name = 'ls';  const声明一个只读的变量，一旦声明常量的值就不能改变；而且一旦声明就必须立即初始化，不能留到以后赋值，只声明不赋值就会报错。
+        console.log(name); //Assignment to constant variable.
+
+        //const = {}  只要指针 指向没有变化 就可以
+        const obj = {name: 'lnj'}; //这里obj没有变化，仍然指向对象。
+        console.log(obj); //{name: "lnj"}
+        obj.name = 'ls';
+        console.log(obj); //{name: "ls"}
+    </script>
+</body>
+
+</html>

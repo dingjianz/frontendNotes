@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>81.时钟案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #time {
+            width: 600px;
+            height: 600px;
+            background: url('images/clock.jpg') no-repeat;
+            margin: 10px auto;
+            position: relative;
+        }
+
+        #hour,
+        #seconds,
+        #min {
+            width: 30px;
+            height: 600px;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            margin-left: -15px;
+
+        }
+
+        #seconds {
+            background: url('images/second.png') no-repeat;
+        }
+
+        #hour {
+            background: url('images/hour.png') no-repeat;
+        }
+
+        #min {
+            background: url('images/minute.png') no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="time">
+        <div id="hour"></div>
+        <div id="min"></div>
+        <div id="seconds"></div>
+    </div>
+    <script>
+        window.onload = function () {
+
+            setInterval(function () {
+                var date = new Date();
+
+                var millS = date.getMilliseconds();
+                var s = date.getSeconds() + millS / 1000;
+                var m = date.getMinutes() + s / 60;
+                var h = date.getHours() % 12 + m / 60; //因为钟只有12小时
+
+                /*注意点：毫秒  秒 分 时 定义顺序不能改变，否则会发生声明提前,发生一些错误。
+                类似于  function $() {
+                    console.log(a);
+                    var a = 10;
+                }   $();  undefined*/
+               
+
+                $('seconds').style.transform = 'rotate(' + s * 6 + 'deg)';
+                $('min').style.transform = 'rotate(' + m * 6 + 'deg)';
+                $('hour').style.transform = 'rotate(' + h * 30 + 'deg)';
+            }, 10)
+
+        }
+        function $(id) {
+            return typeof id === 'string' ? document.getElementById(id) : null;
+        }
+    </script>
+</body>
+
+</html>

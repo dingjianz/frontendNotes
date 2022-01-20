@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="a++">Add to A</button>
+        <button @click='b++'>Add to B</button>
+        <p>A - {{a}}</p>
+        <p>B - {{b}}</p>
+        <!-- methods里面的addToA/B 方法在{{}}里面时，必须加括号，否则返回的是函数本体 
+
+            注意点：只要methods里面的方法被调用一次后（没被调用的方法除外），只要一个方法被调用，所有被调用过的方法也会同时调用，消耗大量内存
+
+
+            注意：不要使用箭头函数来定义 method 函数 (例如 plus: () => this.a++)。
+            理由是箭头函数绑定了父级作用域的上下文，所以 this 将不会按照期望指向 Vue 实例，this.a 将是 undefined
+        -->
+        <p>Age + A = {{addToA()}}</p>
+        <p>Age + B = {{addToB()}}</p>
+        <p>{{someFunction()}}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                a: 0,
+                b: 0,
+                age: 20
+            },
+            methods: {
+                addToA() {
+                    console.log('f1');
+                 return this.age + this.a;
+                },
+                addToB() {
+                    console.log('f2');
+                  return this.age + this.b;
+                },
+                someFunction(){
+                    console.log('不调用我，但是我也能打印 ');
+                    
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13.switch语句</title>
+</head>
+<body>
+    <script>
+        var a, b;
+        a = +(window.prompt('请输入数字'));
+        b = Math.floor(a / 10);
+        // Math.floor() 向下取整
+       switch (b) {
+            case 10:
+            case 9:
+            // 利用了case的穿透，直接在两种条件下输出，精简了代码
+                alert('A 90-100');
+                break;
+        
+            case 8:
+                alert('B 80-89');
+                break;
+        
+            case 7:
+                alert('C 70-79');
+                break;
+        
+            case 6:
+                alert('D 60-69');
+                break;
+        
+            default:
+                alert('E 0-59');
+                break;
+        }
+    /*     if (a <= 100 && a >= 90) {
+             alert('A 90-100');
+        }else if (a <= 89 && a >= 80) {
+            alert('b 80-89');
+        
+        }else if (a <= 79 && a >= 70) {
+            alert('C 70-79');
+        
+        }else if (a <= 69 && a >= 60) {
+             alert('D 60-69');
+        }else if (a <= 59 && a >= 0) {
+            
+        }{
+            alert('请输入0-100');
+        }
+        */
+        </script>
+</body>
+</html>

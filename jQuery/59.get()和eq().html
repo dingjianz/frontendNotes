@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>59.get()和eq()</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            $('p').eq(0);
+            console.log($('p').eq(0));//返回的是jQuery对象，jq对象（不可以使用dom属性方法，可以用jq的属性、方法）
+            console.log($('p').get(0));//返回的是DOM元素，（可以使用dom属性，方法，不可以使用jq属性方法）
+            console.log($('p')[0]);//返回的是DOM元素，（可以使用dom属性，方法，不可以使用jq属性方法）,和第二个方法一样
+            
+        });
+    </script>
+</head>
+<body>
+    <p class="p1">我是第1个p标签</p>
+    <p class="p2">我是第2个p标签</p>
+    <p class="p3">我是第3个p标签</p>
+    <p class="p4">我是第4个p标签</p>
+    <p class="p5">我是第5个p标签</p>
+    <script>
+    $(function () {
+       $('p').eq(1).css('backgroundColor','red');
+      // $('p').get(1).css('backgroundColor','red'); 报错$(...).get(...).css is not a function
+      console.log($('p').get().reverse());
+      
+
+    });
+    </script>
+</body>
+</html>

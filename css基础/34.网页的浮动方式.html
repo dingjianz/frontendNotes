@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>34.网页的浮动方式</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    .box1{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        float: left;
+        /* margin: 0 auto; */
+    }
+      .box2{
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        float:right;
+    }
+    .hezi1{
+        width: 100px;
+        height: 100px;
+        float: left;
+        background-color: yellow;
+    }
+       .hezi2{
+        width: 100px;
+        height: 100px;
+        float: right;
+        background-color: purple;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    
+ <span class="hezi1">我是span</span>
+ <span class="hezi2">我是span</span>
+
+<!-- div.box$*2 span.hezi${我是span}*3 -->
+ 
+</body> 
+</html>
+
+<!-- 浮动流排版方式 浮动流是一种"半脱离标准流"的排版方式 浮动流只有一种排版方式, 就是水平排版. 它只能设置某个元素左对齐或者右对齐 
+
+注意点: 浮动流中没有居中对齐, 也就是没有center这个取值
+     在浮动流中是不可以使用margin: 0 auto; 
+     
+特点: 在浮动流中是不区分块级元素/行内元素/行内块级元素的
+      无论是块级元素/行内元素/行内块级元素都可以水平排版 
+      在浮动流中无论是块级元素/行内元素/行内块级元素都可以设置宽高 
+      综上所述, 浮动流中的元素和标准流中的行内块级元素很像 -->

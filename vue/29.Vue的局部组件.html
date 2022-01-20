@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>29.Vue的局部组件</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-date></my-date>
+        <my-color></my-color>
+    </div>
+
+    <script>
+        // 局部组件只能在它注册的vue实例内使用
+        //1.0 创建组件构造器
+        let proFile = Vue.extend({
+            //1.1 模板选项 template里面只有一个根标签
+            template: `
+            <div>
+                <input type='date'>
+                <p>今天天气很好</p>
+            </div>
+            `
+        });
+        let proFile2 = Vue.extend({
+            //1.1 模板选项
+            template: `
+            <div>
+                <input type='color'>
+                <p>我是一个色板</p>
+            </div>
+            `
+        });
+
+        //2.0 注册一个局部的组件
+        let vm = new Vue({
+            el: '#app',
+            components: {
+                "my-date": proFile,
+                "my-color": proFile2
+            }
+        });
+    </script>
+</body>
+
+</html>

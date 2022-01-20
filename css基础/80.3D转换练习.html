@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>80.3D模块转换练习</title>
+    <style>
+     *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+         perspective: 500px;/*perspective 属性定义 3D 元素距视图的距离，以像素计,设置在元素的父元素上*/
+    }
+    ul{
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        margin-top: 100px;
+        position: relative;
+        transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        transform-style: preserve-3d;
+        animation:dj 5s linear 0s infinite normal;
+    }
+    ul:hover{
+        animation-play-state:paused;
+    }
+    ul li{
+         width: 200px;
+        height: 200px;
+        list-style: none;
+        position:absolute;
+        left: 0;
+        top: 0;
+        font-size: 60px;
+        text-align: center;
+        line-height: 200px;
+    }
+    ul li img{
+        width: 200px;
+        height: 200px;
+    }
+        ul li:nth-child(1){
+            background-color: red;
+            transform:rotateX(90deg) translateZ(100px) scale(2,1);
+        }
+        ul li:nth-child(2){
+            background-color: green;    
+            transform:rotateX(180deg) translateZ(100px) scale(2,1);        
+        }
+        ul li:nth-child(3){
+            background-color: blue;
+            transform:rotateX(270deg) translateZ(100px) scale(2,1);
+        }
+        ul li:nth-child(4){
+            background-color: yellow;
+            transform:rotateX(360deg) translateZ(100px) scale(2,1);
+        }
+        ul li:nth-child(5){
+            background-color: pink;
+            transform:rotateY(90deg) translateZ(-200px);
+        }
+        ul li:nth-child(6){
+            background-color: purple;
+            transform:rotateY(90deg) translateZ(200px);
+        }
+        @keyframes dj {
+            from{
+                transform: rotateX(0deg);
+            }
+            to{
+                transform: rotateX(-360deg);
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><img src="images/banner1.png" alt=""></li>
+        <li><img src="images/banner2.jpg" alt=""></li>
+        <li><img src="images/banner3.jpg" alt=""></li>
+        <li><img src="images/banner4.jpg" alt=""></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>

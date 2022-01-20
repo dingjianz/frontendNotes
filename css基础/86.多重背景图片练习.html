@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>86.多重背景图片练习t</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    div{
+        width:600px;
+        height:190px;
+        border:1px solid #000;
+        margin:100px auto;
+        background-image: url("images/bg-sun.png"),url("images/bg-plane.png"),url("images/bg-clouds.png");
+        background-size:50px 50px,50px 50px,auto auto;
+        background-repeat: no-repeat;
+        background-position: 400px 50px,100px 100px,0 0;
+        animation: dj 5s linear 0s infinite normal;
+    }
+   
+    @keyframes dj {
+        from{
+           background-position: 400px 50px,100px 100px,0 0;
+        }
+        to{
+          background-position: 400px 50px,300px -50px, -600px 0;
+        }
+        
+    }
+  
+        </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>

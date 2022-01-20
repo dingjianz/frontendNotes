@@ -1,0 +1,7 @@
+{
+    "name":"丁健",
+    "age": 18,
+    "sex":"男",
+    "djFriends": ["zxl","xnj","ls"],
+    "dd":{"name":"bzd","age":18,"cj":100}
+}

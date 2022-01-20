@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas{
+            width: 600px;
+            height: 400px;
+            border: 1px solid #000;
+            margin: 50px 30px;
+        }
+    </style>
+</head>
+<!-- http://www.thenewstep.cn/test/testToken.php -->
+<!-- token  f4c902c9ae5a2a9d8f84868ad064e706 -->
+<!-- v-on事件方法可以不加括号，因为一定会调用，但是需要传参时，必须加括号-->
+<body>
+    <div id="app">
+        <h1>{{ good() }}</h1>
+        <p>My age is {{ age }}</p>
+        <button @click="addAge()">涨一岁</button>
+        <button @dblclick="age--">减一岁</button>
+        <div id="canvas" v-on:mousemove="updataXY">{{x}},{{y}}</div>
+    </div>
+    <script>
+        
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                age:24,
+                x:0,
+                y:0
+            },
+            methods: {
+                good(){
+                    return 'Good Morning!'
+                },
+                addAge(){
+                    return this.age += 1 ;
+                },
+                updataXY(event){
+                    let canvas = document.getElementById('canvas');
+                    this.x = event.pageX - canvas.offsetLeft;
+                    this.y = event.pageY - canvas.offsetTop;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

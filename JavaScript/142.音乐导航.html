@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>142.音乐导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        #nav {
+            width: 900px;
+            height: 40px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        #nav #ul {
+            width: 910px;
+            height: 40px;
+        }
+
+        #nav #ul li {
+            width: 100px;
+            height: 40px;
+            float: left;
+            text-align: center;
+            line-height: 40px;
+            border-right: 1px dashed #ccc;
+            background: url('images/_r1_c1.png') no-repeat;
+            position: relative;
+        }
+
+        span {
+            width: 100px;
+            height: 40px;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: skyblue;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <ul id="ul">
+            <li>首页
+                <span></span>
+                </span>
+                <audio src="source/a1.mp3"></audio>
+            </li>
+            <li>新头条
+                <span></span>
+                <audio src="source/a2.mp3"></audio>
+            </li>
+            <li>电视剧
+                <span></span>
+                <audio src="source/a3.mp3"></audio>
+            </li>
+            <li>新电影
+                <span></span>
+                <audio src="source/a4.mp3"></audio>
+            </li>
+            <li>小游戏
+                <span></span>
+                <audio src="source/a5.mp3"></audio>
+            </li>
+            <li>小说汇
+                <span></span>
+                <audio src="source/a6.mp3"></audio>
+            </li>
+            <li>旅游假
+                <span></span>
+                <audio src="source/a7.mp3"></audio>
+            </li>
+            <li>正品购
+                <span></span>
+                <audio src="source/a8.mp3"></audio>
+            </li>
+            <li>今日团
+                <span></span>
+                <audio src="source/a9.mp3"></audio>
+            </li>
+        </ul>
+    </nav>
+    <script src="./myFunction.js"></script>
+    <script>
+        window.onload = function () {
+            //1 获取元素
+            var ul = $('ul');
+            var ulLis = ul.children;
+            for (var i = 0; i < ulLis.length; i++) {
+                (function (i) {
+                    var ulLi = ulLis[i];
+                      // 2. 改变背景
+                    ulLi.style.backgroundPosition = '0px ' + i * -40 + 'px';//空格别忘记了
+                        // 2.1 监听鼠标进入
+                    ulLi.onmouseover = function () {
+                        // 2.2 缓动动画
+                        buffer(ulLi.children[0], { "top": 0 });
+                        // 2.3 播放音乐
+                        ulLi.children[1].play();
+                        ulLi.children[1].currentTime = 0;
+                    };
+                  // 2.2 监听鼠标离开
+                    ulLi.onmouseout = function () {
+                        buffer(ulLi.children[0], { "top": 40 });
+                    }
+                })(i);
+                // 3. 监听键盘的点击
+                window.onkeydown = function (event) {
+                    var e = event || window.event;
+                    var keyCode = e.keyCode - 97;//根据Unicode码减去97 按1 就得0
+                    // console.log(keyCode);
+                    buffer(ulLis[keyCode].children[0], { "top": 0 },function () {
+                        buffer(ulLis[keyCode].children[0], { "top": 40 });
+                    });
+                    ulLis[keyCode].children[1].play();
+                   ulLis[keyCode].children[1].currentTime = 0;
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

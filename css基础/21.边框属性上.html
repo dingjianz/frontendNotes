@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>21.边框属性上</title>
+    <style>
+        /* 四条边统一 设定边框厚度、样式、颜色 */
+
+        /* .box1{
+            width: 100px;
+            height: 100px;
+            background-color: #666;
+            border: 5px dashed green;
+        } */
+         /* 各自设定边框厚度、样式、颜色 */
+        /* .box2{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-top: 5px solid green;
+            border-left: 1px dashed #000;
+            border-right: 10px solid #666;
+       
+        } */
+        /* 分别设置上 右 下 左 */
+        /* .box2{
+            border-color: green pink purple yellow;
+            border-width: 10px 12px 8px 4px;
+            border-style: double dashed solid double ;
+          width: 500px;
+          height: 500px;
+          background-color: #0d2b10; */
+
+         /* 单独设置各自边框属性  */
+         /* .box2{
+             width: 500px;
+             height: 500px;
+             background-color:red;
+
+             border-top-width: 5px;
+             border-right-style: dashed;
+             border-bottom-color: green;
+             border-left-width: 10px;
+               }*/
+
+          /* .box2{
+              width: 100px;
+              height: 100px;
+              border-width: 5px;
+              border-color:red;
+              border-style: solid dashed solid solid;
+
+          }      */
+
+          /* 层叠性,后面的边框属性会覆盖前面的边框属性 */
+          .box2{
+               width: 100px;
+              height: 100px;
+              border: 5px solid red;
+              border-right: 5px dashed red;
+              border-left: 5px dashed red;
+          }
+            .box3{
+                width: 0px;
+                height: 0px;
+                border-width: 25px;
+                border-style: solid;
+                border-color:black white white white;
+            }
+        
+    </style>
+</head>
+<body>
+    <!-- <div class="box1"></div> -->
+    <div class="box2"></div>
+    <br>
+    <hr>
+    <div class="box3"></div>
+</body>
+</html>

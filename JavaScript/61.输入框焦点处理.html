@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>61.输入框焦点处理</title>
+</head>
+<body>
+    <input type="text" placeholder="输入丁健">
+    <script>
+        window.onload = function(){
+            var input = document.getElementsByTagName('input')[0];
+            input.onfocus = function () {
+                this.style.width =" 300px";
+                this.style.margin = '0 auto';
+                this.style.backgroundColor = 'red';
+            }
+            input.onblur = function () {
+                this.style.outline = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

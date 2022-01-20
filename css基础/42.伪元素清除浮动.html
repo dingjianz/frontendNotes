@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>42.伪元素清除浮动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    .box1{
+        background-color:blue;
+    }
+    .box2{
+        background-color: green;
+    }
+    ul{
+       
+        list-style: none;
+    }
+    .ul01 li{
+        background-color: red;
+    }
+    .ul02 li{
+        background-color:yellow;
+    }
+    li{
+        float:left;
+    }
+ 
+    
+    .box1::after{
+        content: "";
+        height: 0;
+        visibility: hidden;
+        display: block;
+        clear: both;
+    }
+    .box1{
+        *zoom: 1;
+    }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <ul class="ul01">
+            <li>大娃</li>
+            <li>二娃</li>
+            <li>三娃</li>
+        </ul>
+     
+       
+    </div>
+    
+    <div class="box2">
+        <ul class="ul02">
+            <li>李南江</li>
+            <li>极客江南</li>
+            <li>江哥</li>
+        </ul>
+    </div>
+</body>
+</html>

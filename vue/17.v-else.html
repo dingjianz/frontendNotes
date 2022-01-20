@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>17.v-else</title>
+    <script src='js/vue.js'></script>
+</head>
+<!--v-else要紧跟在v-if或v-else-if后面，表示v-if或v-else-if条件不成立时执行  -->
+<body>
+    <div id="app">
+        <p v-if="height > 1.8">健身高：{{height}}m</p>
+        <p v-else>健身高不足1.8m</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                show: true,
+                hide: false,
+                height: 1.7,
+            }
+        });
+    </script>
+</body>
+
+</html>

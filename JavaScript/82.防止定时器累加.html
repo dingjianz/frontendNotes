@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>82.防止定时器累加</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        window.onload = function (){
+            var box = document.getElementById('box');
+            var height = 0,time=null;
+            box.onmouseover = function(){
+                clearInterval(time);//清除定时器在事件开始时就要开始
+               time= setInterval(function () {
+                    height +=1;
+                    console.log(height);
+                    
+                },1000);
+            }
+        }
+    </script>
+</body>
+</html>

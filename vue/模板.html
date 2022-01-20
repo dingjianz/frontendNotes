@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <style>
+        button {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        span {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .dj-enter-active,.dj-leave-active{
+            transition: all 3s;
+        }
+        .dj-enter{
+            opacity: 0;
+            transform: translate(100px);
+        }
+        .dj-leave{
+            opacity: 1;
+            transform: translate3d(0,-100px,0);
+        }
+        .dj-leave-to{
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+        .dj-enter-to{
+            opacity: 1;
+            transform: translate3d(0,100px,0);
+        }
+      
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <button @click="show = !show">点击</button>
+        <div class="box">
+            <transition name='dj'>
+                <span v-show="show"></span>
+            </transition>
+        </div>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                show: true
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>71.动画模块-其他属性上</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    div{
+        background-color: red;
+        width: 100px;
+        height: 40px;
+        animation-name: dj;
+        animation-duration: 4s;
+        animation-timing-function:ease-in-out;
+        animation-delay:2s;
+        animation-iteration-count:infinite;
+        animation-direction: alternate;
+    }
+    @keyframes dj{
+        from{
+            margin-left: 0;
+        }
+        to{
+            margin-left: 500px;
+
+        }
+    }
+    div:hover{
+        animation-play-state: paused;
+    }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

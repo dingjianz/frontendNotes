@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>40.小案例 图片切换</title>
+
+</head>
+
+<body>
+    <div>
+        <img src="images/zjl.jpg" id="yb">
+    </div>
+    <script>
+        window.onload = function () {
+            var btu1 = document.getElementById("yb");
+            btu1.onmouseover = function () {
+                btu1.src = 'images/zjl2.jpg';
+            }
+            btu1.onmouseout = function () {
+                btu1.src = 'images/zjl.jpg';
+            }
+
+        }
+    </script>
+</body>
+
+</html>

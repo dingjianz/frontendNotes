@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>46.获取子节点2</title>
+</head>
+
+<body>
+    <div class="box">
+        <button id="btu">按钮</button>
+        <!-- 低版本浏览器 注释也会算在子节点中 -->
+        <span class="sspan">
+            <a href="#">我是超链接</a>
+        </span>
+        <p class="dj">我是DJ</p>
+    </div>
+    <script>
+        window.onload = function () {
+            var box = document.getElementsByClassName("box")[0];
+            console.log(box);
+
+            var boxchild = box.children;
+            console.log(boxchild);
+            console.log(boxchild[0]);
+
+        }
+    </script>
+</body>
+
+</html>

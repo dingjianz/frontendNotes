@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>66.2D转换模块-透视属性(</title>
+    <style>
+    div{
+        width: 310px;
+        height: 438px;
+        border: 1px solid #00ffff;
+        margin: 0 auto;
+        margin-top: 100px;
+        perspective: 500px; /*  要在父元素或者以上元素才行，建议父元素 */
+        background-color: #00ffff;
+       
+    }
+    div img{
+        transition: transform 2S linear 0s;
+        transform-origin: center bottom;
+    }
+    /* 要分清楚，是img旋转还是li 旋转 */
+    div:hover img{
+        transform:rotateX(80deg);
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="images/pk.png" alt="">
+    </div>
+</body>
+</html>

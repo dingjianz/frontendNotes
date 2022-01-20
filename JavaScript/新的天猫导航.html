@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>96.天猫弹性导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: pink;
+        }
+
+        #nav {
+            width: 900px;
+            height: 63px;
+            margin: 100px auto;
+            position: relative;
+            border-radius: 5px;
+            background: url('images/doubleOne.png') no-repeat right center;
+            background-color: #fff;
+        }
+
+        #nav ul {
+            position: relative;
+            /*没有这个定位，tMall图片会盖住文字*/
+        }
+
+        #nav ul li {
+            float: left;
+            width: 88px;
+            height: 63px;
+            line-height: 70px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #nav #t_mall {
+            width: 88px;
+            height: 63px;
+            background: url('images/tMall.png') no-repeat;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <span id="t_mall"></span>
+        <ul>
+            <li>双11狂欢</li>
+            <li>服装会场</li>
+            <li>数码家电</li>
+            <li>家具建材</li>
+            <li>母婴童装</li>
+            <li>手机会场</li>
+            <li>美妆会场</li>
+            <li>进口会场</li>
+            <li>飞猪旅行</li>
+        </ul>
+    </nav>
+    <script>
+        window.onload = function () {
+            // 1. 获取需要的标签
+            var nav = $("nav");
+            var t_mall = nav.children[0];
+            var ul = nav.children[1];
+            var allLis = ul.children;
+      
+            var mousePosition = 0;
+            
+            for (var i = 0; i < allLis.length; i++) {
+                var li = allLis[i];
+    
+                li.onmouseover = function () {
+                     t_mall.style.left = this.offsetLeft + 'px';//this不可少，同步异步
+                };
+     
+                li.onclick = function () {
+                    mousePosition = this.offsetLeft;
+                };
+             
+                li.onmouseleave = function () {
+                    t_mall.style.left = mousePosition + 'px';
+
+                };
+
+            };
+
+
+            function $(id) {
+                return typeof id === "string" ? document.getElementById(id) : null;
+            }
+        }
+    </script>
+</body>
+
+</html>

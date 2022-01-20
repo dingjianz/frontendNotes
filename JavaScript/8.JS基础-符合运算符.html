@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8.JS基础-符合运算符</title>
+</head>
+<body>
+    <script>
+    var num = 10;
+    var value = num;
+    num = 90;
+    console.log(num);//90
+    console.log(value);//100
+    
+    // 复合运算
+    var a = 10;
+    a += 2;
+    console.log(a);//12 
+
+    var b = 10;
+    b -= 3;
+    console.log(b);//7
+
+    var c = 10;
+    c *= 10+2;
+    console.log(c);//120
+    
+    // 自增运算符
+        var i = 100;
+        i++;// or ++i;
+        console.log(i);//101
+        
+    // 自减运算符
+    var m = 100;
+    m--;// or --m;
+    console.log(m);//99
+
+        // 先用后变
+    var a = 20;
+    var b = 30;
+    var c = (a++) + (b++);
+    console.log(c);//50
+    console.log(a);//21
+    console.log(b);//31
+    
+    // 先变后 var a = 20;
+       var a = 20;
+        var b = 30;
+        var c = (++a) + (++b);
+        console.log(a);//21
+        console.log(b);//31
+        console.log(c);//52
+
+
+        // 关系运算符
+
+        var a = 100, b = 100;
+        console.log(a > b);//false
+        console.log(a < b);//false
+        console.log(a >= b);//true
+        console.log(a <= b);//true
+        console.log(a == b);//true 判断值是否相等
+        console.log(a != b);//false 判断值是否不相等
+        console.log(a === b);//true 判断值和类型是否相等
+        console.log(a !== b);//false  判断值和类型是否不相等
+
+        // 对于非数值比较时，会将其转换为数字再进行比较
+        console.log(1 > false);//true
+        console.log(1 >= true);//true
+        console.log(1 > '0');//true
+        console.log(1 > '10');//false
+        console.log(1 > 'dj');//false
+        
+        console.log(1 > null);//true
+
+        // 两侧均是字符串时，则会根据各自的unicode码进行比较
+        
+        console.log('a' < 'b');// true a 的unicode码97  b 为 98 
+        
+        var num = 10;
+        console.log(isNaN(num));// false
+        
+        console.log(null == undefined); //true  值相等
+        console.log(null === undefined);  //true值相等，但是类型不相等
+        
+        console.log(123 == '123'); //true
+        console.log(123 === '123'); //true
+        
+    </script>
+</body>
+</html>

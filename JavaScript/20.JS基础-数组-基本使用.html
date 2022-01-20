@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>20.JS基础-数组-基本使用</title>
+</head>
+
+<body>
+    <script>
+        /*  var person = ['张三', '男', 23];
+          console.log(person[0]);//输出数组里的第零项
+          console.log(person.length);//输出数组的长度
+          console.log(person[person.length]);//undefined
+          console.log(person[person.length - 1]);//23
+  
+         
+          
+          var num=[];
+              num[0]='张三';
+              num[1]='男';
+              num[2]=23;
+              console.log(num);
+  
+          
+        //   将数组中奇数打印出来
+
+        var numbers = [10, 22, 13, 17, 18];
+        for (var i = 0; i < numbers.length; i++) {
+            var item = numbers[i];
+            if (item % 2 !== 0) {
+                console.log(item);
+            }
+        }   
+         
+        //求一组数组中的最大数和最小数，以及各自索引。
+        var number = [100, 300, -56, -856, 456, 1000, -1000];
+        var maxValue = number[0], minValue = number[0], maxIndex = 0, minIdex = 0;
+        for (i = 1; i < number.length; i++) {
+            if (number[i] > maxValue) {
+                maxValue = number[i];
+                maxIndex = i;
+            }
+            if (number[i] < minValue) {
+                minValue = number[i];
+                minIndex = i;
+            }
+        }
+        console.log(maxValue);
+        console.log(maxIndex);
+        console.log(minValue);
+        console.log(minIndex);
+         */
+        //将数组中为零的元素去掉，重新组成一个数组
+        var num = [2, 3, 56, 0, 356, 0, 0, -56], res = [];
+        for (i = 0, m = 0; i < num.length; i++) {
+            if (num[i] !== 0) {
+                //  res[m++]=num[i];
+                res[res.length] = num[i];//经验总结：灵活的写法
+            }
+        }
+        console.log(res);
+
+
+    </script>
+</body>
+
+</html>

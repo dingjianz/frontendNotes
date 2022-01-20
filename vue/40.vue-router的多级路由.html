@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>40.vue-router的多级路由</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="row">
+            <div class="container">
+                <div class="page-header col-xs-8 col-xs-offset-2 text-warning">
+                    <h2>IT666教育</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 col-xs-offset-2">
+                <ul class="list-group">
+                    <router-link to="/h" class="list-group-item">HTML5学院</router-link>
+                    <router-link to="/j" class="list-group-item">Java学院</router-link>
+                    <router-link :to="{name:'python'}" class="list-group-item">Python学院</router-link>
+                </ul>
+            </div>
+            <div class="col-xs-6 panel">
+                <router-view></router-view>
+            </div>
+        </div>
+    </div>
+    <template id="h5">
+        <div>
+            <h2>HTML5学院</h2>
+            <p>掌握面向未来的神技！</p>
+            <img src="img/james.jpg" alt="" width="250">
+            <div>
+                <ul class="nav nav-tabs">
+                    <router-link to="bas">基础班</router-link>
+                    <router-link to="" exact>大神班</router-link>
+                </ul>
+                <div class="tab-content">
+                    <router-view></router-view>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="basic">
+        <div>
+            <h2>基础班</h2>
+            <p>基础永远是最重要的！</p>
+            <img src="img/lcf.jpg" alt="" width="100">
+        </div>
+    </template>
+    <template id="big">
+        <div>
+            <h2>大神班</h2>
+            <p>每个大神都是从菜鸟开始的！</p>
+            <img src="img/1.jpg" alt="" width="100">
+        </div>
+    </template>
+    <template id="java">
+        <div>
+            <h2>Java学院</h2>
+            <p>世界上最好的语言！</p>
+            <img src="img/lbj.jpg" alt="" width="250">
+        </div>
+    </template>
+    <template id="python">
+        <div>
+            <h2>Python学院</h2>
+            <p>最火的语言！</p>
+            <img src="img/ad.jpg" alt="" width="250">
+        </div>
+    </template>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <script>
+        //1.0 创建组件
+        const Html5 = Vue.extend({
+            template: '#h5'
+        });
+        const Basic = Vue.extend({
+            template: '#basic'
+        });
+        const Big = Vue.extend({
+            template: '#big'
+        });
+        const Java = Vue.extend({
+            template: '#java'
+        });
+        const Python = Vue.extend({
+            template: '#python'
+        });
+        //2.0 定义路由
+        const routes = [
+         
+            {
+                path: '/h',
+                name:'smallH5',
+                component: Html5,
+                children: [
+                    { path: 'bas',component: Basic },
+                    { path: '',component: Big},
+                    // { path: '/', redirect:'bas' }
+                ]
+            },
+            { path: '/j',component: Java},
+            { path: '/p', component: Python,name:"python" },
+            // 配置根路由
+            {path: '/',redirect: '/j'}
+        ];
+        //3.0 创建路由实例
+        const router = new VueRouter({
+            // mode="history",
+            // routes:routes;
+            routes
+        });
+        // 4. 创建vue的实例和挂载根实例。
+        let vm = new Vue({
+            router
+        }).$mount('#app');
+    </script>
+</body>
+
+</html>

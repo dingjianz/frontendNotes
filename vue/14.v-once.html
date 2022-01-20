@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10.v-once</title>
+</head>
+<!-- 执行一次性地插值，当数据改变时，插值处的内容不会更新。 -->
+<body>
+   <div id="app">
+       <p v-once>原始值：{{msg}}</p>
+       <p>后面的：{{msg}}</p>
+       <!-- 改变后面的msg，不改变原始的msg -->
+       <input type="text" v-model = 'msg'>
+   </div>
+   <script src='js/vue.js'></script>
+   <script>
+       new Vue({
+           el:'#app',
+           data:{
+               msg:'hello world！'
+           }
+       });
+   </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>38.浮动练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    .header{
+        margin: 0 auto;
+        width: 980px;   
+        height: 100px;
+    }
+    .header .box1{
+        width: 250px;
+        height: 100px;
+        background-color: pink;
+        float: left;
+    }
+    .header .box2{
+        width: 150px;
+        height: 50px;
+        background-color: skyblue;
+        float:right;
+    }
+    .header .box3{
+        width: 650px;
+        height: 50px;
+        background-color: purple;
+        float:right;
+    }
+    .content{
+         margin: 0 auto;
+        width: 980px;
+        height: 400px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+     .content .contentLeft{
+         width: 320px;
+         height: 400px;
+         background-color: yellow;
+         float: left;
+     }
+     .content .contentRight{
+            width: 650px;
+            height: 400px;
+            float: right;
+
+     }
+      .content .contentRight .contentRightTop{
+          width: 650px;
+          height: 350px;
+          /* background-color: purple; */
+          margin-bottom: 10px;
+         
+      }
+       .content .contentRight .contentRightBottom{
+           width: 650px;
+           height: 40px;
+           background-color: rgb(126, 71, 255);
+       }
+       .content .contentRight .contentRightTop .contentRightTopLeft{
+            width: 400px;
+            height: 350px;
+            /* background-color: green; */
+            float: left;
+
+       }
+        .content .contentRight .contentRightTop .contentRightTopRight{
+            width: 240px;
+            height: 350px;
+            background-color: green;
+            float:right;
+        }
+
+         .content .contentRight .contentRightTop .contentRightTopLeft .new1{
+             width: 400px;
+             height: 200px;
+             background-color: rgb(255, 25, 255);
+         }
+         .content .contentRight .contentRightTop .contentRightTopLeft .new2{
+             width: 400px;
+             height: 140px;
+             background-color: darkgoldenrod;
+             margin-top: 10px;
+             
+         }
+    .footer{
+         margin: 0 auto;
+        width: 980px;
+        height: 40px;
+        background-color: tomato;
+    }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+    <div class="content">
+        <div class="contentLeft"></div>
+        <div class="contentRight">
+            <div class="contentRightTop">
+                <div class="contentRightTopLeft"> 
+                    <div class="new1"></div>
+                    <div class="new2"></div>
+                </div>
+                <div class="contentRightTopRight"></div>
+            </div>
+            <div class="contentRightBottom"></div>
+        </div>
+    </div>
+    <div class="footer"></div>
+</body>
+</html>

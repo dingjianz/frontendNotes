@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>123.onresize用于瀑布流</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            /* background-color: red; */
+        }
+
+        img {
+            vertical-align: top;
+            width: 165px;
+        }
+
+        #main {
+            position: relative;
+        }
+
+        .box {
+            float: left;
+            padding: 15px 0 0 15px;
+        }
+
+        .pic {
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img01.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img02.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img03.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img04.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img05.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img06.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img07.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img08.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img09.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img10.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img11.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img12.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img13.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img14.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img15.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img16.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img17.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img18.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img19.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img20.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img21.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img22.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img23.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img24.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img25.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img26.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img27.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img28.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img29.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img30.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img31.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img32.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img33.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img34.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img35.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img36.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img37.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img38.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img39.jpg" alt="">
+            </div>
+        </div>
+        <div class="box">
+            <div class="pic">
+                <img src="img/images/img40.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <script src="underscore/Underscore-min.js"></script>
+    <script src="./myFunction.js"></script>
+    <script>
+        window.onload = function () {
+            // 1. 实现瀑布流布局
+            waterFull('main');
+            //动态加载图片
+            var timer1 = null;
+            window.onscroll = function () {
+                //节流
+                clearTimeout(timer1);
+                timer1 = setTimeout(function () {
+                    if (checkWillLoadImage()) {
+                        var dataArr = [
+                            { "src": "img/images/img01.jpg" },
+                            { "src": "img/images/img02.jpg" },
+                            { "src": "img/images/img03.jpg" },
+                            { "src": "img/images/img04.jpg" },
+                            { "src": "img/images/img05.jpg" },
+                            { "src": "img/images/img36.jpg" },
+                            { "src": "img/images/img07.jpg" },
+                            { "src": "img/images/img08.jpg" },
+                            { "src": "img/images/img09.jpg" },
+                            { "src": "img/images/img10.jpg" },
+                            { "src": "img/images/img11.jpg" },
+                            { "src": "img/images/img12.jpg" },
+                            { "src": "img/images/img13.jpg" },
+                            { "src": "img/images/img14.jpg" },
+                            { "src": "img/images/img15.jpg" },
+                            { "src": "img/images/img16.jpg" },
+                            { "src": "img/images/img17.jpg" },
+                            { "src": "img/images/img18.jpg" },
+                            { "src": "img/images/img19.jpg" },
+                            { "src": "img/images/img20.jpg" },
+                            { "src": "img/images/img21.jpg" },
+                            { "src": "img/images/img22.jpg" },
+                            { "src": "img/images/img23.jpg" },
+                            { "src": "img/images/img24.jpg" }
+                        ];
+                        //  创建元素
+
+                        for (var j in dataArr) {
+                            var newBox = document.createElement("div");
+                            newBox.className = "box";
+                            $("main").appendChild(newBox);
+
+                            var newPic = document.createElement("div");
+                            newPic.className = "pic";
+                            newBox.appendChild(newPic);
+
+                            var newImg = document.createElement("img");
+                            newImg.src = dataArr[j].src;
+                            newPic.appendChild(newImg);
+                        }
+                        //重新布局
+                        waterFull('main');
+                    }
+                }, 200);
+            };
+            //窗口尺寸发生改变时，重新排布
+            var timer = null;//写在外面不需要每次窗口尺寸改变时重新声明，优化代码作用。
+            window.onresize = function () {
+            
+                clearTimeout(timer);
+                //节流，设置一次定时器,不然resize會輸出很多次，1、使用onresize 事件处理程序的时候容易发生，当调整浏览器大小的时候，该事件会连续触发。在onresize 事件处理程序内部如果尝试进行DOM 操作，其高频率的更改可能会让浏览器崩溃。 2、我们常见的一个搜索的功能，我们一般是绑定keyup事件，每按下一次键盘就搜索一次。但是我们的目的主要是每输入一些内容搜索一次而已。 为了解决这些问题，就可以使用定时器对函数进行节流。
+                timer = setTimeout(function () {
+                    waterFull('main');
+                }, 200);
+            }
+        }
+
+        function waterFull(parent) {
+            //1. 让内容居中
+            var allBox = $(parent).children;
+            //得到盒子的宽度
+            var cols = 0, boxWidth = 0;
+            boxWidth = allBox[0].offsetWidth;
+            var screenW = document.documentElement.clientWidth;
+            cols = parseInt(screenW / boxWidth);
+            $(parent).style.width = cols * boxWidth + 'px';//只有定义了宽度才能居中 
+            //让内容居中
+            $(parent).style.margin = '0 auto';
+
+            //2 找到高度最短一列
+            var heightArr = [];
+            for (var i = 0; i < allBox.length; i++) {
+                // var heightArr = []; 放在这里allBoxH每次循环时都从空数组开始
+                var boxH = allBox[i].offsetHeight;
+                if (i < cols) {
+                    heightArr.push(boxH);
+                    allBox[i].style.position = '';//onresize会自动添加属性position：absolute；
+                } else {
+                    var minHeight = _.min(heightArr);
+                    var minHeightIndex = getMinHeihtIndex(heightArr, minHeight);
+                    //2.1 给当前盒子定位到最短的那一列
+                    allBox[i].style.position = "absolute";
+                    allBox[i].style.left = minHeightIndex * boxWidth + 'px';
+                    allBox[i].style.top = minHeight + 'px';
+                    heightArr[minHeightIndex] += boxH;//给最短的那一列加上当前盒子的高度
+                }
+            }
+        }
+
+
+        function getMinHeihtIndex(arr, minHeight) {
+            for (var i in arr) {
+                if (arr[i] === minHeight) {
+                    return i;
+                }
+            }
+        }
+
+
+
+        function checkWillLoadImage() {
+            var allBox = $('main').children;
+            var lastBox = allBox[allBox.length - 1];
+            var lastBoxHhalf = lastBox.offsetHeight * 0.5 + lastBox.offsetTop;//最后一个盒子显示一半自身高度时，加载接下来的图片
+            var screenH = document.documentElement.clientHeight + scroll().top;
+            return lastBoxHhalf <= screenH;//返回的是布尔值
+
+        }
+
+        function $(id) {
+            return typeof id === 'string' ? document.getElementById(id) : null;
+        }
+    </script>
+ 
+</body>
+
+</html>

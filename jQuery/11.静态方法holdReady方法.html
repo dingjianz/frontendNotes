@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>11.静态方法holdReady方法</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $.holdReady(true);//写在入口函数外
+           // $.holdReady(true); 作用: 暂停ready执行
+        $(function () {
+            alert('ready');
+        });
+
+    </script>
+</head>
+
+<body>
+    <button>恢复ready事件</button>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByTagName('button')[0];
+            btn.onclick = function () {
+                $.holdReady(false);
+            }
+        }
+    </script>
+</body>
+
+</html>

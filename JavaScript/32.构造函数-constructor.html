@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>32.构造函数-constructor</title>
+</head>
+
+<body>
+    <script>
+        var arr1 = new Array();
+        console.log(arr1.constructor);//Array() { [native code] }
+
+
+
+        var arr2 = new Array();
+        console.log(arr2.constructor);//Array() { [native code] }
+
+        console.log(arr1.constructor === arr2.constructor);//true  出自同一个母体Array
+
+        console.log(Array.constructor);//Function()  所有
+        
+
+    </script>
+</body>
+
+</html>

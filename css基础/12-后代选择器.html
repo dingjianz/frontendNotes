@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>12-后代选择器</title>
+		<style>
+			/*div p{
+				color:red;
+			}
+		*/
+		/*#ddd p{
+			color: purple;
+		}*/
+		/*#ddd #ppp{
+			color: yellow;
+		}*/
+		/*#ddd .aaa{
+			color: #87CEEB;
+		}*/
+		div ul li p{
+			color: red;
+		}
+		</style>
+	</head>
+	<body>
+		<p>我是段落</p>
+	<div id="ddd" class="bbb">
+		<p>我是段落</p>
+		<ul>
+			<p>我是段落</p>
+			<li>
+				<p id="ppp" class="aaa">我是段落</p>
+			</li>
+		</ul>
+	</div>
+		<p>我是段落</p>
+	</body>
+</html>

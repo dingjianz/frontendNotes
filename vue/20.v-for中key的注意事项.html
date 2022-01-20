@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+    <label>
+        ID: <input type="text" v-model="id">
+    </label>
+    <label>
+        Name: <input type="text" v-model="name">
+    </label>
+    <input type="button" value="添加" @click="add">
+<!-- key值用v-bind动态绑定 而且key值只能用string 或者number 不要用对象及其他类型  -->
+     <p v-for="(list,index) in lists" :key="list.id">
+         <input type="checkbox">
+         {{list.id}}---{{list.name}}
+    </p>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                id:'',
+                name:'',
+                lists:[
+                    {id:1,name:"嬴政"},
+                    {id:2,name:"李斯"},
+                    {id:3,name:"赵高"},
+                    {id:4,name:"韩非子"},
+                    {id:5,name:"荀子"}
+                ]
+            },
+            methods:{
+                add(){
+                    this.lists.unshift({id:this.id,name:this.name})
+                }
+            }
+        })    
+        
+    </script>
+</body>
+</html>

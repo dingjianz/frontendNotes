@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>29.JS基础-构造函数产生对象-方式2</title>
+</head>
+
+<body>
+    <script>
+        function Dog(some) {
+            this.name = some.name;
+            this.age = some.age;
+            this.friends = some.friends;
+            this.gongneng = function (whatever) {
+                console.log(whatever + '特异功能');
+
+            }
+        }
+        var huaZi = new Dog({ name: 'huahua', age: 10, friends: ["xiaohei", "xiaobai"] });
+        console.log(huaZi);
+        console.log(huaZi.name);//huahua
+        console.log(huaZi.age);//10
+        console.log(huaZi.friends);
+        console.log(huaZi.gongneng('花子'));//花子特异功能
+
+
+    </script>
+</body>
+
+</html>

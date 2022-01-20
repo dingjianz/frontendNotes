@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>13-子元素选择器</title>
+		<style>
+			/*div>p{
+				color: red; 
+			}*/
+			/*#d1>p
+			{
+				color:red;
+				
+			}*/
+			div>ul>li>p{
+				color: purple;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1">
+			<p>我是段落</p>
+			<p>我是段落</p>
+			<ul>
+				<li>
+					我不是段落
+					<p>我是段落</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

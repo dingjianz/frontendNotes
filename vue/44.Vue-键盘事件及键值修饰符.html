@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+<!-- 全部的按键别名：
+.enter
+.tab
+.delete (捕获“删除”和“退格”键)
+.esc
+.space
+.up
+.down
+.left
+.right 
+
+
+只有在 `keyCode` 是 13 时调用 `vm.submit()` 
+<input v-on:keyup.13="submit">
+-->
+<body>
+    <div id="app">
+        <h1>姓名：</h1>
+        <input type="text" @keyup='log("正在输入姓名")'>
+        <h1>年龄：</h1>
+        <input type="text" @keyup.enter='log("正在输入年龄")'>
+        <h1>性别：</h1>
+        <input type="text" @keyup.down='log("正在输入性别")'>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+         methods: {
+             alert(msg){
+                alert(msg);
+              },
+              log(msg){
+                  console.log(msg)
+              }
+            }
+        });
+    </script>
+</body>
+
+</html>

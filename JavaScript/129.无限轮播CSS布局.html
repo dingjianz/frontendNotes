@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>130.无限轮播CSS布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        #slider {
+            width: 750px;
+            height: 320px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+            padding: 10px;
+        }
+
+        #slider #top {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        #slider ul {
+            width:4500px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: move 10s linear 0s infinite normal;
+        }
+
+        #slider ul li {
+            width: 750px;
+            height: 320px;
+            float: left;
+        }
+
+        #slider ul li img {
+            width: 750px;
+            height: 320px;
+            vertical-align: top;
+          
+        }
+
+        #slider ol {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        #slider ol li {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            float: left;
+            margin-right: 3px;
+            background-color: #ccc;
+        }
+
+        #slider ol li.current {
+            background-color: orangered;
+        }
+
+        @keyframes move {
+            from {
+                margin-left: 0;
+            }
+            to {
+                margin-left: -3750px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="slider">
+        <div id="top">
+            <ul id="ul">
+                <li>
+                    <img src="image/pic01.jpg" alt="">
+                </li>
+                <li>
+                    <img src="image/pic02.jpg" alt="">
+                </li>
+                <li>
+                    <img src="image/pic03.jpg" alt="">
+                </li>
+                <li>
+                    <img src="image/pic04.jpg" alt="">
+                </li>
+                <li>
+                    <img src="image/pic05.jpg" alt="">
+                </li>
+                <li>
+                    <img src="image/pic01.jpg" alt="">
+                </li>
+
+
+            </ul>
+        </div>
+        <ol id="ol">
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+    <script src="./myFunction.js"></script>
+    <script></script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="renderer" content="webkit">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- 
+        container:
+        
+        w > 1200px : container 宽度1140 左右padding各15px 1170px 
+        w 992 ~ 1200 : container 宽度940 左右padding各15px  970px
+        w 768 ~ 992 : container 宽度720 左右padding各15px    750px
+        w < 768 px : container 宽度 +  左右padding各15px   等于全屏宽度  100%
+     -->
+    
+    <!-- 
+        container-fluid: 全屏显示，没有内边距padding
+
+     -->
+    
+     <div class="container">
+         <div class="row">
+             <div class="col-xs-2"></div>
+             <div class="col-xs-2">
+                 <!-- 这样写发生错误，container的宽度只和可视区域的宽度有关，切宽度已经定义 -->
+                 <div class="container">
+                     <div class="col-xs-6"></div>
+                     <div class="col-xs-6"></div>
+                 </div>
+             </div>
+             <div class="col-xs-2"></div>
+         </div>
+     </div>
+     <div class="container-fluid">
+
+     </div>
+    <script src="bootstrap/js/jquery-1.12.4.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

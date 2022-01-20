@@ -1,0 +1,102 @@
+  body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: black;
+      height: 2000px;
+  }
+
+  @font-face {
+      font-family: mf;
+      src: url('../fonts/icomoon.eot') format('embedded-opentype'), url('../fonts/icomoon.svg') format('svg'), url('../fonts/icomoon.ttf') format('truetype'), url('../fonts/icomoon.woff') format('woff');
+  }
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+      font-family: mf;
+      font-style: normal;
+  }
+
+  /* 头部样式开始 */
+
+  html,
+  body {
+      width: 100%;
+  }
+
+  .header {
+      width: 100%;
+      height: 70px;
+      position: relative;
+      background-color: #242424;
+      /* position: fixed; */
+  }
+
+  .nav-left h1 {
+      margin-top: 5px;
+      display: inline-block;
+      margin-left: 10px;
+  }
+.nav-left .icon-sousuo{
+    display: inline-block;
+    width: 40px;
+    height: 35px;
+    background-color: #fff;
+    position: relative;
+    left: 34px;
+    top: -3px;
+     border-top-left-radius: 15px;
+     border-bottom-left-radius: 15px;
+}
+.nav-left .icon-sousuo::after{
+   content: '\e986';
+   font-size: 20px;
+   line-height: 20px;
+  position: relative;
+  left: 5px;
+  top: 7px;
+
+ 
+}
+  .nav-left input {
+      margin-left: 30px;
+      height: 35px;
+      outline: none;
+      border: none;
+      width: 250px;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      font-size: 13px;
+  }
+.nav-center p{
+    font-size: 15px;
+    line-height: 70px;
+    color: #fff;
+    display: inline-block;
+    margin-right: 80px;
+}
+.nav-center button{
+    background-color: #353a40;
+    border: none;
+    color: #fff;
+    margin-left: 20px;
+}
+.nav-right a{
+    line-height: 70px;
+}
+.nav-right a img{
+   width: 40px;
+}
+.nav-right a:nth-child(1){
+    margin-right: 10px;
+}
+
+/* 头部样式结束 */
+/* 关于我们开始 */
+.mf-about{
+background-color: #C20C0C;
+}
+.mf-about .container-fluid {
+    color: #fff;
+    font-size: 15px;
+}
+
+/* 关于我们结束 */

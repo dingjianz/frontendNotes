@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>52.JS特效-图片的显示和隐藏</title>
+</head>
+
+<body>
+    <button>隐藏</button>
+    <br>
+    <img src="images/icon_03.jpg" >
+    <script>
+        window.onload = function () {
+            var btu = document.getElementsByTagName('button')[0];
+            var img = document.getElementsByTagName('img')[0];
+
+            btu.onclick = function () {
+                if (btu.innerText === '隐藏') {
+                    img.style.display = 'none';
+                    btu.innerText = '显示';
+                } else {
+                    img.style.display = 'block';
+                    btu.innerText = '隐藏';
+                };
+            };
+        };
+    </script>
+</body>
+
+</html>

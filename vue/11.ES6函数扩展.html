@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>11.ES6函数扩展</title>
+</head>
+
+<body>
+    <script>
+        //1.0 形参设置默认值  ES6写法
+        function sum(num1 = 10, num2 = 10) {
+            return console.log(num1 + num2);
+        }
+        sum();//20
+        sum(10, 20);//30  
+
+        //2.0 不知道传入多少数时ES5写法
+        function sum1() {
+            let result = 0;
+            for (let value of arguments) {
+                result += value;
+            }
+            return result;
+        }
+        console.log(sum1(10, 20, 30, 40));//100
+
+        //以上参数传递比较单一，还得区分
+        function sum2(...num) {
+            let result = 0;
+            for (let value of num) {
+                result += value;
+            }
+            return result;
+        }
+        console.log(sum2(10, 20, 30));//60
+
+        //任意传递参数
+        function sum3(name, sex, ...nums) {
+            console.log(name);
+            console.log(sex);
+            let result = 0;
+            for (let value of nums) {
+                result += value;
+            }
+            return result;
+        }
+        console.log(sum3('dj', 'male', 10, 20, 30));//dj male 60
+
+
+        //3.0 参数解构赋值 
+        function foo ({name="lisi",age=12}={}){
+            console.log(name,age);
+            
+        }
+        foo({name:"zhangsan",age:15});
+            
+        
+        //2.0 rest参数（剩余参数）
+        function sup(a,...param){
+            console.log(a,param);
+        }
+       sup(1,2,3);//1,[2,3]
+        
+
+        //5.0箭头函数
+        function add(num1, num2) {
+            console.log(num1 + num2);
+        };
+        add(10, 20);//30
+
+        let add1 = (num1, num2) => {
+            console.log(num1 + num2);
+        };
+        add1(100, 200);//300
+
+        //eg：遍历数组
+        let nameArr = ['dj', 'dzh', 'lnj', 'zxh'];
+        // nameArr.forEach(function (value,index) {
+        //     console.log(index+':'+value);
+        // });
+        nameArr.forEach((value, index) => { console.log(index + ':' + value); });
+
+        //this指向问题 箭头函数没有自己的this、arguments、super、new.target，它们分别指向外层函数的相应变量。
+        function demo() {
+            setTimeout(function () {
+                console.log(this);
+            }, 1000);
+        };
+        demo();//window
+        let obj = {};
+        demo.apply(obj);//window  setTimeout函数属于window
+
+
+        function demo1() {
+            console.log(this);
+        };
+        demo1();//window
+        let obj2 = { 'name': 'dj' };
+        demo1.apply(obj2);//obj2
+
+
+
+        function demo3() {
+            setTimeout(function () {
+                console.log(this);
+            }, 1000);
+
+            setTimeout(() => {
+                console.log(this);
+            }, 1000);
+        };
+        demo3();//window window
+        let obj3 = {};
+        demo3.apply(obj3);//window obj3  箭头函数设置setTimeout,内部会自动绑定this
+    </script>
+</body>
+
+</html>

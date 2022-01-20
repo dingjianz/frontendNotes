@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>80.放假倒计时</title>
+    <style>
+        #time {
+            text-align: center;
+            color: red;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="time"></div>
+    <script>
+        window.onload = function () {
+            var time = document.getElementById('time');
+            var nextDate = new Date('2018/06/01 08:17:35');
+            // var currentDate = new Date(); 时间放在这就不能时时改变了
+            var timer = setInterval(function () {
+                var currentDate = new Date();
+                var currentTime = currentDate.getTime();
+                var nextTime = nextDate.getTime();
+                var alltime = nextTime - currentTime;
+                var allSeconds = alltime / 1000;
+
+                var d = size(parseInt(allSeconds / 3600 / 24));
+                var hours = size(parseInt(allSeconds / 3600 % 24));
+                var minutes = size(parseInt(allSeconds / 60 % 60));
+                var seconds = size(parseInt(allSeconds % 60));
+                time.innerText = "距离放假还有" + d + "天" + hours + "小时" + minutes + "分钟" + seconds + "秒"
+            }, 1000);
+
+            function size(num) {
+                return num >= 10 ? num : "0" + num;
+            }//当数字小于10时，自动在前面加0，保持两位数
+        }
+    </script>
+</body>
+
+</html>

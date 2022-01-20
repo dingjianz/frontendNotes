@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>65.2D转换模块-旋转轴向</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            list-style: none;
+            margin-top: 120px;
+            float: left;
+            margin-left: 100px;
+            perspective: 500px;
+        }
+        ul li img{
+            width: 200px;
+            height: 200px;
+        }
+        ul li:nth-child(1) img{
+            transform: rotateZ(45deg);
+        }
+        ul li:nth-child(2) img{
+             transform: rotateX(45deg);
+        }
+        ul li:nth-child(3) img{
+             transform: rotateY(45deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- ul>(li>img)*3 -->
+     <ul>
+         <li><img src="images/rotateX.jpg" alt=""></li>
+         <li><img src="images/rotateY.jpg" alt=""></li>
+         <li><img src="images/rotateZ.jpg" alt=""></li>
+     </ul>
+</body>
+</html>

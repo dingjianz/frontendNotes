@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>106.中部导航吸顶</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+       
+        img {
+            vertical-align: top;
+            width:100%;/* 和父盒子的宽度一样*/
+        }
+        .nav{
+            position: fixed;
+            top: 0;
+            left: 0;
+     
+        }
+        section{
+            width: 70%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="top">
+        <img src="images/top.png" alt="">
+    </header>
+    <nav id="nav">
+        <img src="images/nav.png" alt="">
+    </nav>
+    <section>
+        <img src="images/body01.png" alt="">
+        <img src="images/body02.png" alt="">
+    </section>
+    <script src="./json封装scroll.js"></script>
+    <script>
+        window.onload = function () {
+            var nav = $('nav');
+            var navOffsetTop = nav.offsetTop;
+          
+            
+            window.onscroll = function () {
+              
+                
+                if (navOffsetTop<=scroll().top) {
+                    nav.className = 'nav';
+                }else{
+                    nav.className = ''; //当回拉时，到达顶部时，不在吸顶
+                }
+            }
+
+        }
+    function $(id) {
+        return typeof id === 'string' ? document.getElementById(id) : null;
+        
+    }
+    </script>
+</body>
+
+</html>

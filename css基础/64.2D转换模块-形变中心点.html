@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>64.2D转换模块-形变中心点</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+        margin: 0 auto;
+        margin-top: 250px;
+        position: relative;
+    }
+    ul li{
+        list-style: none;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* transform-origin: left top; */
+        /* transform-origin: 0px 200px; */
+        transform-origin: 100% 0%;
+    }
+    ul li:nth-child(1){
+        background-color: red;
+        transform: rotate(40deg);
+    }
+    ul li:nth-child(2){
+        background-color: green;
+         transform: rotate(60deg);
+    }
+    ul li:nth-child(3){
+        background-color: blue;
+         transform: rotate(80deg);
+    }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>

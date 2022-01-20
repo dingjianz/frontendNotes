@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>43.清除浮动练习</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+  
+    ul{
+        list-style: none;
+    }
+    .box1{
+        background-color: #ff0080;
+        overflow: hidden;
+         /* 嵌套时，内盒子要设置margin-top，外盒子框架未设置border属性时，也会同时被顶下来，设置overflow后，就可以 
+        
+         */
+    }
+    .box2{
+        background-color: #00ffff;
+        margin-top: 20px;
+        *zoom:1;
+    }
+    .ul1 li{
+
+        background-color: #ffff00;
+    }
+    .ul2 li{
+
+        background-color: #800080;
+    }
+    li{
+        float: left;
+    }
+    /* .box2::before{
+        content:"";
+        height: 0;
+        display: block;
+        clear: both;
+        visibility: hidden;
+    }
+    .box2{
+        *zoom:1;
+    } */
+    
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <ul class="ul1">
+            <li>我是文字</li>
+            <li>我是文字</li>
+            <li>我是文字</li>
+        </ul>
+       
+    </div>
+    
+    <div class=""></div>
+    <div class="box2">
+        <ul class="ul2">
+            <li>我是文字</li>
+            <li>我是文字</li>
+            <li>我是文字</li>
+        </ul>
+    </div>
+</body>
+</html>

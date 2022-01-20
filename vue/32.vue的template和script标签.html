@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>32.vue的template和script标签</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <myimg></myimg>
+    </div>
+
+    <template id="my-img">
+        <div>
+            <!-- templaete内部只接受一个元素，若想展示多个元素，外层需包裹div或其他 -->
+            <input type="color" name="" id="">
+            <img src="img/james.jpg" alt="">
+        </div>
+    </template>
+    <!-- <script type="text/template" id="my-img" >
+        <img src="img/james.jpg" alt="">
+    </script> -->
+    <script>
+        Vue.component('myimg', {
+            template: '#my-img'//只能用id名，不可以用类名，因为唯一性
+        });
+        let vm = new Vue({
+            el: '#app',
+
+        });
+    </script>
+</body>
+
+</html>

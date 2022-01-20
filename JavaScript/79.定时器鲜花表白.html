@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>79.定时器鲜花表白</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: black;
+            text-align: center;
+            padding: 100px;
+        }
+
+        #num {
+            color: red;
+            font-size: 100px;
+            text-align: center;
+        }
+        #pic{
+            display:none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="num">5</div>
+    <img src="images/flower.gif" id="pic">
+    <script>
+        window.onload = function () {
+            var num = document.getElementById('num');
+            var pic = document.getElementById('pic');
+            console.log(typeof num.innerText);//string
+            
+          var time =  setInterval(function () {
+                if (num.innerText > '1') {
+                    num.innerText -= 1;
+                }else{
+                   num.style.display = 'none';
+                    pic.style.display = 'block';
+                }
+            }, 1000);
+           
+               
+            
+        }
+    </script>
+</body>
+
+</html>

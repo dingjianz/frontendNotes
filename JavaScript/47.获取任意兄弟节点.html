@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>47.获取任意兄弟节点</title>
+</head>
+
+<body>
+    <div class="box">
+        <button id="btu">按钮</button>
+        <!-- 低版本浏览器 注释也会算在子节点中 -->
+        <span class="sspan">
+            <a href="#">我是超链接</a>
+        </span>
+        <p class="dj">我是DJ</p>
+    </div>
+    <p>兄弟</p>
+    <script>
+        //根据当前节点获取任意兄弟节点
+        window.onload = function () {
+            var box = document.getElementsByClassName('box')[0];
+
+            var boxSibling = box.parentElement.children;
+            console.log(boxSibling);
+            console.log(boxSibling[2]);
+            
+
+        }
+    </script>
+</body>
+
+</html>

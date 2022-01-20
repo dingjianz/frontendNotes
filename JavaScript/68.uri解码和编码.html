@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>68.uri解码和编码</title>
+</head>
+
+<body>
+    <script>
+        var str = 'http://study.163.com/course/courseLearn.htm?courseId=1004573059#/'
+        console.log(encodeURIComponent(str));
+
+        var str1 = decodeURIComponent('http%3A%2F%2Fstudy.163.com%2Fcourse%2FcourseLearn.htm%3FcourseId%3D1004573059%23%2F');
+        console.log(str1);
+        
+        
+    </script>
+</body>
+
+</html>

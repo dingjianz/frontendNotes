@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>35.tab选项卡jQuery实现</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 440px;
+            height: 300px;
+            margin: 50px auto;
+            border: 1px solid #000;
+        }
+
+        .box .box-top {
+            width: 100%;
+            height: 52px;
+        }
+
+        .box .box-top li {
+            float: left;
+            line-height: 52px;
+            width: 110px;
+            text-align: center;
+            background-color: orange;
+        }
+
+        .box .box-top li.current {
+            background-color: #ccc;
+        }
+
+        .box .box-bottom {
+            width: 100%;
+            height: 248px;
+        }
+
+        .box .box-bottom ul>li {
+            display: none;
+        }
+
+        .box .box-bottom ul>li.now {
+            display: block;
+        }
+    </style>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $('.box-top>ul>li').mouseenter(function () {
+                $('.box-top>ul>li').removeClass('current');
+                $('.box-bottom>ul>li').removeClass('now');
+                $(this).addClass('current');
+                $('.box-bottom>ul>li').eq($(this).index()).addClass('now');
+                //$(this).index();返回的是一个jq对象
+                //$(this).get();返回的是一个数字
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box-top">
+            <ul>
+                <li class="current">H5+C3</li>
+                <li>jQuery</li>
+                <li>C语言</li>
+                <li>Go语言</li>
+            </ul>
+        </div>
+
+        <div class="box-bottom">
+            <ul>
+                <li class="now">
+                    <img src="images/11.jpg" alt="">
+                </li>
+                <li>
+                    <img src="images/12.jpg" alt="">
+                </li>
+                <li>
+                    <img src="images/13.jpg" alt="">
+                </li>
+                <li>
+                    <img src="images/14.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

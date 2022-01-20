@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>静态方法和实例方法</title>
+
+</head>
+<body>
+    <script>
+     function AClass() {};
+
+     AClass.staticMethod = function () {
+         alert('staticMethod');//静态方法添加到类上去
+     };
+     AClass.staticMethod();//类的静态方法只能用类来调用
+    // AClass.instanceMethod();//报错  
+     AClass.prototype.instanceMethod = function () {
+         alert('instanceMethod');//实例方法添加到原型
+     };
+       
+     var a = new AClass();
+      a.instanceMethod();//实例方法只能用实例a调用 
+    //  a.staticMethod();//报错
+    </script>
+</body>
+</html>

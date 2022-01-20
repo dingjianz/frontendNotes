@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="newNum">
+        <button @click="addNum">提交</button>
+        <ul>
+            <!-- <li v-for="num in nums"> {{num}}</li> -->
+            <my-li :content="" ></my-li>
+        </ul>
+    </div>
+    <script>
+        Vue.component("my-li",{
+            template:`<li>{{content}}</li>`
+        });
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                nums: [1, 2],
+                newNum: ''
+            },
+            methods: {
+                addNum() {
+                    if (typeof Number(this.newNum) === "number" && this.newNum != '' && isNaN(Number(this.newNum)) != true) {
+                        this.nums.push(Number(this.newNum));
+                        this.newNum = '';
+                    } else {
+                        alert("请输入数字");
+                        this.newNum = '';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

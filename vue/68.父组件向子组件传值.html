@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <com1 :res1 = "res" :arr="list"></com1>
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                res:"你好，世界",
+                list: [ 
+                    {
+                        id: 1,
+                        name: "五菱宏光",
+                        ctime: new Date()
+                    },
+                    {
+                        id: 2,
+                        name: "宏泰",
+                        ctime: new Date()
+                    }
+                ]
+            },
+            methods: {
+
+            },
+            components: {
+                "com1":{
+                    template:`
+                        <div>
+                            <h1>{{msg}}----{{res1}} </h1>
+                            <ul>
+                                    <li v-for="item in arr">{{item.id}}---{{item.name}}</li>
+                            </ul>    
+                        </div>
+                       `,
+                    props:["res1","arr"],
+                    data(){
+                        return {
+                            msg:"这是子组件"
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

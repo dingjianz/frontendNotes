@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>36.Vue中自定义事件</title>
+    <script src="js/vue.js"></script>
+</head>
+<!-- 父组件是使用 props 传递数据给子组件，但如果子组件要把数据传递回去，应该怎样做？那就是自定义事件！
+       每个 Vue 实例都实现了事件接口(Events interface)，即：
+使用 @on(eventName) 监听事件
+使用 $emit(eventName) 触发事件
+
+    父组件可以在使用子组件的地方直接用 v-on 来监听子组件触发的事件 -->
+
+<body>
+    <div id="app">
+        <my-btn @total="allCounter()"></my-btn>
+        <my-btn @total="allCounter()"></my-btn>
+        <my-btn @total="allCounter()"></my-btn>
+        <p>总共点击了{{totalCounter}}次</p>
+    </div>
+
+    <template id="my_btn">
+        <button v-on:click="total">点击了{{count}}次</button>
+    </template>
+    <script>
+        Vue.component('my-btn', {
+            template: '#my_btn',
+            data() {
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                total() {
+                    // return this.count += 1; 不能加return 不然后面的代码无法执行
+                    this.count += 1;
+                    //告诉外界，我调用了这个方法
+                    this.$emit('total');
+                }
+            }
+        });
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                totalCounter: 0
+            },
+            methods: {
+                allCounter() {
+                    this.totalCounter += 1;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

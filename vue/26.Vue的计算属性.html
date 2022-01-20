@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>26.Vue的计算属性</title>
+    <script src="js/vue.js"></script>
+</head>
+<!-- 两种方式在这种情况下的结果是一样的
+写法上的区别：  computed计算属性的方式在用属性时不用加(),而methods方式在使用时要像方法一样去用，必须加() 
+
+两种方式在缓存上也大有不同，利用computed计算属性是将 content与message绑定，只有当message发生变化时才会触发content，而methods方式是每次进入页面都要执行该方法，但是在利用实时信息时，比如显示当前进入页面的时间，必须用methods方式。
+ -->
+<body>
+    <div id="app">
+        <p>初始值：{{name}}</p>
+        <p>翻转值：{{name.split('').reverse().join('')}}</p>
+        <p>调用函数：{{reverseStr()}}</p>
+        <p>计算值：{{reverse}}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: 'Rose Jack'
+            },
+            methods: {
+                reverseStr() {
+                    return this.name.split('').reverse().join('');
+                }
+            },
+            computed: {
+                reverse() {
+                    //get方法
+                    return this.name.split('').reverse().join('');
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

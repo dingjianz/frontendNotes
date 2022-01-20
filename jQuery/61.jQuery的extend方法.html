@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>61.jQuery的extend方法</title>
+</head>
+
+<body>
+    <script>
+        function njQuery() {
+        };
+        /*  njQuery.extend = function (obj) {
+              //console.log(this);//ƒ njQuery() {} ,谁调用extend，this就指向谁,这里是njQuery的类
+              for (var key in obj) {
+                  //对obj进行遍历，将obj的键值对全都赋给njQuery,这样njQuery.extend({})里的所有方法相当于njQuery的静态方法了，通过类可以调用
+                  this[key] = obj[key];
+              }
+          }
+          njQuery.extend({
+              isTest: function () {
+                  console.log('text');
+              }
+          });
+      njQuery.isTest();*/
+       /* njQuery.prototype.extend = function (obj) {
+            //console.log(this);//njQuery {} 就是njQuery类的一个实例对象 p
+            for(var key in obj){
+                   //对obj进行遍历，将obj的键值对全都赋给njQuery的实例,这样njQuery.extend({})里的所有方法相当于njQuery的实例方法了，任何一个实例都可以调用
+                this[key] = obj[key];
+            }
+
+        }
+        njQuery.prototype.extend({
+            isDemo:function(){
+                console.log('demo');
+                
+            }
+        });
+        var p = new njQuery();
+      p.isDemo();
+        */
+        
+        njQuery.extend = njQuery.prototype.extend = function (obj) {
+          console.log(this);//this根据调用者的不同分别显示类和实例对象
+            for (var key in obj) {
+                //可分别添加静态和实例方法，互不干扰
+                this[key] = obj[key];
+            }
+                }
+            njQuery.extend({
+                isDemo:function (){
+                    console.log('demo1');
+                }
+            });//ƒ njQuery() {}  类
+            njQuery.isDemo();//demo1
+        
+            var p = new njQuery();//njQuery { } 实例
+            p.extend({
+                isDemo: function () {
+                    console.log('demo2');
+                }
+            });
+        p.isDemo();//demo2
+    </script>
+</body>
+
+</html>

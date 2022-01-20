@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>58.百度换肤</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            vertical-align: top;
+        }
+
+        body {
+            background: url('images/1.jpg') no-repeat;
+             background-size:cover;
+        }
+
+        div {
+            background-color: rgba(255, 255, 255, 0.5);
+
+        }
+
+        div>ul {
+            display: flex;
+            justify-content: space-around;
+
+
+        }
+
+        div>ul>li>img {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 180px;
+            height: 120px;
+            cursor: pointer;
+          
+        }
+    </style>
+</head>
+
+<body class="body">
+    <div class="box">
+        <ul>
+            <li>
+                <img src="images/1.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/3.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/4.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/5.jpg" alt="">
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        window.onload = function () {
+            function $(id) {
+                return typeof id ==='string' ? document.getElementsByClassName(id)[0]:null;
+            };
+            console.log($('body'));
+            
+            var liList = $('box').getElementsByTagName('li');
+            for (i = 0; i < liList.length; i++) {
+                var sLi = liList[i];
+                sLi.index = i + 1;
+                sLi.onmousedown = function () {
+                /* $('body')*/  document.body.style.background=" url('images/"+this.index+".jpg') no-repeat";       
+                };
+            };
+        };
+    </script>
+</body>
+
+</html>

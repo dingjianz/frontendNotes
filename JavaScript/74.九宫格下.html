@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>74.九宫格下</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .top {
+            margin: 20px;
+        }
+
+        .bottom {
+            position: relative;
+        }
+
+        .box {
+            width: 220px;
+            height: 360px;
+            background-color: #e8e8e8;
+            margin: 0 15px 15px 0;
+        }
+
+        .box p:nth-of-type(2) {
+            font-size: 13px;
+            color: orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <button>每行显示3列</button>
+        <button>每行显示4列</button>
+        <button>每行显示5列</button>
+    </div>
+    <div class="bottom">
+        <div class="box">
+            <img src="anliimage/1.jpg" alt="">
+            <p>因为遇见你</p>
+            <p> 孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/2.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/3.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/4.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/5.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/6.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/7.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/8.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/9.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/10.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/11.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/12.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/13.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/14.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="anliimage/15.jpg" alt="">
+            <p>因为遇见你</p>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            var btns = document.getElementsByClassName('top')[0].children;
+            var bottom = document.getElementsByClassName('bottom')[0];
+            var boxs = bottom.getElementsByClassName('box');
+            btns[0].onclick = function () {
+                j_flex(3);
+            }
+            btns[1].onclick = function () {
+                j_flex(4);
+            }
+            btns[2].onclick = function () {
+                j_flex(5);
+            }
+
+            function j_flex(Cols) {
+                var boxW = 220, boxH = 360, marginXY = 15;
+                for (var i = 0; i < boxs.length; i++) {
+                    var currentBox = boxs[i];
+                    var row = parseInt((i / Cols));
+                    var col = (i % Cols);
+                    currentBox.style.position = 'absolute';
+                    currentBox.style.left = col * (boxW + marginXY) + 'px';
+                    currentBox.style.top = row * (boxH + marginXY) + 'px';
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>

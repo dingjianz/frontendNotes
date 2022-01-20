@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>24.v-on</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- v-on事件方法可以不加括号，因为一定会调用，但是需要传参时，必须加括号-->
+        <p :style='{color:fontColor}'>{{msg}}</p>
+        <button v-on:click='msg = "适合敲代码"'>点击改变样式</button>
+        <button @click='changeContent()'>点击改变样式</button>
+        <button @click=' changeColor()'>点击改变颜色</button>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                fontColor:'red',
+                msg:'今天天气很好'
+            },
+            methods:{
+                changeContent(){
+                    this.msg = '看看内容改掉没';
+                },
+                changeColor(){
+                    this.fontColor = 'yellow';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

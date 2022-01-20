@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person() {
+            this.name = 'dj';
+            this.age = 24;
+            this.job = 'software Engineer';
+            this.friends = ['dc', 'dcc', 'dy'];
+        };
+
+        Person.prototype.name = 'dj';
+        Person.prototype.age = 24;
+        Person.prototype.job = 'software Engineer';
+        Person.prototype.friends = ['dc', 'dcc', 'dy'];
+        Person.prototype.sayName = function () {
+            alert(this.name);
+        }
+
+        // Person.prototype = {
+        //      name: 'dj',
+        //      age: 24,
+        //      job: 'software Engineer',
+        //     constructor:Person,
+        //     sayName: function () {
+        //         alert(this.name);
+
+        //     }
+        // };
+
+
+
+        console.log(Person.prototype);
+
+        var getName = function () {
+            alert(4);
+        };
+
+        function getName() {
+            alert(5);
+        }
+
+        getName();//4
+    </script>
+</body>
+
+</html>

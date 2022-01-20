@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #bag {
+            width: 200px;
+            height: 500px;
+            margin: 0 auto;
+            background: url('img/bag.png') no-repeat center;
+            background-size: 80%;
+            transform: rotate(-90deg);
+        }
+
+        #bag.active {
+            background: url('img/bag-burst.png') no-repeat center;
+               transform: rotate(0deg);
+        }
+
+        #progress {
+            margin: 0 auto;
+            width: 200px;
+            border: 1px solid #000;
+        }
+
+        #progress #progress_bar {
+            height: 20px;
+            background: crimson;
+        }
+
+        #controls {
+            width: 200px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        #controls button {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 图片 -->
+        <div id="bag" v-bind:class="{active:end}"></div>
+
+        <!-- 进度情况 -->
+        <div id="progress">
+            <div id="progress_bar"  v-bind:style="{width:pro+'%'}"></div>
+        </div>
+
+        <!-- 按钮控制 -->
+        <div id="controls">
+            <button @click="push()" v-show="!end">使劲点</button>
+            <button v-on:click="restart">重新开始</button>
+        </div>
+
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                pro: 100,
+                end: false
+            },
+            methods: {
+                push() {
+                    this.pro -= 10;
+                    if (this.pro <= 0) {
+                        this.end = true;
+                    }
+                },
+                restart() {
+                    this.pro = 100;
+                    this.end = false;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

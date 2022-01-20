@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>04.ES6新增的数据类型-set</title>
+</head>
+
+<body>
+    <script>
+        //set相当于数组
+        //集合（不允许有重复）一个属性 四个方法
+        let res = new Set(['张三', '李四', '王五', '张三', '李四']);
+        console.log(res);//Set(3) {"张三", "李四", "王五"}
+
+        let arr = [1, 2, 3, 2, 1];
+        let arr1 = new Set(arr);
+        console.log(arr1);//Set(3) {1, 2, 3}
+        console.log(arr1.size);//3
+
+        //四个方法 add delete  has  clear 
+
+        let set = new Set(['张三', '李四', '王五']);
+        set.add('赵六').add('钱七');//可用链式语法 add()返回添加新元素后的集合
+        console.log(set);//Set(5) {"张三", "李四", "王五", "赵六", "钱七"}
+        
+        console.log(set.delete('张三'));//true delete()返回布尔值 true：删除成功 false：删除失败
+         console.log(set);//Set(4) {"李四", "王五", "赵六", "钱七"}
+
+         console.log(set.has('李四'));//true has()返回布尔值 是否包含某个元素
+
+         set.clear();//删除所有   不返回任何东西
+         console.log(set);//Set(0) {}
+         
+         //keys values 获得集合里面的键 值
+    let res1 = new Set(['张三', '李四', '王五']);
+    console.log(res1.keys());
+    console.log(res1.values());
+    console.log(res1.entries());
+    console.log(typeof res1);//object
+    
+
+
+
+    </script>
+</body>
+
+</html>

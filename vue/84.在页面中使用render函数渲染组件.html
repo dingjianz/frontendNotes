@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+</head>
+
+<body>
+        <div id="app">
+        </div>
+        <template id="temp">
+          <h3>我是一个组件</h3>
+        </template>
+      
+        <script>
+        const login ={
+          template:"#temp"
+        }
+          var vm = new Vue({
+            el: '#app',
+            data: {
+            },
+            methods: {},
+            // render:function (createElement){//createElement  是一个方法，名字可以自己随便写，调用它能够将制定的组件模板，渲染为html结构
+            //  return  createElement(login)
+            // //  注意： 这里return 的结构，会替换到页面中 el 指定的那个容器
+            // },
+            render: h=>h(login) 
+          });
+        </script>
+      </body>
+      
+      </html>

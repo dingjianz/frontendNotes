@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>23.匿名函数</title>
+</head>
+
+<body>
+    <script>
+        //3.自调用函数
+        (function () {
+            alert('真的会执行吗？---闭包作用');
+        })();
+        //匿名函数的使用情景(没有名字的函数)
+
+        //1.用于绑定事件的时候
+        document.onclick = function () {
+            alert('点我干哈？');
+        }
+
+        //2.定时器:每隔两秒输出 我好烦啊！
+        setInterval(function () {
+            alert('我好烦啊！');
+        }, 2000)
+
+
+    </script>
+</body>
+
+</html>

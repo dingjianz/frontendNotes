@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>145.闭包-高级排他</title>
+    <style>
+        li {
+            border: 1px solid #000;
+            background-color: #ccc;
+            height: 20px;
+        }
+        .current{
+            background-color: orange;
+        }
+    </style>
+</head>
+<ul>
+    <li class="current"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<body>
+    <script>
+        var allLis = document.getElementsByTagName('li');
+        var lastOne =0;
+        for(var i =0; i < allLis.length; i++){
+            (function (i) {
+                allLis[i].onmouseover = function () {
+                    allLis[lastOne].className = '';
+                    console.log(this);
+                    this.className = 'current';
+                    lastOne = i;
+                }
+            })(i);
+        }
+    </script>
+</body>
+
+</html>

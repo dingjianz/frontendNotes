@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>65.数组常用API补充</title>
+</head>
+
+<body>
+    <script>
+        var a = 0 && 1;
+        console.log(a);//0
+        var b = 1 && 0;
+        console.log(b);//0
+        var c = 6 && 8;
+        console.log(c);//8
+        var d = 4 || 3 && 8 - 1;
+        console.log(d);//4
+
+        var arr = new Array();
+        console.log(typeof arr);//object  
+        console.log(arr instanceof Object);//true
+
+        console.log(Array.isArray(arr));//true
+
+        var arr2 = [1,2,'丁健'];
+        console.log(arr2.toString());//1,2,丁健
+
+        console.log(arr2.valueOf());//[1, 2, "丁健"]
+        
+        
+        
+        
+
+    </script>
+</body>
+
+</html>

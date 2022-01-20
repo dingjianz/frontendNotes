@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>33.完善构造函数</title>
+</head>
+
+<body>
+    <script>
+        function Person(option) {
+            this.name = option.name;
+            this.age = option.age;
+            this.sex = option.sex;
+            this.friends = option.friends;
+            //    this.eat = function (someThing) {
+            //         console.log(this.name + "在吃" + someThing);
+            //      },  
+            /* this.run = function (someWhere) {
+                 console.log(this.name + "在跑" + someWhere);
+             }*/
+        };
+       /* Person.prototype.eat = function (someThing) {
+            console.log(this.name + "在吃" + someThing);
+        };
+        Person.prototype.run = function (someWhere) {
+            console.log(this.name + "在跑" + someWhere);
+        };*/
+
+        //简写为以下部分
+         Person.prototype={
+             eat :(someThing)=> {
+                 console.log(this.name + "在吃" + someThing);
+             },
+             run : (someWhere) =>{
+                 console.log(this.name + "在跑" + someWhere);
+             }
+         }
+
+        var p = new Person({ name: 'xiaohua', age: 18 });
+        var p1 = new Person({ name: 'huazi', age: 10 });
+      //  console.log(p.eat === p1.eat);//false 说明eat 在内存里存了两份
+
+
+        console.log(p.run === p1.run);//true 在内存里只存了一份 优化内存
+
+
+    </script>
+</body>
+
+</html>

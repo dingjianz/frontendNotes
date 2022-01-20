@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>61.过渡模块-弹性效果</title>
+    <style>
+        div {
+            background-color: red;
+            margin-top: 100px;
+            height: 100px;
+            text-align: center;
+        }
+
+        div span {
+            line-height: 100px;
+            font-size: 80px;
+            transition: margin 2s ease-in 0s, background-color 2s linear 0s;
+
+        }
+
+        div:hover span {
+            margin: 0 20px;
+            /*上下外边距0px， 左右20px。 */
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>江</span>
+        <span>哥</span>
+        <span>带</span>
+        <span>你</span>
+        <span>狂</span>
+        <span>虐</span>
+        <span>H</span>
+        <span>5</span>
+    </div>
+</body>
+
+</html>

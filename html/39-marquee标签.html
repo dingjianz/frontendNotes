@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>39-marquee标签</title>
+		<style>
+			marquee{
+				background-color:skyblue;
+				width: 200px;
+				height: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--属性
+			direction：滚动方向。up、down、right、left
+			loop：设置滚动次数，默认-1.即无限循环。
+			behavior：slide、alternate、scroll
+			scrollamount：滚动速度，数字越大速度越快
+			
+			
+			也可以让图片滚动
+		-->
+		<marquee  direction="up">随便写点内容</marquee>
+		<marquee behavior="alternate" direction="right">随便写点内容</marquee>
+		<marquee behavior="slide" direction="down">随便写点内容</marquee>
+		<marquee behavior="slide" direction="down" scrollamount="5">随便写点内容</marquee>
+		<marquee behavior="scroll"   direction="down" loop="2">随便写点内容</marquee>
+		<marquee><img src="img/萝卜.jpg" width="20px" /></marquee>
+		<marquee scrollamount="1"><img src="img/萝卜.jpg" width="20px" /></marquee>
+		<marquee scrollamount="100"><img src="img/萝卜.jpg" width="20px" /></marquee>
+	</body>
+</html>

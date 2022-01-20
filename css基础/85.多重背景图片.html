@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>85.多重背景图片</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    div{
+        border: 1px solid #000;
+        width: 500px;
+        height: 500px;
+        margin: 0 auto; 
+         /* background:url("images/animal1.png") no-repeat left top,url("images/animal2.png") no-repeat right top,url("images/animal3.png") no-repeat left bottom,url("images/animal4.png") no-repeat right bottom, center center url("images/animal5.png")  no-repeat; */
+         background-image: url("images/animal1.png"),url("images/animal2.png"),url("images/animal3.png"),url("images/animal4.png") ,url("images/animal5.png");
+        
+         background-position: left  top,right top,left bottom, right bottom, center center;
+      
+         background-repeat: no-repeat;
+    }
+   
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

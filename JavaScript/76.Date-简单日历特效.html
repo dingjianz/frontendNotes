@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>76.Date-简单日历特效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            color: white;
+        }
+
+        #box {
+            width: 250px;
+            height: 300px;
+            margin: 100px auto;
+            background-color: green;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        #box_top {
+            font-size: 23px;
+            margin-bottom: 40px;
+        }
+
+        #box_bottom {
+            width: 90%;
+            height: 70%;
+            background-color: orange;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="box_top"></div>
+        <div id="box_bottom"></div>
+    </div>
+    <script>
+        window.onload = function () {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth();
+            var d = date.getDate();
+            var week = date.getDay();
+            var weeks = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            $('box_top').innerText = year + '年' + (month + 1) + '月' + d + '日 ' + weeks[week];
+              $('box_bottom').innerText = d;
+        };
+          
+        function $(id) {
+            return typeof id === 'string' ? document.getElementById(id) : null;
+        }
+    </script>
+</body>
+
+</html>

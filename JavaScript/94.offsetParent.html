@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>94.offsetParent</title>
+</head>
+<body>
+    <div id="grandfather" style="position: absolute;">
+        <div id="father">
+            <div id="son"></div>
+        </div>
+    </div>
+    <script>
+        var son = document.getElementById('son');
+        console.log(son.offsetParent);//找到有定位的父级节点
+        console.log(son.parentNode);//找到父级节点，无论有无点位
+        
+        
+    </script>
+</body>
+</html>

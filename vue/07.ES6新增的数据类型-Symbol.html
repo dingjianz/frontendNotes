@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07.ES6新增的数据类型-Symbol</title>
+</head>
+<body>
+    <script>
+
+        //new Symbol()报错 因为symbol不是一个构造函数
+        let str1 = Symbol('name');
+        let str2 = Symbol('name');
+        console.log(typeof str1);//symbol
+        console.log(str1 === str2);//false
+
+
+        //symbol常应用于对象的属性名命名冲突 ES5
+        let obj = {};
+        obj.name = '张三';
+        obj.name = '李四';
+        console.log(obj);//{name: "李四"} 
+
+        let obj1 = {};
+        obj1[Symbol('age')] = 18;
+        obj1[Symbol('age')] = 38;
+        console.log(obj1);//{Symbol(age): 18, Symbol(age): 38}
+        console.log(Symbol('age') === Symbol('age'));//false
+        
+        
+
+
+        
+        
+        
+    
+    
+    </script>
+</body>
+</html>

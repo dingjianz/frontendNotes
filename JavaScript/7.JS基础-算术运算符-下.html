@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7.JS基础-算术运算符-下</title>
+</head>
+<body>
+    <script>
+    var num1 = 100 - 20;
+    console.log(num1);//80
+
+    var num2 = 100 - true;
+    console.log(num2);//99
+
+    var num4 = true - 1;
+    console.log(num4);//0
+
+    var num5 = null - 1;
+    console.log(num5);//-1
+     
+     var num6 = 5 - NaN;
+     console.log(num6);// NaN
+     
+    
+
+    // 字符串做减法也会转换为Number
+    var num3 = 100 - '123';
+    console.log(num3);
+
+    var numx = 100 - 'zhy';
+    console.log(numx);// NaN
+    
+
+    // 任何的值和字符串做加法运算，都会先转换为字符串，然后再和字符串做拼串的操作
+    var num3 = 100 + '123';
+    console.log(num3);//100123
+    
+    
+    var num8 = 12 * 100;
+    console.log(num8)//1200;
+
+    var num9 = 12 / 2;
+    console.log(num9);//6
+    var num10 = 12 / 0;
+    console.log(num10);// infinite
+    
+    // 取余运算
+
+    var num11 = 11 % 5;
+    console.log(num11);//1
+    var num12 = 10 % 2.5;
+    console.log(num12);//0
+    
+    var num13 = 10 % 0;
+    console.log(num13);//   NaN
+    
+        var num14 = 0 % 0;
+        console.log(num14); // NaN
+        
+    
+    var res = true;
+    var bool1 = + res;
+    console.log(bool1);//1
+    
+    var res = true;
+    var bool2 = - res;
+    console.log(bool2);//-1
+    
+    
+    
+    </script>
+</body>
+</html>

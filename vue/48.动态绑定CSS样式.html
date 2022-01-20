@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <style>
+        span{
+            background-color: red;
+            display: inline-block;
+            padding: 10px;
+            color: #fff;
+            margin: 10px 0;
+        }
+        .changeColor span{
+            background-color: green;
+        }
+        .changeLength span::after{
+            content:'length';
+            margin-left: 10px;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <div id="app">
+       
+        <h1>动态 绑定 CSS Class</h1>
+        
+           <h2>示例 1</h2>
+           <!-- :class="{claaName:true}"
+
+            可以绑定多个className
+            <div class="static"
+                v-bind:class="{ active: isActive, text-danger: hasError }">
+            </div>
+         
+            <div @click='changeColor = !changeColor' :class='{changeColor:changeColor}'> 
+                <span>Herry</span>
+            </div>
+          -->
+
+             <h2>示例 2</h2>
+
+            <button @click='changeColor = !changeColor'>改变颜色</button>
+            <button  @click='changeLength = !changeLength'>改变长度</button>
+             <div :class='compClasses'> 
+                <span>Herry</span>
+            </div>
+
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                changeColor:false,
+                changeLength:false
+            },
+            computed: {
+                compClasses(){
+                    return {
+                        changeColor:this.changeColor,
+                        changeLength:this.changeLength
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

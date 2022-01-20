@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>60.transform的运用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 90px;
+            height: 90px;
+            background-color: red;
+        }
+        button{
+            position: absolute;
+            top: -70%;
+            bottom: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <button>形变</button>
+    <div class="box"></div>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByTagName('button')[0];
+            var index =0;
+            btn.onclick = function () {
+                index++;
+                $('box').style.transform = 'translate('+index*10+'px,'+index*5+'px) rotate('+index*10+'deg) scale('+index*1.02,2+')';
+            };
+            function $(id) {
+                return typeof id === 'string' ? document.getElementsByClassName(id)[0] : null;
+            };
+        };
+    </script>
+</body>
+
+</html>

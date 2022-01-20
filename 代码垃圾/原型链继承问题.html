@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>原型链继承问题</title>
+</head>
+
+<body>
+    <script>
+        function SuperType() {
+            this.property = true;
+        };
+        SuperType.prototype.getSuperValue = function () {
+            return this.property;
+        };
+        function SubType() {
+            return subproperty = false;
+        };
+        SubType.prototype = new SuperType();
+        SubType.prototype.getSubValue = function () {
+            return this.subproperty;
+        };
+        var instance = new SubType();
+        console.log(instance.getSuperValue());//true
+        console.log(instance.constructor);//ƒ SuperType() {   this.property = true;}
+         
+        
+        var arr = new Array();
+        console.log(arr.__proto__);
+        console.log(Array.prototype);
+        console.log(arr.constructor);//f Array
+        console.log(Array.constructor);//Function
+        console.log(Array.prototype.constructor);//f Array
+        
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>50.无限循环滚动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            vertical-align: top;
+        }
+
+        .box {
+            width: 600px;
+            height: 161px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            overflow: hidden;
+
+        }
+
+        .box .nav {
+            width: 1800px;
+            height: 161px;
+            background-color: black;
+            position: relative;
+            animation: dj 5s linear 0s infinite normal;
+
+        }
+
+        .box .nav>li {
+            width: 300px;
+            height: 161px;
+            float: left;
+        }
+
+        .box .nav:hover {
+            animation-play-state: paused;
+        }
+
+        .box .nav:hover li {
+            opacity: 0.5;
+        }
+
+        .box .nav li:hover {
+            opacity: 1;
+        }
+
+        @keyframes dj {
+            from {
+                left: 0;
+            }
+            to {
+                left: -1200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="nav">
+            <li>
+                <img src="images/a.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/b.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/c.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/d.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/a.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/b.jpg" alt="">
+            </li>
+        </ul>
+
+    </div>
+</body>
+
+</html>

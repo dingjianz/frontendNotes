@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>08.ajax-post</title>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script> -->
+    <script src="myAjax2.js"></script>
+</head>
+
+<body>
+    <button class="btn">发送请求</button>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByClassName('btn')[0];
+            btn.onclick = function () {
+                btn.onclick = function (ev1) {
+                    // $.ajax({
+                    //     url: "08.ajax-post.php",
+                    //     type: "get",
+                    //     data: "userName=lnj&userPwd=654321",
+                    //     success: function (msg) {
+                    //         alert(msg);
+                    //     },
+                    //     error: function (xmlhttp) {
+                    //         alert(xmlhttp.status);
+                    //     }
+                    // });
+                       ajax({
+                           url:'08.ajax-post.php',
+                           timeout:3000,
+                           type:'get',
+                           data:{'userName':'lnj','userPwd':654321},
+                           success:function(xmlhttp){
+                            //    alert(xmlhttp.responseText);
+                            var res = xmlhttp.responseText;
+                            console.log(res);
+                            
+                           },
+                           error:function(xmlhttp){
+                               alert('请求失败！');
+                           }
+                       });
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

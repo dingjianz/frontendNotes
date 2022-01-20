@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>this指向问题</title>
+</head>
+
+<body>
+    <script>
+        var x = 111;
+        var test = { x: 222 };
+        var temp = {
+            x: 333,
+            do: function () {
+                alert(this.x);
+            }
+        };
+        temp.do(); // 333 
+        test.do = temp.do;
+        test.do(); // 222 
+        var foo = test.do;
+        foo(); // 111 
+        /*
+        总结：
+        如果是xxx()的形式，this指向window
+        如果是xxx.yyy()或者xxx[yyy]()的形式，这是属性访问的形式，this指向的是xxx
+        */
+    </script>
+</body>
+
+</html>

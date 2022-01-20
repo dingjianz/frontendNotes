@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>58.filter筛选</title>
+    <script src="js/jquery-1.12.4.js"></script>
+</head>
+<body>
+    <p class="no1">我是P标签1</p>
+    <p class="no2">我是P标签2</p>
+    <p class="no1">我是P标签1</p>
+    <p class="no2">我是P标签2</p>
+    <script>
+        $(function () {
+           $('p') .filter('.no1').remove();
+        });
+    
+    </script>
+</body>
+</html>

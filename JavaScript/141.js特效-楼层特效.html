@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>141.JS-楼层特效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        html,
+        body,
+        ul,
+        ul>li {
+            width: 100%;
+            height: 100%;
+        }
+
+        ul li {
+            text-align: center;
+            font-size: 30px;
+            color: white;
+        }
+
+
+        ol {
+            width: 80px;
+            background-color: #ccc;
+            position: fixed;
+            left: 50px;
+            top: 200px;
+            border: 1px solid #fff;
+
+        }
+
+        ol li {
+            text-align: center;
+            line-height: 30px;
+            border-bottom: 1px solid #fff;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .current {
+            background-color: orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <ol id="ol">
+        <li class="current">第1层</li>
+        <li>第2层</li>
+        <li>第3层</li>
+        <li>第4层</li>
+        <li>第5层</li>
+    </ol>
+    <ul id="ul">
+        <li>第1层内容</li>
+        <li>第2层内容</li>
+        <li>第3层内容</li>
+        <li>第4层内容</li>
+        <li>第5层内容</li>
+    </ul>
+</body>
+<script src="./myFunction.js"></script>
+<script>
+    window.onload = function () {
+        //1获取标签
+        var ol = $('ol');
+        var ul = $('ul');
+        var olLis = ol.children;
+        var ulLis = ul.children;
+        var isClick = false;
+        // 2. 上色
+        var colorArr = ['red', 'green', 'blue', 'purple', 'yellow'];
+        for (var i = 0; i < colorArr.length; i++) {
+            ulLis[i].style.backgroundColor = colorArr[i];
+        }
+        // 3. 监听GPS的点击
+        for (var i = 0; i < olLis.length; i++) {
+            (function (i) {
+                var olLi = olLis[i];
+                olLi.onclick = function () {
+
+                    isClick = true;
+                    //排他
+                    for (var j = 0; j < olLis.length; j++) {
+                        olLis[j].className = '';
+                    }
+                    this.className = 'current';
+                    // 3.2 让内容滚动起来
+                    // document.documentElement.scrollTop = index * client().height;
+                    buffer(document.documentElement, { scrollTop: i * client().height }, function () {
+                        isClick = false;
+                    });
+                    //点击产生的scroll不执行   window.onscroll = function
+
+                }
+            })(i);
+        }
+
+        window.onscroll = function () {
+            if (!isClick) {
+                for (var i = 0; i < ulLis.length; i++) {
+                    (function (i) {
+                        var roll = scroll().top;
+                        if (roll >= i * client().height) {
+                            for (var j = 0; j < olLis.length; j++) {
+                                olLis[j].className = '';
+                            };
+                            olLis[i].className = 'current';
+                        }
+                    })(i);
+                }
+            }
+        }
+
+    }
+
+</script>
+
+</html>

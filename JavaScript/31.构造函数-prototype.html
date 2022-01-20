@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>31.构造函数-prototype</title>
+</head>
+
+<body>
+    <script>
+        //自己的理解：相当于给云库里添加东西，大家都可以下载使用
+
+        Array.prototype.name = 'dj';//所有新建数组都能调用name
+
+        var arr1 = new Array();
+        console.log(arr1.name);
+        arr1.age = 18;//只能arr1这个数组调用age
+        console.log(arr1.age);//18
+
+
+        var arr2 = new Array();
+        console.log(arr2.name);//dj
+        console.log(arr2.age);//undefined
+
+
+        var Person = function () { };//创建一个类
+        Person.say = function () {
+            //类的静态方法
+            console.log('I am a Person,I can say.')
+        };
+        Person.prototype.getName = function (name) {
+            //类的实例方法，添加到原型
+            console.log('My name is ' + name);
+        }
+        Person.say();
+       // Person.getName('Carl');//报错
+
+       var carl = new Person;
+        // carl.say();//报错
+        carl.getName('Carl');
+
+
+
+    </script>
+</body>
+
+</html>

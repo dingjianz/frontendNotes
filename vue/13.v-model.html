@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>13.v-model</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <!-- v-model 只能运用在表单元素中 input textarea checkbox select -->
+    <div id="app">{{message}}
+        <br>
+        <input type="text" v-model.lazy="message">
+    </div>
+    <!--v-model的双向数据绑定， 通过v-model 指令，我们把msg 数据绑定到了input文本框，我们修改文本框的值，发现msg 数据改变了。 
+    v-model.lazy 当焦点离开输入框时才进行渲染
+
+    v-mmodel.number 输入框里边必须是数字，否则会清空。当先输入字符串后输入数字，就无法将字符串省略掉 
+    v-model.trim 清空空格-->
+    <script>
+        //创建vue的一个实例
+        let vm = new Vue({
+            el: "#app",
+            data: {//相当于vue 中的model 数据
+                message: 'hello world!'
+            }
+        });
+
+
+
+    </script>
+</body>
+
+</html>

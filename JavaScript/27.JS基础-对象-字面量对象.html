@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>27.JS基础-对象-字面量对象</title>
+</head>
+
+<body>
+    <script>
+        //对象必须有自己的属性和方法
+        var dog = {};//空对象
+        console.log(typeof dog);//object
+
+        var Person = {
+            //属性
+            name: '丁健',
+            age: 18,
+            sex: '男',
+            djFriends: ['zxl', 'xnj', 'ls'],
+
+            //方法
+            sayHi: function () {
+                console.log('hello world')
+            }
+        };
+        console.log(typeof Person);
+        console.log(Person);
+        console.log(Person.name);//丁健
+        Person.name = '丁昭华';
+        console.log(Person.name);//丁昭华
+        console.log(Person);
+
+        Person.sayHi();//hello world
+        //如何对 对象进行遍历？
+        for (var key in Person) {
+                console.log(key);//key 相当于键
+                console.log(Person[key]);//Person[key] 相当于值  person.key 输出不了
+                
+                
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07.封装Ajax试用</title>
+    <script src="myAjax.js"></script>
+</head>
+<body>
+    <button class="btn">发送请求</button>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByTagName('button')[0];
+            btn.onclick = function () {
+                ajax('06-ajax-get-ie.txt',function (xmlhttp) {
+                    alert(xmlhttp.responseText);
+                },function (xmlhttp) {
+                    alert('请求失败');
+                });
+            }
+        }
+    
+    </script>
+</body>
+</html>

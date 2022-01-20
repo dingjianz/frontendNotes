@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <style>
+        .father{
+            background-color:green;
+            width: 400px;
+            height: 400px;
+        }
+        .son{
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+        .outer{
+            width: 500px;
+            height: 400px;
+            background-color: lightblue;
+        }
+        inner{
+            width: 500px;
+            height: 200px;
+            background-color:yellow;
+        }
+        
+    </style>
+</head>
+<!-- .stop .prevent  .capture  .self  .once   .passive -->
+
+<!-- v-on.click.stop='doThis'  阻止冒泡事件  阻止单击事件继续传播 -->
+<!-- v-on.click.prevent='doSomething' 阻止默认事件 -->
+<!-- v-on.click.once='doSomething' 只触发一次事件 -->
+<body>
+    <div id="app">
+            <div class="father" v-on:click="alert('father')">
+                <div class="son" @click.stop="alert('son')">
+
+                </div>
+            </div>
+            <a href="http://www.baidu.com" @click.prevent='alert("hello world!")'>v-on:click.prevent阻止默认事件</a><br>
+            <button @click.once='alert("我只弹出一次")'>v-on:click.once只触发一次事件</button>
+
+
+                <!-- .canpture 事件捕获模式 ，事件先从外部向最具体元素触发 但是只是自身，不包括inner -->
+                <!-- .self 只有事件在自身元素触发时，才执行；相当于阻止了冒泡，但只是阻止自身的冒泡； .stop是阻止所有的冒泡  自己细细品味 买的视频里有介绍 -->
+            <div class="outer" @click.capture="divouter">
+                <div class="inner" @click.self="divinner">
+                    <button @click="btn" >按钮</button>
+                </div>
+            </div>
+    </div>
+
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                alert(msg){
+                    alert(msg);
+                },
+                divouter(){
+                    console.log("这是outer的事件");
+                },
+                divinner(){
+                    console.log("这是inner的事件");
+                },
+                btn(){
+                    console.log("这是btn的事件");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

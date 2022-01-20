@@ -1,0 +1,39 @@
+.reset(){
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul,ol{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+    img{
+        border:none;//兼容IE6
+    }
+}
+
+/*
+.clearfix:after{
+    content:'';
+    display: block;
+    clear: both;
+}
+.clearfix{
+    zoom: 1;
+}
+*/
+.clearfix(){
+    &:after{
+    content:'';
+    display: block;
+    clear: both;
+    }
+    zoom: 1;
+}
+
+.bc(){
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+<!-- 
+    对象的v-for可以有三个值
+        <div v-for="(value, key, index) in object">
+            {{ index }}. {{ key }}: {{ value }}
+        </div> 
+ -->
+<body>
+    <div id="app">
+        <!-- template将不会渲染出来，避免过多html标签生成 -->
+        <template v-for="(user,index) in users">
+            <ul v-for="(val,key) in user">
+                <li>{{key}} - {{val}}</li>
+            </ul>
+        </template>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                users:[
+                    {name:"丁健",age:24},
+                    {name:"丁昭华",age:26},
+                    {name:"丁大伟",age:19}
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

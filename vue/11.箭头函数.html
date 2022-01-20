@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11.箭头函数</title>
+</head>
+<body>
+     <script>
+         //箭头函数没有自己的this、arguments、super、new.target，它们分别指向外层函数的相应变量。也不能 new 
+         var a = 1;
+          function fn1() {
+                console.log(this.a);//obj
+                var fn2 = function () {
+                    console.log(this.a);//this指向window 它的执行环境 
+                };
+                fn2();
+
+            };
+            var obj = {a:2,fn1:fn1};
+            obj.fn1();// 2 1
+
+            //在嵌套函数外层使用that = this，然后内层使用that
+         var a = 1;
+          function fn3() {
+                console.log(this.a);//obj
+                that = this;
+                var fn4 = function () {
+                    console.log(that.a);
+                };
+                fn4();
+
+            };
+            var obj = {a:2,fn3:fn3};
+            obj.fn3();// 2 2
+
+
+
+            //现在有了箭头函数，不再需要使用that = this或 _this = this 这种代码啦，因为箭头函数中的this直接就是外层函数中的this
+             var a = 10;
+                function fn5() {
+                    console.log(this.a);//obj
+                    var f6 = ()=>{
+                        console.log(this.a);
+                    }
+                    f6();
+                };
+                var obj = { a: 36, fn5: fn5 };
+                obj.fn5();//36 36 
+
+              (function (params) {
+                    alert(111);
+                })(window);
+     </script>
+</body>
+</html>

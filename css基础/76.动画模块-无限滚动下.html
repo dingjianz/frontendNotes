@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>76.动画模块-无限滚动下</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;  
+     }
+     div{
+         width: 600px;
+         height: 188px;
+         border: 1px solid #000;
+         margin: 0 auto;
+         margin-top: 100px;
+         overflow: hidden;
+     }
+     ul{
+        width: 2000px; /* 随便写宽度 */
+        height: 188px;
+        animation: dj 10s linear 0s infinite normal;
+        background-color:black;
+     }
+     ul li{
+         list-style:none;
+         float: left;
+         border: 1px solid #000;
+         box-sizing: border-box;
+     }
+     ul:hover{
+         /* ul:hover li 这样写 li的效果还在 仍然向左滚动 意思是谁的动画要停止 就设置在谁的标签名下 */
+         animation-play-state: paused;
+     }
+     ul:hover li{
+         opacity: 0.5;
+         /* 半透明以后，看到的是父元素的背景颜色 */
+     }
+     ul li:hover{
+          opacity: 1;
+     }
+     
+     @keyframes dj {
+         from{
+             margin-left: 0;
+         }
+         to{
+             margin-left: -1200px;
+         }
+     }
+        </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li><img src="images/banner1.png" alt=""></li>
+            <li><img src="images/banner2.jpg" alt=""></li>
+            <li><img src="images/banner3.jpg" alt=""></li>
+            <li><img src="images/banner4.jpg" alt=""></li>
+            <li><img src="images/banner1.png" alt=""></li>
+            <li><img src="images/banner2.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

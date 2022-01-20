@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11.js基础-流程控制-if语句基本使用</title>
+</head>
+<body>
+    <script>
+    /*var age = 18;
+
+    if (age >= 18) {
+        alert('可以上网');
+    }else{
+        alert('未成年不允许上网');
+    }*/
+   /* var achievement = 75;
+    if (achievement >= 90) {
+        alert('优秀');
+    }else if (achievement >= 80) {
+         alert('良好');
+    }else if (achievement >= 60) {
+         alert('一般');
+    }else if (achievement >= 60) {
+         alert('一般');
+    }else{
+             alert('吃屎吧');
+    }
+    alert(typeof achievement);*/
+
+    var age = 25;
+        // 一般情况下，常量写在前面，变量写在后面，这样可以规避掉很多错误。
+        // eg age = 10;  这样变成了给 age重新赋值10，无论怎样，只要不是false，都会成立。
+    if (10 < age) {
+        console.log(age);
+    }
+
+
+// if语句里面还可以嵌套if语句
+    var age = 10;
+    if (5 < age) {
+        if (20 > age) {
+            alert(age);
+        }
+        
+    }
+    </script>
+</body>
+</html>

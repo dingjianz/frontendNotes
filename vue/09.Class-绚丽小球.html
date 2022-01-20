@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Class-绚丽小球</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding-left: 200px;
+        }
+
+        #canvas {
+            box-shadow: 0 0 10px #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script src="underScore/Underscore-min.js"></script>
+    <script>
+        window.addEventListener('load', function () {
+            const canvas = document.getElementById('canvas');
+            canvas.width = 1000;
+            canvas.height = 600;
+            canvas.style.backgroundColor = '#000';
+            const ctx = canvas.getContext('2d');
+            class Ball {
+                constructor(x, y, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.r = 40;
+                    this.color = color;
+                };
+                render() {
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                    ctx.restore();
+
+                };
+            };
+            //class继承
+            class MoveBall extends Ball {
+                constructor(x, y, color) {
+                    super(x, y, color);
+                    //量的变化
+                    this.dX = _.random(-5, 5);
+                    this.dY = _.random(-5, 5);
+                    this.dR = _.random(1, 3);
+                };
+                upDate() {
+                    this.x += this.dX;
+                    this.y += this.dY;
+                    this.r -= this.dR;
+                    if (this.r < 0) {
+                        this.r = 0;
+                    }
+                };
+            }
+            let ballArr = [];
+            let colorArr = ['red', 'yellow', 'blue', 'green', 'purple', 'orange', 'skyblue', '#fff', 'pink'];
+            canvas.addEventListener('mousemove', function (e) {
+                let moveBall = new MoveBall(e.offsetX, e.offsetY, colorArr[_.random(0, colorArr.length - 1)]);
+                ballArr.push(moveBall);
+                
+            })
+            setInterval(function () {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);//刷新页面时，先清除页面的圆点
+                ballArr.forEach(function (value, index) {
+                    ballArr[index].render();
+                    ballArr[index].upDate();
+                })
+            }, 50);
+
+
+
+
+
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6.JS基础-运算符操作-上</title>
+</head>
+<body>
+   <script>
+      console.log(Number('123.23abc'));//NaN
+      console.log(parseFloat('123.23abc'));//123.23
+      
+       var num = null;
+       console.log(num);//null
+       console.log(Number(null));//0
+       
+        var num = undefined;
+            console.log(num2);//undefined
+            console.log(Number(undefined));// NaN
+
+    // 非Number类型的值进行运算时，会将这些值转换为Number然后在运算
+   var num1 = true + 100;
+   console.log(num1);//101
+    var num2 = true + false;
+    console.log(num2);//1
+
+    var num3 = 100 + NaN;
+    console.log(num3);// NaN
+    
+    var num5 = 100 + undefined;
+    console.log(num5);//NaN
+
+    var num6 = 100 + '123';
+    console.log(num6);//字符串 100123
+
+    var num7 = 100 + '中国万岁';
+    console.log(num7);//100中国万岁
+    
+    
+    
+   </script> 
+</body>
+</html>

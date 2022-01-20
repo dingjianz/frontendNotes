@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>122.onresize</title>
+</head>
+
+<body>
+    <script src="./myFunction.js"></script>
+    <script>
+        changeColor();//作用是不需要onresize，屏幕尺寸未改变时，背景就有颜色
+        window.onresize = changeColor;//切记不能带括号
+
+        function changeColor() {
+            if (client().width >= 960) {
+                bgColor = 'red';
+            } else if (client().width >= 740) {
+                bgColor = 'blue';
+            } else {
+                bgColor = 'green';
+            }
+            document.body.style.backgroundColor = bgColor;//优化代码
+        }
+        // console.log(changeColor());//undefined
+       //  console.log(changeColor);//函数
+    </script>
+</body>
+
+</html>

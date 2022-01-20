@@ -1,0 +1,75 @@
+  
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        img {
+            vertical-align: top;
+            width: 310px;
+            height: 220px;
+
+            /* display:none; */
+        }
+
+        #slider {
+            width: 310px;
+            height: 260px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        #slider #slider_scroll {
+            width: 310px;
+            height: 220px;
+            position: relative;
+        }
+
+        #slider #slider_main {
+            width: 620px;
+            height: 220px;
+            position: relative;
+
+        }
+
+        .slider-main-img {
+            width: 310px;
+            height: 220px;
+            position: absolute;
+        }
+        .slider-ctl{
+            width: 310px;
+            height: 40px;
+            text-align: center;
+        }
+        .slider-ctl-prev{
+            width: 20px;
+            height: 40px;
+            background: url('./wyimages/icon.png') no-repeat 0 0;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -35px;
+        }
+        .slider-ctl-next{
+            width: 20px;
+            height: 40px;
+            background: url('./wyimages/icon.png') no-repeat -9px -45px;
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            margin-top: -35px;
+        }
+        .slider-ctl-icon{
+            width: 24px;
+            height: 5px;
+            background: url('wyimages/icon.png') no-repeat -31px -850px;
+            display: inline-block;
+            margin: 5px;
+        }
+        .slider-ctl-icon.current{/*类名之间不能有空格  否则成了父子关系了*/
+             background: url('wyimages/icon.png') no-repeat -0px -830px;
+        }

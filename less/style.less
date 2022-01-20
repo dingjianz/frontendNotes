@@ -1,0 +1,206 @@
+@charset"utf-8";
+
+/*我会被转译*/
+
+// 我不会被转译的
+
+//1.0   less  --------------   变量 @变量名：值；
+@test_width:200px;
+@test_height:200px;
+.box1{
+    width:@test_width;
+    height:@test_height;
+    background-color:lighten(hsl(80, 90%, 20%), 10%);
+}
+
+//2.0   less  --------------  混合变量  miXin
+.border{
+    border: 3px solid hsl(80, 90%, 20%);;
+}
+
+
+.box2{
+    .box1;//直接将box1拿来用
+    .margin_left(300px);
+    .margin_top();
+    .border_radius(20px);
+}
+
+// 带参数的混合变量
+.margin_left(@m_l){
+    margin-left: @m_l;
+}
+// 混合带默认参数，可以更改
+.margin_top(@m_t:100px){
+    margin-top: @m_t;
+}
+
+
+// 混合的例子 避免重复写大量代码
+.border_radius(@radius:10px){
+    -webkit-border-radius:@radius;
+    -moz-border-radius:@radius;
+    border-radius:@radius;
+}
+
+// 正常模式画三角形
+.box3{
+    width: 0;
+    height: 0;
+    overflow: 0;
+    border-width: 10px; 
+    border-color: transparent transparent  red transparent;
+    // border-style: solid;
+    //兼容IE6
+    border-style: dashed dashed solid dashed;
+}
+
+//3.0   less  -------------- 匹配模式 画三角形
+.triangle(top;@width:5px;@color:#ccc){
+    border-width: @width;
+    border-color: transparent transparent @color transparent;
+    border-style: dashed dashed solid dashed;
+}
+.triangle(bottom;@width:5px;@color:#ccc){
+    border-width: @width;
+    border-color:  @color transparent transparent  transparent;
+    border-style:solid dashed dashed  dashed;
+}
+.triangle(left;@width:5px;@color:#ccc){
+    border-width: @width;
+    border-color:transparent  @color transparent transparent;
+    border-style:dashed solid dashed  dashed;
+}
+.triangle(right;@width:5px;@color:#ccc){
+    border-width:@width;
+    border-color: transparent transparent transparent @color;
+    border-style: dashed dashed  dashed solid;
+}
+
+.triangle(@_;@width:5px;@color:#ccc){// @_ 代表内部内容只要调用都会包含
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.box4{
+    // .triangle(bottom); //默认写法
+    .triangle(right;10px;green);
+    .poi(abs);
+}
+
+// eg2
+
+.poi(rel){
+    position: relative;
+}
+.poi(fix){
+    position: fixed;
+}
+.poi(abs){
+    position: absolute;
+}
+ 
+// 4.0   less -----运算 加减乘除 注意操作符前后空格
+@text_width:300px;
+@text_height:400px;
+
+.box2{
+    width:@text_width - 100;
+    height: (@text_height + 100px)*0.2;
+    background-color: red - 10;
+}
+
+
+// 5.0   less -----  嵌套规则
+
+/*
+.list{}
+.list li{}
+.list li a{}
+.list li span{}
+*/
+.list{
+    width: 600px;
+    margin: 30px auto;
+    padding: 0;
+    list-style: none;
+
+    li{
+        height: 30px;
+        line-height: 30px;
+        background-color: pink;
+        margin-bottom: 5px;
+
+        // a{   尽量和li同级，这样匹配次数少很多，节省css加载资源
+        //     text-decoration: none;
+        //      float:left;
+        // }
+    }
+    // & 代表 .list   .list_nav  == &_nav
+    // &.className  代表同一dom对象的另一类名
+    &{
+        // width: 300 px;
+    }
+    a{
+        text-decoration: none;
+        float:left;
+        //& 代表上一层选择器
+        &:hover{
+            background-color: red;;
+        }
+    }
+    span{
+        float:right;
+    }
+}
+
+
+
+// 6.0   less -----  @arguments
+
+.boder01_s(@width:10px;@line:solid;@color:yellow){
+    border:@arguments;
+}
+
+.box5{
+    .box4;
+    .boder01_s();
+}
+
+// 7.0   less -----  避免编译~""  /  ~''
+
+.test{
+    width:~'calc(300px - 10)';
+}
+
+
+// 8.0 less --------- 设置背景图片
+
+/*
+1.0  在less当中当中给元素设置背景图url()内部双引号/单引号是必须加的，而且变量必须是@{ 变量名 }这样的格式去书写;
+
+2.0  在@{ 变量名 }后面不允许出现@符号 否则会出现报错，因为他在编译过程中会认为你@{ 变量名 }后面的@符号是一个变量，并且检测到你的变量未规范书写URL里面的要求。所以使用less在给元素添加背景图设置URL时安装下面这个写法就可以完美实现无报错
+
+eg:
+
+        background-image: url('../img/@{bg_url}2x.png');
+
+注意：在使用less设置背景图使用变量时，尽量避免图片名称带有@符号，以减少不必要的麻烦
+
+
+*/
+.dj{
+    list-style: none;
+    li:last-child{
+        background-color: red;
+    }
+}
+.addRadius (@r:10px){
+    border-radius: @r;
+    -webkit-border-raduis:@r;
+    -moz-border-radius:@r;
+}
+p{
+    .addRadius(5px);
+}

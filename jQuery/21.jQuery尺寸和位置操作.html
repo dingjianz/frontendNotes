@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>21.jQuery尺寸和位置操作</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .father {
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            margin-top: 100px;
+            margin-left: 50px;
+            position: relative;
+            background-color: red;
+            border: 20px solid #000;
+        }
+
+        .son {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            padding: 5px;
+            border: 1px solid #000;
+            background-color: blue;
+        }
+    </style>
+    <script src="js/jquery-1.12.4.js"></script>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        $(function () {
+            //获取css属性
+            console.log($('div').eq(0).width());//100 number类型 不包括边框
+            //设置css属性
+            $('.father').width(600);
+
+
+         //content 和 padding 之和  增加只加在content上 padding不变
+        $('div').eq(0).innerWidth(500);//所有找到的元素都会被设置 此处加eq(0)只选择第一个
+        //获取innerWidth
+            console.log($('div').innerWidth());// 500
+            
+
+            //content 和 padding border 之和  增加只加在content上 padding不变
+            $('div').eq(0).outerWidth(800);
+             console.log($('div').eq(1).outerWidth());//112
+
+             //获取匹配元素在当前视口的相对偏移。和原生js offsetTop 和offsetLeft相对于定位的父元素距离不一样
+            console.log($("div").eq(1).offset().left);
+            
+            $("div").eq(1).offset({
+                top:50
+            });
+      console.log($("div").eq(1).position().top);
+      $('div').eq(1).css({
+          top:'50px'
+      });
+      
+
+        });
+
+         $(function () {
+                // 编写jQuery相关代码
+                var btns = document.getElementsByTagName("button");
+                // 监听获取
+                btns[0].onclick = function () {
+                    // 获取元素的宽度
+                    // console.log($(".father").width());
+                    // offset([coordinates])
+                    // 作用: 获取元素距离窗口的偏移位
+                    // console.log($(".son").offset().left);
+                    // position()
+                    // 作用: 获取元素距离定位元素的偏移位
+                    console.log($(".son").position().left);
+                }
+                // 监听设置
+                btns[1].onclick = function () {
+                    // 设置元素的宽度
+                    // $(".father").width("500px")
+
+                    // $(".son").offset({
+                    //     left: 10
+                    // });
+
+                    // 注意点: position方法只能获取不能设置
+                    // $(".son").position({
+                    //     left: 10
+                    // });
+
+                    $(".son").css({
+                        left: "10px"
+                    });
+                }
+            });
+
+    </script>
+</body>
+
+</html>

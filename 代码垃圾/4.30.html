@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta ="" content="width=device-width, initial-scale=1.0">
+    <meta httif (btn.innerText==='隐藏') {
+        
+    }p-equiv="X-UA-Compatible" content="ie=edge">
+    <title>innerHtml和innnerText</title>
+</head>
+<body>
+    <button>隐藏</button>
+    <div class="box">
+        <p>wenzi</p>
+        <p>tupian</p>
+        <img src="C:\Users\丁健\Documents\HBuilderProject\HelloHBuilder\JavaScript/images/zjl.jpg" alt="">
+    </div>
+    <script>
+        var btn=document.getElementsByTagName('button')[0];
+        var box = document.getElementsByClassName('box')[0];
+        btn.onclick= function () {
+            if (btn.innerText==='隐藏') {
+                box.style.display='none';
+                btn.innerText === '显示';
+            }else{
+                console.log('innerHtml');
+                
+            }
+        }
+    </script>
+</body>
+</html>

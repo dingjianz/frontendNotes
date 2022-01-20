@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>原始双向绑定实现方法</h1>
+        <input type="text" ref="name" placeholder="请输入姓名" v-on:keyup.13="changeName">
+        <h3 style="width: 100px;border: 1px solid #000;">姓名：{{name}}</h3>
+<!--vm.$refs: 一个对象，持有注册过 ref 特性 的所有 DOM 元素和组件实例。
+
+ ref 被用来给元素或子组件注册引用信息。
+ 引用信息将会注册在父组件的 $refs 对象上。
+ 如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；
+ 如果用在子组件上，引用就指向组件实例。
+
+eg：    
+ this.$refs.name.value ==  vm.$refs.name.value  就是 获取ref='name'对象的value值
+-->
+
+        <h1>v-model双向绑定/input/select/textarea</h1>
+          <input type="text" v-model="age" placeholder="请输入年龄">
+        <h3 style="width: 100px;border: 1px solid #000;">年龄：{{age}}</h3>
+        <div id="example-5">
+            <select v-model="selected">
+                <option disabled value="">请选择</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+
+        
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name:'',
+                age:0,
+                selected: ''
+            },
+            methods: {
+                changeName(){
+                    this.name = this.$refs.name.value;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

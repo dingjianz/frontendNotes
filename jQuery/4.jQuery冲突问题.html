@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>4.jQuery冲突问题</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="../JavaScript/myFunction.js"></script>
+</head>
+
+<body>
+    <script>
+        // 1.0 用jQuery代替$
+        jQuery(function () {
+            // alert('hello word');
+        });
+        // 2.0 释放$的使用权,其他地方用$就是根据id获得元素
+        jQuery.noConflict();
+        jQuery(function () {
+            // alert('hello word');
+        });
+// 1.释放$的使用权
+        // 注意点: 释放操作必须在编写其它jQuery代码之前编写
+        //         释放之后就不能再使用$,改为使用jQuery
+        // jQuery原理.noConflict();
+        // 2.自定义一个访问符号
+        var dj = jQuery.noConflict();
+        dj(function () {
+            alert('hello hefei');
+        });
+    </script>
+</body>
+
+</html>

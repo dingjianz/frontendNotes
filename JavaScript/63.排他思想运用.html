@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>63.排他思想运用</title>
+</head>
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <button>按钮6</button>
+    <script>
+        window.onload = function () {
+            var body = document.getElementsByTagName('body')[0];
+            var btns = body.getElementsByTagName('button');
+            for (var i = 0; i < btns.length; i++) {
+                (function (i) {
+                    btns[i].onclick = function () {
+                        alert('你点击了第' + (i+1) + '个按钮');
+                    }
+                })(i);
+            }
+
+        }
+    </script>
+</body>
+
+</html>

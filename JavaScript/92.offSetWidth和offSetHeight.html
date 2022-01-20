@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>92.offSetWidth和offSetHeight</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 150px;
+            padding: 10px;
+            background-color: red;
+            border: 5px solid #ccc;
+            margin: 20px 30px 40px 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" style="width:100px;height:100px;"></div>
+    <script>
+        var box = document.getElementById('box');
+         // offsetHeight  = 内容 + 内边距 + 边框
+        console.log(box.offsetWidth,box.offsetHeight);//输出的是数字130 130
+        console.log(box.style.width,box.style.height);//只能输出行内描述，输出的是字符串 100px 100px
+          box.style.width = 500 + 'px';
+            box.offsetWidth = 100 + 'px';
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12.JS基础-流程控制-if语句-练习-1</title>
+</head>
+<body>
+    <script type="text/html">
+    var a;
+    a = parseInt(prompt('请输入数字'));
+    // a % 2 = 0 这样写就错了，直接赋值0
+    if (a % 2 == 0) {
+        alert('yes');
+    }else{
+        alert('No');
+    }
+    </script>
+    <script>
+      /*  //    1.定义变量保存三个整数
+            var a, b, c;  + 目的是将各种类型数据统一转换成number类型
+            //    2.利用window.prompt接收用户输入的数据
+            a = +(window.prompt("请输入内容"));
+            b = +(window.prompt("请输入内容"));
+            c = +(window.prompt("请输入内容"));
+            //     方式1 写出所有方式
+            if (a >= b && b >= c) {
+                console.log(a, b, c);
+            } else if (a >= c && c >= b) {
+                console.log(a, c, b);
+            } else if (b >= a && a >= c) {
+                console.log(b, a, c);
+            } else if (b >= c && c >= a) {
+                console.log(b, c, a);
+            } else if (c >= a && a >= b) {
+                console.log(c, a, b);
+            } else if (c >= b && b >= a) {
+                console.log(c, b, a);
+            }
+
+           */
+
+   /* var a, b, c;
+    var temp;
+    a = +(window.prompt('请输入a'));
+    b = +(window.prompt('请输入b'));
+    c = +(window.prompt('请输入c'));
+
+    if (a > b) {
+       temp = a;
+        a = b;
+        b = temp;
+    }
+    if (a > c){
+        temp = a;
+        a = c;
+        c = temp;
+    }
+    if (b > c) {
+        b = temp;
+        b = c;
+        c = temp;
+    }
+ console.log(a, b, c);*/
+// 冒泡排序，与选择排序不同的是，选择出最大的量进行比较
+
+    var a, b, c;
+    var temp;
+    a = +(window.prompt('请输入a'));
+    b = +(window.prompt('请输入b'));
+    c = +(window.prompt('请输入c'));
+
+    if (a > b) {
+        temp = a;
+        a = b;
+        b = temp;
+    }
+    if (b > c) {
+        temp = b;
+        b = c;
+        c = temp;
+    }
+    if (a > b) {
+        temp = a;
+        a = b;
+        b = temp;
+    }
+    console.log(a, b, c);
+    
+    </script>
+</body>
+</html>

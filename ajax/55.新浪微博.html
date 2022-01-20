@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>55.新浪微博</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script src="jQuery.cookie.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: url("images/body_bg.jpg") no-repeat center 0;
+        }
+
+        .nav {
+            width: 100%;
+            height: 48px;
+        }
+
+        .nav>img {
+            width: 100%;
+        }
+
+        .content {
+            width: 1000px;
+            height: auto;
+            margin: 200px auto 0 auto;
+            overflow: hidden;
+            /*清除浮动*/
+            background-color: #ebdbd4;
+        }
+
+        .content>.left {
+            float: left;
+            width: 150px;
+        }
+
+        .content>.right {
+            float: right;
+            width: 240px;
+        }
+
+        .content>.center {
+            width: 600px;
+            height: 168px;
+            background: url('images/comment.png') no-repeat 0 0;
+            background-size: 100% 100%;
+            float: left;
+        }
+
+        .content>.center>.comment {
+            width: 570px;
+            height: 73px;
+            margin-top: 45px;
+            margin-left: 15px;
+            border: none;
+            outline: none;
+            resize: none;
+        }
+
+        .content>.center>.send {
+            width: 82px;
+            height: 30px;
+            margin-top: 4px;
+            margin-left: 506px;
+            border: none;
+            background: #fd8040;
+            color: white;
+        }
+
+        .content>.messageList {
+            width: 600px;
+            float: left;
+            background-color: #fff;
+        }
+
+        .content>.messageList>.info {
+            padding: 10px 20px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .content>.messageList>.info>.infotext {
+            line-height: 25px;
+            margin-bottom: 10px;
+
+        }
+
+        .content>.messageList>.info>.infoOperation {
+            width: 100%;
+            overflow: hidden;
+            /*消除浮动，撑起父盒子高度*/
+            *zoom: 1;
+            /*ie6不支持overflow：hidden，在此做兼容*/
+        }
+
+        #time {
+            float: left;
+            font-size: 13px;
+            color: #ccc;
+        }
+
+        .content>.messageList>.info>.infoOperation .infoHandle {
+            float: right;
+            font-size: 13px;
+        }
+
+        .content>.messageList>.info>.infoOperation>.infoHandle a {
+            text-decoration: none;
+            color: #ccc;
+            background: url('images/icons.png') no-repeat 0 0;
+            padding-left: 25px;
+            margin-right: 10px;
+        }
+
+        .content>.messageList>.info>.infoOperation>.infoHandle a:nth-child(2) {
+            background-position: 0 -17px;
+        }
+
+        .content>.messageList>.info>.infoOperation>.infoHandle a:nth-child(3) {
+            background-position: 0 -33px;
+
+        }
+
+        .page::before {
+            content: '';
+            clear: both;
+            visibility: hidden;
+        }
+
+        .page {
+            width: 1000px;
+            height: 40px;
+            background: #9f5024;
+            margin: 0 auto;
+            text-align: right;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .page>a {
+            text-decoration: none;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 20px;
+            color: #2b2b2b;
+        }
+
+        .send {
+            cursor: pointer;
+        }
+
+        .page>a.cur {
+            background-color: red;
+        }
+
+        .page>a:hover {
+            background-color: red;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("body").delegate(".comment", "propertychange input", function () {//propertychange IE专用的 input普通浏览器都支持
+                // 判断是否输入了内容
+                if ($(this).val().length > 0) {
+                    // 让按钮可用
+                    $(".send").prop("disabled", false);
+                } else {
+                    // 让按钮不可用
+                    $(".send").attr("disabled", true);
+                }
+            });
+            getPageCount();
+            function getPageCount() {
+                $(".page").html("");
+                //weibo.php?act=get_page_count	获取页数
+                $.ajax({
+                    type: 'get',
+                    url: 'weibo.php',
+                    data: 'act=get_page_count',
+                    success: function (msg) {
+                        var obj = eval('(' + msg + ')');
+                        for (var i = 0; i < obj.count; i++) {
+                            var $a = $(' <a href="javascrpt:;" >' + (i + 1) + '</a>');
+                            $('.page').append($a);
+                            if (i === (num-1)) {//设置当前页面的页码红色背景
+                                $a.addClass('cur');
+                            }
+                        }
+                    },
+                    error: function (xmlhttp) {
+                        console.log(xmlhttp.status);
+                    }
+
+
+                });
+            };
+            // var num = $.getCookie('pageNumber')||1;
+            var num = window.location.hash.substring(1) || 1;
+            getPageMsg(num);
+            function getPageMsg(num) {
+                 $('.messageList').html('');
+                $.ajax({
+                    type: 'get',
+                    url: 'weibo.php',
+                    data: 'act=get&page=' + num,
+                    success: function (msg) {
+                        //[{id: ID, content: "内容", time: 时间戳, acc: 顶次数, ref: 踩次数}, {...}, ...]
+                        var obj = eval('(' + msg + ')');
+                        $.each(obj, function (key, value) {
+                            var $weibo = createEle(value);
+                            $weibo.get(0).obj = value;
+                            $('.messageList').append($weibo);
+                        });
+
+                    },
+                    error: function (xmlhttp) {
+                        console.log(xmlhttp.status);
+                    }
+                });
+
+            };
+            //监听发布按钮的点击
+            $(".send").click(function () {
+                var $text = $('.comment').val();
+                $.ajax({
+                    type: 'get',
+                    url: 'weibo.php',
+                    data: 'act=add&content=' + $text,
+                    success: function (msg) {
+                        /**
+                         * {error: 0, id: 2, time: 1528988646, acc: 0, ref: 0}
+                         * {id: ID, content: "内容", time: 时间戳, acc: 顶次数, ref: 踩次数}
+                        */
+                        // var obj = eval('(' + msg + ')');
+                        // obj.content = $('.comment').val();
+                        // var $weibo = createEle(obj);
+                        // $weibo.get(0).obj = obj;
+                        // console.log($weibo.obj);
+                        getPageMsg(1);//保证每次发布新微博都在第一页最上边
+                        // $('.messageList').prepend($weibo);//会添加两次
+                        $('.comment').val('');
+                        getPageCount();
+                        if ($('.info').length > 6) {
+                            $('.info:last').remove();
+                        }
+                    },
+                    error: function (xmlhttp) {
+                        console.log(xmlhttp.status);
+                    }
+                });
+            });
+            //监听👍的点击 记住实时添加的一定要事件委托，否则无法作用
+            $('body').delegate('.ding', 'click', function () {
+                var $val = parseInt($(this).text());//转成数字才能加1，否则成了字符串+1
+                $(this).text($val + 1);
+                var id = $(this).parents('.info').get(0).obj.id;
+                //weibo.php?act=acc&id=12			顶某一条数据
+                $.ajax({
+                    type: 'get',
+                    url: 'weibo.php',
+                    data: 'act=acc&id=' + id,
+                    success: function (msg) {
+                        console.log(msg);
+
+                    },
+                    error: function (xmlhttp) {
+                        console.log(xmlhttp.status);
+
+                    }
+                });
+            });
+            //监听👎的点击
+            $('body').delegate('.cai', 'click', function () {
+                var $val = parseInt($(this).text());//转成数字才能加1，否则成了字符串+1
+                $(this).text($val + 1);
+                var id = $(this).parents('.info').get(0).obj.id;
+                //weibo.php?act=ref&id=12			踩某一条数据
+                $.ajax({
+                    type: 'get',
+                    url: 'weibo.php',
+                    data: 'act=ref&id=' + id,
+                    success: function (msg) {
+                        console.log(msg);
+
+                    },
+                    error: function (xmlhttp) {
+                        console.log(xmlhttp.status);
+                    }
+                });
+            });
+            //监听删除的点击
+            $('body').delegate('.del', 'click', function () {
+                $(this).parents('.info').detach();//remove()也可以
+                var id = $(this).parents('.info').get(0).obj.id;
+                //weibo.php?act=del&id=12  删除一条数据
+                $.ajax({
+                    type: 'get',
+                    url: 'weibo.php',
+                    data: 'act=del&id=' + id,
+                    success: function (msg) {
+                        console.log(msg);
+                    //   console.log($('.cur').html());
+                        getPageMsg($('.cur').html());
+                          getPageCount();
+                      
+                    },
+                    error: function (xmlhttp) {
+                        console.log(xmlhttp.status);
+                    }
+                });
+            });
+            //监听页码的点击
+            $('body').delegate('.page>a','click',function () {
+               getPageMsg($(this).html());
+               $(this).addClass('cur');
+               $(this).siblings().removeClass('cur');
+                // $.addCookie('pageNumber',$(this).html());//将当前页码保存到cookie
+                window.location.hash = $(this).html();
+            });
+            //创造节点
+            function createEle(obj) {
+                var $weibo = $('<div class="info"><div class="infotext">' + obj.content + '</div ><div class="infoOperation"><p class="infio-time" id="time">' + formartDate(obj.time) + '</p><p class="infoHandle"><a href="javascript:;" class="ding">' + obj.acc + '</a><a href="javascript:;" class="cai">' + obj.ref + '</a><a href="javascript:;" class="del">删除</a></p></div></div>');
+                return $weibo;//一定要return 否则无效
+            };
+            //生成时间2018-6-4 13:21:41
+            function formartDate(time) {
+                var date = new Date(time * 1000);
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                var day = date.getDate();
+                var hour = date.getHours();
+                var min = date.getMinutes();
+                var seconds = date.getSeconds();
+                var arr = [year + '-', month + '-', day + ' ', hour + ':', min + ':', seconds];
+                return arr.join('');
+            };
+        });
+    </script>
+</head>
+
+<body>
+    <div class="nav">
+        <img src="images/nav.png" class="left" alt="">
+    </div>
+    <div class="content">
+        <img src="images/left.png" class='left' alt="">
+        <div class="center">
+            <textarea class="comment" autofocus></textarea>
+            <input type="button" value="发布" class="send" disabled>
+        </div>
+        <img src="images/right.png" class="right" alt="">
+        <div class="messageList">
+        </div>
+    </div>
+    </div>
+    <div class="page">
+    </div>
+</body>
+
+</html>

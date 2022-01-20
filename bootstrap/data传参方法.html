@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>data传参方法</title>
+    <script src="lib/jquery/jquery.js"></script>
+</head>
+
+<body>
+    <div data-name="周杰伦" data-age="18">我是div</div>
+    <button id="btn">获取数据</button>
+    <button id="btn1">设置数据</button>
+
+    <script>
+        $(function () {
+            //获取data传参数据  命名中不能有大写字母
+            $('#btn').click(function () {
+                console.log($('div').data('name'));;
+                console.log($('div').data('age'));;
+                console.log($('div').data('sex'));;
+            });
+
+            //设置data传参数据
+            $('#btn').click(function () {
+              /* $('div').data('name','丁健');
+               $('div').data('age',18);
+               $('div').data('sex','male');//没有可以创建并传入*/
+               $('div').data({
+                   name:'丁健',
+                   age:18,
+                   sex:'male'
+               });
+            });
+        });
+    </script>
+</body>
+
+</html>

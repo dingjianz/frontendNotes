@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>51.JS特效-图片切换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            position: relative;
+        }
+
+        div {
+            width: 500px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+        }
+
+        button {
+            position: absolute;
+            left: 50%;
+        }
+
+        button:nth-child(2) {
+            margin-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="images/icon_01.jpg" alt="">
+    </div>
+    <button class="previous">上一张</button>
+    <button class="next">下一张</button>
+    <script>
+        window.onload = function () {
+            var img = document.getElementsByTagName('img')[0];
+            var previous = document.getElementsByClassName('previous')[0];
+            var next = document.getElementsByClassName('next')[0];
+            var maxIndex = 9, minIndex = 1, currentIndex = minIndex;
+            previous.onclick = function () {
+                if (currentIndex === minIndex) {
+                    currentIndex = maxIndex;
+                } else {
+                    currentIndex--;
+                };
+                img.setAttribute('src', "images/icon_0" + currentIndex + ".jpg");
+                console.log(img.getAttribute('src'));
+
+            };
+
+            next.onclick = function () {
+                if (currentIndex === maxIndex) {
+                    currentIndex = minIndex;
+                } else {
+                    currentIndex++;
+                };
+                img.setAttribute('src', "images/icon_0" + currentIndex + ".jpg");
+                console.log(img.getAttribute('src'));
+            };
+        };
+
+    </script>
+</body>
+
+</html>

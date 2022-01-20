@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>50.无限循环滚动原生JS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            vertical-align: top;
+        }
+
+        .box {
+            width: 600px;
+            height: 161px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            overflow: hidden;
+
+        }
+
+        .box .nav {
+            width: 1800px;
+            height: 161px;
+            background-color: black;
+            position: relative;
+        }
+
+        .box .nav>li {
+            width: 300px;
+            height: 161px;
+            float: left;
+        }
+    </style>
+    <script src="../JavaScript/myFunction.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="nav">
+            <li>
+                <img src="images/a.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/b.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/c.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/d.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/a.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/b.jpg" alt="">
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        window.onload = function () {
+            var nav = document.getElementsByClassName('nav')[0];
+            var lis = nav.children;
+            var timer = null;
+            var offset = 0;
+            autoPlay();
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].onmouseover = function () {
+                    clearInterval(timer);
+                    for(var j=0;j<lis.length;j++){
+                        lis[j].style.opacity = 0.5;
+                    };
+                    this.style.opacity = 1;
+                }
+                lis[i].onmouseleave = function () {
+                    autoPlay();
+                     for (var j = 0; j < lis.length; j++) {
+                        lis[j].style.opacity = 1;
+                    };
+                }
+
+            }
+
+
+            function autoPlay() {
+                timer = setInterval(function () {
+                    offset -= 10;
+                    if (offset <= -1200) {
+                        offset = 0;
+                    }
+                    nav.style.left = offset + 'px';
+                }, 50);
+            }
+        };
+
+    </script>
+</body>
+
+</html>

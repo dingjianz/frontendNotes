@@ -1,0 +1,9 @@
+/* .mytoast{
+    color: red;
+} */
+.mytoast i{
+    color: red;
+}
+.mytoast span{
+    color: purple;
+}

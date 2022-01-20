@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>35.vue多层组件通信</title>
+    <script src="js/vue.js"></script>
+</head>
+<!--  多层组件传递，父组件传值给子组件，动态绑定 -->
+<body>
+    <div id="app">
+        <my-parent :src2='src3' :title2 = 'title3'></my-parent>
+    </div>
+
+    <template id="my_img">
+        <img :src="src1" alt="" width="200">
+    </template>
+
+    <template id="my_title">
+        <h2>{{title1}}</h2>
+    </template>
+
+    <template id="my_parent">
+        <div>
+            <child1 :src1='src2'></child1>
+            <child2 :title1='title2'></child2>
+        </div>
+    </template>
+
+    <script>
+        //1.0 创建子组件
+        let Child1 = Vue.extend({
+            template: '#my_img',
+            props: ['src1']
+        });
+        let Child2 = Vue.extend({
+            template: '#my_title',
+            props: ['title1']
+        });
+        //3.0 注册父组件
+        Vue.component('my-parent', {
+            components: {
+                'child1': Child1,
+                'child2': Child2
+            },
+            template: '#my_parent',
+            props: ['src2', 'title2']
+        });
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                src3: 'img/lbj.jpg',
+                title3: '詹姆斯历史最佳'
+            }
+        });
+    </script>
+</body>
+
+</html>

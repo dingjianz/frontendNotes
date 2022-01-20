@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>50.Js特效-节点的属性操作</title>
+    <style>
+        img{
+        width: 300px;
+        background-color: #fff;
+        }
+    </style>
+</head>
+<!-- 自己的小经验：img.getAttribute('src') 获取的是行内属性
+window.getComputedStyle(img).backgroundColor获取的是css里面的属性-->
+<body>
+    <div class="box">
+        <button class="btu">按钮</button>
+        <span class="sspan">我是span</span>
+        <img src="images/zjl.jpg" alt="图片"  width="600px" >
+        
+    </div>
+    <script>
+        window.onload = function () {
+            //节点属性(节点.属性)
+            var img = document.getElementsByTagName('img')[0];
+            //1.获取：getAttribute(名称);
+            console.log(img.getAttribute('src'));
+            
+            console.log(img.getAttribute('width'));// 600px 若写在style标签里面就获取不到
+            console.log(window.getComputedStyle(img).width);//300px 获取的是css里面的属性
+            console.log(window.getComputedStyle(img).backgroundColor);//rgb(255, 255, 255)
+            console.log(window.getComputedStyle(img).src);//空格
+            
+            
+
+            //2.设置：setAttribute(名称，值);
+            img.setAttribute('alt', '新alt值');
+            img.setAttribute('aaa','随便写的');
+            console.log(img.alt);//本身自带的可以直接img.alt获取属性
+            console.log(img.getAttribute('aaa'));//'随便写的
+            
+            
+            //  3.删除：removeAttribute(名称);
+            //  img.removeAttribute('src');
+            console.log(img.getAttribute('src'));//null
+             
+            
+        }
+    </script>
+</body>
+
+</html>
